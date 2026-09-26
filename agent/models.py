@@ -218,6 +218,8 @@ class Day(BaseModel):
     theme: str
     blocks: list[Block]
     weather: DayWeather | None = None
+    stay_cost: float = 0.0
+    local_transport: float = 0.0
     day_cost: float = 0.0
 
 
