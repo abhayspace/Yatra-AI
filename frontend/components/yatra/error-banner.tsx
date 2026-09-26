@@ -10,6 +10,7 @@ const COPY: Record<string, { title: string; icon: LucideIcon; retry: boolean }> 
   config: { title: "The server isn't fully configured", icon: ServerCrash, retry: false },
   limit: { title: "That request was too complex", icon: ShieldAlert, retry: false },
   tool: { title: "A planning tool couldn't complete", icon: TriangleAlert, retry: true },
+  access_code_required: { title: "This deployment needs an access code", icon: ShieldAlert, retry: false },
   unauthorized: { title: "This browser couldn't be identified", icon: ShieldAlert, retry: false },
   rate_limited: { title: "Slow down a little", icon: ShieldAlert, retry: true },
   invalid: { title: "That message can't be sent", icon: TriangleAlert, retry: false },

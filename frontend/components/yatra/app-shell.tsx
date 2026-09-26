@@ -2,12 +2,14 @@
 
 import { MessageCircle, Route } from "lucide-react";
 import { useState } from "react";
+import { AccessGate } from "./access-gate";
 import { ChatPanel } from "./chat-panel";
 import { ItineraryEmpty } from "./empty-states";
 import { Header } from "./header";
 import { ItineraryView } from "./itinerary-view";
 import { ItinerarySkeleton } from "./skeletons";
 import { TripsSheet } from "./trips-sheet";
+import { setAccessCode } from "@/lib/owner";
 import { useYatra } from "@/lib/use-yatra";
 import { cn } from "cn";
 
@@ -16,6 +18,7 @@ export function AppShell() {
   const [tab, setTab] = useState<"chat" | "plan">("chat");
   const [tripsOpen, setTripsOpen] = useState(false);
   const [seenKey, setSeenKey] = useState<string | null>(null);
+  const [codeTries, setCodeTries] = useState(0);
 
   const { shown } = y;
   const version = shown.version;
@@ -24,6 +27,10 @@ export function AppShell() {
 
   const goPlan = () => { setTab("plan"); setSeenKey(planKey); };
   const firstPlanLoading = y.busy && !shown.itinerary;
+
+  if (y.bootError?.code === "access_code_required") {
+    return <AccessGate rejected={codeTries > 0} onSubmit={(code) => { setAccessCode(code); setCodeTries((n) => n + 1); y.retryBoot(); }} />;
+  }
 
   return (
     <div className="flex h-dvh flex-col">
@@ -66,7 +73,7 @@ export function AppShell() {
       </nav>
       <TripsSheet
         open={tripsOpen} onOpenChange={setTripsOpen} trips={y.trips} activeId={y.tripId}
-        onOpen={(id) => { void y.openTrip(id); setTab("chat"); }} onNew={() => { y.newTrip(); setTab("chat"); }}
+        onOpen={(id) => { void y.openTrip(id); setTab("chat"); }} onDelete={(id) => void y.deleteTrip(id)} onDeleteAll={() => void y.deleteAll()} onNew={() => { y.newTrip(); setTab("chat"); }}
       />
     </div>
   );

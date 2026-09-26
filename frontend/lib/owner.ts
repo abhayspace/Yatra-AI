@@ -22,3 +22,24 @@ export function getOwnerToken(): string {
     return memoryToken;
   }
 }
+
+const ACCESS_KEY = "yatra-access-code";
+let memoryCode = "";
+
+/** Optional shared access code for deployments that require one. */
+export function getAccessCode(): string {
+  try {
+    return localStorage.getItem(ACCESS_KEY) ?? memoryCode;
+  } catch {
+    return memoryCode;
+  }
+}
+
+export function setAccessCode(code: string): void {
+  memoryCode = code;
+  try {
+    localStorage.setItem(ACCESS_KEY, code);
+  } catch {
+    /* kept in memory for this tab */
+  }
+}

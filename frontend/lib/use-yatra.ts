@@ -177,6 +177,29 @@ export function useYatra() {
     setError(null);
   }, []);
 
+  const deleteTrip = useCallback(
+    async (id: string) => {
+      try {
+        await api.deleteTrip(id);
+        if (tripRef.current === id) newTrip();
+        await refreshTrips();
+      } catch (err) {
+        setError(toBody(err));
+      }
+    },
+    [newTrip, refreshTrips],
+  );
+
+  const deleteAll = useCallback(async () => {
+    try {
+      await api.deleteAllTrips();
+      newTrip();
+      await refreshTrips();
+    } catch (err) {
+      setError(toBody(err));
+    }
+  }, [newTrip, refreshTrips]);
+
   const openTrip = useCallback(
     async (id: string) => {
       setError(null);
@@ -205,7 +228,7 @@ export function useYatra() {
 
   return {
     booting, bootError, retryBoot, tripId, messages, intent, versions, trips, busy, progress, error,
-    dismissError: () => setError(null), send, retry, newTrip, openTrip, shown, previousItinerary,
+    dismissError: () => setError(null), send, retry, newTrip, openTrip, deleteTrip, deleteAll, shown, previousItinerary,
     viewVersion, setViewVersion, freshVersion,
     isLatest: viewVersion === null || (versions.length > 0 && viewVersion === versions[versions.length - 1].version_number),
   };

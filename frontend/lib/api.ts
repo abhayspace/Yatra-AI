@@ -1,4 +1,4 @@
-import { getOwnerToken } from "./owner";
+import { getAccessCode, getOwnerToken } from "./owner";
 import type { ApiErrorBody, ChatResult, StreamEvent, TripPayload, TripSummary } from "./types";
 
 export class ApiRequestError extends Error {
@@ -28,13 +28,18 @@ export function getApiUrl(): Promise<string> {
   return apiUrlPromise;
 }
 
+function accessHeader(): Record<string, string> {
+  const code = getAccessCode();
+  return code ? { "X-Access-Code": code } : {};
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const base = await getApiUrl();
   let res: Response;
   try {
     res = await fetch(`${base}${path}`, {
       ...init,
-      headers: { "Content-Type": "application/json", "X-Owner-Token": getOwnerToken(), ...(init?.headers ?? {}) },
+      headers: { "Content-Type": "application/json", "X-Owner-Token": getOwnerToken(), ...accessHeader(), ...(init?.headers ?? {}) },
     });
   } catch {
     throw new ApiRequestError(NETWORK_ERROR);
@@ -50,6 +55,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     }
     throw new ApiRequestError(body);
   }
+  if (res.status === 204) return undefined as T;
   return (await res.json()) as T;
 }
 
@@ -57,6 +63,8 @@ export const api = {
   listTrips: () => request<TripSummary[]>("/api/trips"),
   latestTrip: () => request<TripPayload | null>("/api/trips/latest"),
   getTrip: (id: string) => request<TripPayload>(`/api/trips/${id}`),
+  deleteTrip: (id: string) => request<void>(`/api/trips/${id}`, { method: "DELETE" }),
+  deleteAllTrips: () => request<{ deleted: number }>("/api/trips", { method: "DELETE" }),
   chat: (tripId: string | null, message: string) =>
     request<ChatResult>("/api/chat", { method: "POST", body: JSON.stringify({ trip_id: tripId, message }) }),
 };
@@ -98,7 +106,7 @@ export async function runTurn(
 
     socket.onopen = () => {
       opened = true;
-      socket.send(JSON.stringify({ trip_id: tripId, message, owner_token: getOwnerToken() }));
+      socket.send(JSON.stringify({ trip_id: tripId, message, owner_token: getOwnerToken(), access_code: getAccessCode() || undefined }));
     };
     socket.onmessage = (msg) => {
       let event: StreamEvent;
