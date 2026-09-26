@@ -15,10 +15,9 @@ import httpx
 
 from agent.llm_client import LLMClient
 from agent.tools.intent_parser import (
-    _CHANGE_VERB, _QUESTION_START, LLMIntentOut, _LLMFollowUpOut, heuristic_delta, heuristic_extract,
+    _CHANGE_VERB, _QUESTION_START, LLMIntentOut, heuristic_delta, heuristic_extract,
 )
 from agent.models import TripIntent
-from agent.synthesis import AnswerDraft, ReplyDraft
 
 TODAY = date(2026, 10, 1)
 
