@@ -108,6 +108,10 @@ def check_turn(expect: dict[str, Any], state: dict[str, Any], prev: dict[str, An
     for pat in expect.get("reply_not_matches", []):
         if re.search(pat, reply):
             out.append(f"reply matches forbidden /{pat}/: {reply!r}")
+    assumptions = " ".join((state.get("intent") or {}).get("assumptions", []))
+    for text in expect.get("assumptions_include", []):
+        if text not in assumptions:
+            out.append(f"assumptions missing {text!r}: {assumptions!r}")
     joined = " ".join(state.get("change_summary", []))
     for text in expect.get("changes_include", []):
         if text not in joined:
@@ -168,7 +172,7 @@ def run_case(case: dict[str, Any], graph, settings: Settings, live: bool = False
     prev_state: dict[str, Any] | None = None
     results: list[TurnResult] = []
     for turn in case["turns"]:
-        state = run_turn(graph, settings, turn["user"], snapshot, history)
+        state = run_turn(graph, settings, turn["user"], snapshot, history, case.get("profile"))
         failures = check_turn(turn.get("expect", {}), state, prev_state, live)
         results.append(TurnResult(turn["user"], dict(state), failures))
         history += [{"role": "user", "content": turn["user"]}, {"role": "assistant", "content": state.get("reply", "")}]

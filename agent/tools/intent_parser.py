@@ -302,25 +302,50 @@ def next_friday(today: date, min_lead_days: int = 8) -> date:
     return d + timedelta(days=(4 - d.weekday()) % 7)
 
 
-def apply_defaults(intent: TripIntent, today: date | None = None) -> TripIntent:
-    """Fill unstated constraints with sensible defaults and record each assumption."""
+def apply_profile_origin(intent: TripIntent, missing: list[str], profile: dict[str, Any] | None) -> tuple[TripIntent, list[str]]:
+    """A brand-new request with no origin: assume the one this owner usually travels from, and say so."""
+    origin = (profile or {}).get("origin")
+    if "origin" in missing and origin and not intent.origin and find_origin(origin):
+        out = intent.model_copy(update={"origin": origin})
+        note = f"Assumed you are travelling from {origin}, as on your earlier trips. Tell me if that is wrong."
+        out.assumptions = list(dict.fromkeys([*out.assumptions, note]))
+        return out, [m for m in missing if m != "origin"]
+    return intent, missing
+
+
+def apply_defaults(intent: TripIntent, today: date | None = None, profile: dict[str, Any] | None = None) -> TripIntent:
+    """Fill unstated constraints from the owner's habits or sensible defaults, recording each assumption."""
     today = today or date.today()
+    profile = profile or {}
     out = intent.model_copy(deep=True)
-    out.assumptions = []
+    notes: list[str] = list(out.assumptions)
     if out.duration_days is None:
         out.duration_days = DEFAULT_DURATION
-        out.assumptions.append(f"Assumed a {DEFAULT_DURATION}-day trip.")
+        notes.append(f"Assumed a {DEFAULT_DURATION}-day trip.")
     if out.travelers is None:
-        out.travelers = DEFAULT_TRAVELERS
-        out.assumptions.append("Assumed 1 traveller.")
+        if profile.get("travelers"):
+            out.travelers = int(profile["travelers"])
+            notes.append(f"Assumed {out.travelers} traveller(s), as on your earlier trips.")
+        else:
+            out.travelers = DEFAULT_TRAVELERS
+            notes.append("Assumed 1 traveller.")
     if out.pace is None:
-        out.pace = DEFAULT_PACE
-        out.assumptions.append("Assumed a balanced pace.")
+        if profile.get("pace") in ("relaxed", "balanced", "packed"):
+            out.pace = profile["pace"]
+            notes.append(f"Assumed your usual {out.pace} pace.")
+        else:
+            out.pace = DEFAULT_PACE
+            notes.append("Assumed a balanced pace.")
+    if not out.interests and profile.get("interests") and (out.destinations or out.region):
+        out.interests = [i for i in profile["interests"] if i in INTERESTS][:2]
+        if out.interests:
+            notes.append("Assumed your usual interests: " + ", ".join(out.interests) + ".")
     if out.start_date is None or out.start_date < today:
         out.start_date = next_friday(today)
-        out.assumptions.append(f"Assumed a start date of {out.start_date.isoformat()} so the weather forecast could be checked.")
+        notes.append(f"Assumed a start date of {out.start_date.isoformat()} so the weather forecast could be checked.")
     if out.budget is None:
-        out.assumptions.append("No budget given; planned at mid-range comfort.")
+        notes.append("No budget given; planned at mid-range comfort.")
+    out.assumptions = list(dict.fromkeys(notes))
     return out
 
 

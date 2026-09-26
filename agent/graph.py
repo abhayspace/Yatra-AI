@@ -36,7 +36,7 @@ from agent.synthesis import answer_question, build_facts, compose_reply, rupees
 from agent.tools.alternatives import compare_alternatives
 from agent.tools.budget import compute_budget
 from agent.tools.destination_search import PlaceMatches, SearchQuery, SearchResult, search_destinations, search_places
-from agent.tools.intent_parser import apply_defaults, apply_delta, parse_followup, parse_intent
+from agent.tools.intent_parser import apply_defaults, apply_delta, apply_profile_origin, parse_followup, parse_intent
 from agent.tools.itinerary_builder import LADDER, LAST_RUNG, TIER_LABEL, BuildRequest, build_itinerary, diff_itineraries, initial_rung
 from agent.tools.weather import WeatherReport, fetch_weather
 
@@ -190,6 +190,10 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
         started = time.perf_counter()
         prior = _intent(state) if state.get("intent") else None
         result = parse_intent(state["user_message"], llm, prior, deps.today())
+        intent, missing = result.intent, result.missing
+        if prior is None:
+            intent, missing = apply_profile_origin(intent, missing, state.get("profile"))
+        result = result.model_copy(update={"intent": intent, "missing": missing})
         return {
             "intent": result.intent.model_dump(mode="json"),
             "missing_fields": result.missing,
@@ -226,7 +230,7 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
 
     def plan(state: TripState) -> dict[str, Any]:
         started = time.perf_counter()
-        intent = apply_defaults(_intent(state), deps.today())
+        intent = apply_defaults(_intent(state), deps.today(), state.get("profile"))
         decision = decide_plan(llm, intent)
         tool_plan = [{"tool": t} for t in decision.tools] + [{"tool": "itinerary_builder"}, {"tool": "budget"}]
         rung = initial_rung(intent.budget, intent.duration_days, intent.travelers)

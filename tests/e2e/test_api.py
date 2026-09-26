@@ -301,3 +301,14 @@ def test_rate_limit_uses_the_address_added_by_the_trusted_proxy_not_client_suppl
     spoof = client.post("/api/chat", json=msg, headers={"X-Forwarded-For": "9.9.9.9, 203.0.113.7"})
     other = client.post("/api/chat", json=msg, headers={"X-Forwarded-For": "1.1.1.1, 203.0.113.8"})
     assert (first.status_code, spoof.status_code, other.status_code) == (200, 429, 200)
+
+
+def test_second_trip_uses_this_owners_habits_but_not_someone_elses(env):
+    repo, mine = env
+    theirs = TestClient(app, headers={"X-Owner-Token": OTHER_TOKEN})
+    mine.post("/api/chat", json={"message": FIRST})  # Delhi, 2 travellers, relaxed
+    fresh = mine.post("/api/chat", json={"message": "3 days in Goa, food, budget 30000"}).json()
+    assert fresh["itinerary"]["origin"] == "Delhi" and fresh["itinerary"]["pace"] == "relaxed" and fresh["itinerary"]["travelers"] == 2
+    assert any("earlier trips" in a for a in fresh["intent"]["assumptions"])
+    stranger = theirs.post("/api/chat", json={"message": "3 days in Goa, food, budget 30000"}).json()
+    assert stranger["itinerary"] is None and "travelling from" in stranger["reply"]

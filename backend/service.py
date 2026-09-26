@@ -9,6 +9,7 @@ from uuid import UUID
 from agent.errors import GraphLimitError
 from agent.runner import snapshot_of, stream_turn
 from agent.settings import ConfigError, Settings
+from backend.profile import build_profile
 from backend.repository import OWNER_KEY, PersistenceError, TripRepository
 from backend.schemas import ApiError, ChatResult
 
@@ -87,9 +88,10 @@ class ChatService:
             history = [{"role": m["role"], "content": m["content"]} for m in self.repo.list_messages(trip["id"])]
             self.repo.add_message(trip["id"], "user", message)
             snapshot = trip.get("state_json") or {}
+            profile = None if snapshot.get("itinerary") else build_profile(self.repo.list_trips(owner, 10), trip["id"])
 
             final = None
-            for kind, data in stream_turn(self._graph_provider(), self.settings, message, snapshot, history):
+            for kind, data in stream_turn(self._graph_provider(), self.settings, message, snapshot, history, profile):
                 if kind == "update":
                     node, update = data
                     yield {"type": "step", "node": node, "label": NODE_LABELS.get(node, node)}

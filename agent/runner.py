@@ -18,7 +18,8 @@ from agent.state import TripState
 PERSISTENT_KEYS = ("intent", "candidates", "weather", "itinerary", "budget_report", "plan_rung", "version")
 
 
-def initial_state(message: str, snapshot: dict[str, Any] | None = None, history: list[dict[str, str]] | None = None) -> TripState:
+def initial_state(message: str, snapshot: dict[str, Any] | None = None, history: list[dict[str, str]] | None = None,
+                  profile: dict[str, Any] | None = None) -> TripState:
     state: TripState = {
         "user_message": message,
         "history": list(history or [])[-8:],
@@ -27,6 +28,8 @@ def initial_state(message: str, snapshot: dict[str, Any] | None = None, history:
         "warnings": [],
         "step_count": 0,
     }
+    if profile:
+        state["profile"] = profile
     for key in PERSISTENT_KEYS:
         if snapshot and snapshot.get(key) is not None:
             state[key] = snapshot[key]  # type: ignore[literal-required]
@@ -43,20 +46,20 @@ def _limit_error(settings: Settings) -> GraphLimitError:
 
 
 def run_turn(graph, settings: Settings, message: str, snapshot: dict[str, Any] | None = None,
-             history: list[dict[str, str]] | None = None) -> TripState:
+             history: list[dict[str, str]] | None = None, profile: dict[str, Any] | None = None) -> TripState:
     try:
-        return graph.invoke(initial_state(message, snapshot, history), run_config(settings))
+        return graph.invoke(initial_state(message, snapshot, history, profile), run_config(settings))
     except GraphRecursionError as exc:
         raise _limit_error(settings) from exc
 
 
 def stream_turn(graph, settings: Settings, message: str, snapshot: dict[str, Any] | None = None,
-                history: list[dict[str, str]] | None = None) -> Iterator[tuple[str, Any]]:
+                history: list[dict[str, str]] | None = None, profile: dict[str, Any] | None = None) -> Iterator[tuple[str, Any]]:
     """Yield ("update", (node, update)) per finished node, then ("final", state)."""
     final: TripState | None = None
     try:
         for namespace, mode, data in graph.stream(
-            initial_state(message, snapshot, history), run_config(settings),
+            initial_state(message, snapshot, history, profile), run_config(settings),
             stream_mode=["updates", "values"], subgraphs=True,
         ):
             if mode == "updates":

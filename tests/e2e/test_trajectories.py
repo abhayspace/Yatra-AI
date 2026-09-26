@@ -19,7 +19,7 @@ def test_trajectory_case(case, make_graph, settings):
 def test_dataset_covers_every_required_capability_and_edge_case():
     ids = {c["id"] for c in CASES}
     caps = {cap for c in CASES for cap in c["capabilities"]}
-    assert {"intent", "destination_search", "weather", "budget", "itinerary", "replan", "safety"} <= caps
+    assert {"intent", "destination_search", "weather", "budget", "itinerary", "replan", "safety", "memory"} <= caps
     assert {"happy_path", "tight_budget_achievable", "tight_budget_impossible", "prompt_injection"} <= ids
     assert any(c["id"].startswith("replan_") for c in CASES)
 

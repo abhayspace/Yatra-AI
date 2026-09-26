@@ -14,6 +14,7 @@ class TripState(TypedDict, total=False):
     user_message: str  # sanitised raw text of the latest turn (treated as data)
     history: list[dict[str, str]]  # recent {"role", "content"} turns for context
     version: int  # latest saved itinerary version (0 for a brand new trip)
+    profile: dict[str, Any]  # habits inferred from this owner's earlier trips (origin, pace, party size, interests)
 
     # understanding
     intent: dict[str, Any]  # TripIntent
