@@ -114,7 +114,8 @@ def heuristic_extract(text: str, today: date | None = None) -> dict[str, Any]:
     elif re.search(r"\b(solo|alone|by myself|just me)\b", low):
         out["travelers"] = 1
     else:
-        m = re.search(r"\bfamily of\s+" + _NUM, low)
+        m = re.search(r"\bfamily of\s+" + _NUM, low) or re.search(
+            r"\bfor\s+" + _NUM + r"\b(?!\s*(?:days?|nights?|weeks?|months?|hours?|k\b|l\b|lakhs?|lacs?|rs\b|inr|₹|%|-))", low)
         if m:
             out["travelers"] = _to_int(m.group("n"))
 
