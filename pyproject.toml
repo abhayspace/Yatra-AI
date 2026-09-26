@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "live: talks to the real Azure AI Foundry deployment and/or the network; skipped unless configured",
+]
