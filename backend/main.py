@@ -1,6 +1,8 @@
 """FastAPI app exposing the Yatra AI graph over REST and a streaming WebSocket."""
 from __future__ import annotations
 
+import asyncio
+import hmac
 import logging
 import re
 import uuid
@@ -10,7 +12,7 @@ from typing import Any, Iterator
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from pydantic import ValidationError
 from starlette.concurrency import iterate_in_threadpool
 
@@ -38,16 +40,45 @@ def get_service() -> ChatService:
     return ChatService(get_repository(), _graph, get_settings())
 
 
+async def _retention_loop() -> None:
+    """Apply the retention policy at start-up and then every six hours."""
+    while True:
+        try:
+            service = _resolve_service()
+            await asyncio.to_thread(service.purge_expired)
+        except Exception:  # noqa: BLE001 - housekeeping must never take the API down
+            log.warning("retention.failed", exc_info=False)
+        await asyncio.sleep(6 * 3600)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     setup_logging()
-    yield
+    task = asyncio.create_task(_retention_loop()) if get_settings().trip_retention_days and get_settings().supabase_url else None
+    try:
+        yield
+    finally:
+        if task:
+            task.cancel()
 
 
-app = FastAPI(title="Yatra AI API", version="1.0.0", lifespan=lifespan)
+_docs = get_settings().enable_api_docs
+app = FastAPI(title="Yatra AI API", version="1.0.0", lifespan=lifespan,
+              docs_url="/docs" if _docs else None, redoc_url=None, openapi_url="/openapi.json" if _docs else None)
 _settings = get_settings()
 limiter = RateLimiter(_settings.rate_limit_per_minute)
 _REQUEST_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,64}$")
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("Referrer-Policy", "no-referrer")
+    response.headers.setdefault("X-Frame-Options", "DENY")
+    if request.url.path.startswith("/api"):
+        response.headers["Cache-Control"] = "no-store"  # trip data is private to the caller
+    return response
 
 
 @app.middleware("http")
@@ -77,21 +108,57 @@ def client_key(request: Request | WebSocket) -> str:
     return request.client.host if request.client else "unknown"
 
 
-def owner(x_owner_token: str | None = Header(default=None)) -> str:
-    """Dependency: hash of the caller's anonymous owner token (see backend/owner.py)."""
+access_failures = RateLimiter(10)  # wrong access codes per client per minute
+
+
+class AccessDenied(Exception):
+    """An access code is required and the caller did not present the right one."""
+
+
+class TooManyAttempts(Exception):
+    """Too many wrong access codes from this client."""
+
+
+def check_access_code(presented: str | None, key: str) -> None:
+    """Optional shared access code (ACCESS_CODE). Compared in constant time; wrong guesses are rate limited."""
+    expected = get_settings().access_code.get_secret_value()
+    if not expected:
+        return
+    if access_failures.blocked(key):
+        raise TooManyAttempts()
+    if presented and hmac.compare_digest(presented.encode(), expected.encode()):
+        return
+    if presented:
+        access_failures.allow(key)  # record the failed attempt
+    raise AccessDenied()
+
+
+def owner(request: Request, x_owner_token: str | None = Header(default=None), x_access_code: str | None = Header(default=None)) -> str:
+    """Dependency: enforce the optional access code, then return the hash of the caller's anonymous owner token."""
+    check_access_code(x_access_code, client_key(request))
     return owner_hash(x_owner_token)
 
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_settings.cors_origin_list,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type", "X-Owner-Token", "X-Request-ID"],
+    allow_methods=["GET", "POST", "DELETE"],
+    allow_headers=["Content-Type", "X-Owner-Token", "X-Access-Code", "X-Request-ID"],
 )
 
 
 def _error_response(status: int, code: str, message: str) -> JSONResponse:
     return JSONResponse(status_code=status, content={"detail": {"code": code, "message": message}})
+
+
+@app.exception_handler(AccessDenied)
+async def _access_denied(request: Request, exc: AccessDenied) -> JSONResponse:
+    return _error_response(401, "access_code_required", "This deployment needs an access code.")
+
+
+@app.exception_handler(TooManyAttempts)
+async def _too_many_attempts(request: Request, exc: TooManyAttempts) -> JSONResponse:
+    return _error_response(429, "rate_limited", "Too many wrong access codes. Please wait a minute.")
 
 
 @app.exception_handler(Unauthorized)
@@ -141,6 +208,19 @@ def get_trip(trip_id: str, who: str = Depends(owner), service: ChatService = Dep
     return service.trip_payload(service.get_trip(trip_id, who))
 
 
+@app.delete("/api/trips/{trip_id}", status_code=204)
+def delete_trip(trip_id: str, who: str = Depends(owner), service: ChatService = Depends(get_service)) -> Response:
+    """Delete one of this browser's trips with its messages and versions."""
+    service.delete_trip(trip_id, who)
+    return Response(status_code=204)
+
+
+@app.delete("/api/trips")
+def delete_all_trips(who: str = Depends(owner), service: ChatService = Depends(get_service)) -> dict[str, int]:
+    """Delete everything this browser has stored."""
+    return {"deleted": service.delete_all(who)}
+
+
 @app.post("/api/chat")
 def chat(req: ChatRequest, request: Request, who: str = Depends(owner), service: ChatService = Depends(get_service)) -> dict[str, Any]:
     """Run one turn and return the final result (the WebSocket streams the same turn live)."""
@@ -183,7 +263,13 @@ async def chat_ws(ws: WebSocket) -> None:
                 await ws.send_json({"type": "error", "error": {"code": "invalid", "message": "Please send a message between 1 and 2000 characters."}})
                 continue
             try:
-                who = owner_hash(raw.get("owner_token") if isinstance(raw, dict) else None)
+                payload = raw if isinstance(raw, dict) else {}
+                check_access_code(payload.get("access_code"), client_key(ws))
+                who = owner_hash(payload.get("owner_token"))
+            except (AccessDenied, TooManyAttempts) as exc:
+                code = "access_code_required" if isinstance(exc, AccessDenied) else "rate_limited"
+                await ws.send_json({"type": "error", "error": {"code": code, "message": "This deployment needs a valid access code."}})
+                continue
             except Unauthorized:
                 await ws.send_json({"type": "error", "error": {"code": "unauthorized", "message": "This browser has no valid owner token. Reload the page and try again."}})
                 continue

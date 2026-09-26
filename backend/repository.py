@@ -24,6 +24,9 @@ class TripRepository(Protocol):
     def list_trips(self, owner_hash: str, limit: int = 30) -> list[dict[str, Any]]: ...
     def latest_trip(self, owner_hash: str) -> dict[str, Any] | None: ...
     def update_trip(self, trip_id: str, fields: dict[str, Any]) -> dict[str, Any]: ...
+    def delete_trip(self, trip_id: str) -> None: ...
+    def delete_owner_trips(self, owner_hash: str) -> int: ...
+    def purge_older_than(self, cutoff_iso: str) -> int: ...
     def add_message(self, trip_id: str, role: str, content: str, tool_trace: list[dict] | None = None,
                     itinerary_version: int | None = None, is_error: bool = False) -> dict[str, Any]: ...
     def list_messages(self, trip_id: str) -> list[dict[str, Any]]: ...
@@ -77,6 +80,18 @@ class SupabaseRepository:
     @_wrap
     def update_trip(self, trip_id: str, fields: dict[str, Any]) -> dict[str, Any]:
         return self._db.table("trips").update(fields).eq("id", trip_id).execute().data[0]
+
+    @_wrap
+    def delete_trip(self, trip_id: str) -> None:
+        self._db.table("trips").delete().eq("id", trip_id).execute()  # messages and versions cascade
+
+    @_wrap
+    def delete_owner_trips(self, owner_hash: str) -> int:
+        return len(self._db.table("trips").delete().eq(OWNER_FILTER, owner_hash).execute().data)
+
+    @_wrap
+    def purge_older_than(self, cutoff_iso: str) -> int:
+        return len(self._db.table("trips").delete().lt("updated_at", cutoff_iso).execute().data)
 
     @_wrap
     def add_message(self, trip_id, role, content, tool_trace=None, itinerary_version=None, is_error=False):

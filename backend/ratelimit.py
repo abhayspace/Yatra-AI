@@ -35,6 +35,15 @@ class RateLimiter:
                     del self._hits[stale]
             return True
 
+    def blocked(self, key: str) -> bool:
+        """True if `key` is at its limit right now (does not record a hit)."""
+        if self.limit <= 0:
+            return False
+        now = self._clock()
+        with self._lock:
+            hits = self._hits.get(key)
+            return bool(hits) and sum(1 for h in hits if now - h < self.window) >= self.limit
+
     def retry_after(self, key: str) -> int:
         with self._lock:
             hits = self._hits.get(key)

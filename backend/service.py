@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 import time
+from datetime import datetime, timedelta, timezone
 from typing import Any, Callable, Iterator
 from uuid import UUID
 
@@ -65,6 +66,27 @@ class ChatService:
     def latest_payload(self, owner: str) -> dict[str, Any] | None:
         trip = self.repo.latest_trip(owner)
         return self.trip_payload(trip) if trip else None
+
+    def delete_trip(self, trip_id: str, owner: str) -> None:
+        self.get_trip(trip_id, owner)  # 404 unless it exists and is yours
+        self.repo.delete_trip(trip_id)
+        log.info("trip.deleted", extra={"trip_id": trip_id})
+
+    def delete_all(self, owner: str) -> int:
+        count = self.repo.delete_owner_trips(owner)
+        log.info("trips.deleted_all", extra={"count": count})
+        return count
+
+    def purge_expired(self) -> int:
+        """Retention policy: delete trips not updated for TRIP_RETENTION_DAYS."""
+        days = self.settings.trip_retention_days
+        if not days:
+            return 0
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
+        count = self.repo.purge_older_than(cutoff)
+        if count:
+            log.info("trips.purged", extra={"count": count, "retention_days": days})
+        return count
 
     def get_trip(self, trip_id: str, owner: str) -> dict[str, Any]:
         """The trip if it exists and belongs to `owner`; otherwise TripNotFound (never reveals other people's trips)."""

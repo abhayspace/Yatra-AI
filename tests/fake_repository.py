@@ -57,6 +57,27 @@ class InMemoryRepository:
         self.trips[trip_id]["updated_at"] = self._now()
         return copy.deepcopy(self.trips[trip_id])
 
+    def _drop(self, ids):
+        self.trips = {k: v for k, v in self.trips.items() if k not in ids}
+        self.messages = [m for m in self.messages if m["trip_id"] not in ids]
+        self.versions = [v for v in self.versions if v["trip_id"] not in ids]
+
+    def delete_trip(self, trip_id):
+        self._check()
+        self._drop({trip_id})
+
+    def delete_owner_trips(self, owner_hash):
+        self._check()
+        ids = {t["id"] for t in self._owned(owner_hash)}
+        self._drop(ids)
+        return len(ids)
+
+    def purge_older_than(self, cutoff_iso):
+        self._check()
+        ids = {t["id"] for t in self.trips.values() if t["updated_at"] < cutoff_iso}
+        self._drop(ids)
+        return len(ids)
+
     def add_message(self, trip_id, role, content, tool_trace=None, itinerary_version=None, is_error=False):
         self._check()
         row = {"id": str(uuid.uuid4()), "trip_id": trip_id, "role": role, "content": content, "tool_trace": copy.deepcopy(tool_trace or []),

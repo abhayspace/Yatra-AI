@@ -312,3 +312,102 @@ def test_second_trip_uses_this_owners_habits_but_not_someone_elses(env):
     assert any("earlier trips" in a for a in fresh["intent"]["assumptions"])
     stranger = theirs.post("/api/chat", json={"message": "3 days in Goa, food, budget 30000"}).json()
     assert stranger["itinerary"] is None and "travelling from" in stranger["reply"]
+
+
+# ------------------------------------------------------------------ privacy, hardening
+
+def _secured(monkeypatch, code="open-sesame-123"):
+    import backend.main as main
+    from agent.settings import Settings
+
+    settings = Settings(_env_file=None, access_code=code)
+    monkeypatch.setattr(main, "get_settings", lambda: settings)
+    monkeypatch.setattr(main, "access_failures", main.RateLimiter(3))
+    return code
+
+
+def test_owner_can_delete_a_trip_and_everything_under_it(env):
+    repo, client = env
+    a = client.post("/api/chat", json={"message": FIRST}).json()
+    client.post("/api/chat", json={"trip_id": a["trip_id"], "message": "actually make it 3 days"})
+    assert len(repo.versions) == 2 and len(repo.messages) == 4
+    assert client.delete(f"/api/trips/{a['trip_id']}").status_code == 204
+    assert repo.trips == {} and repo.versions == [] and repo.messages == []
+    assert client.get(f"/api/trips/{a['trip_id']}").status_code == 404
+    assert client.delete(f"/api/trips/{a['trip_id']}").status_code == 404
+
+
+def test_deleting_someone_elses_trip_is_refused_and_changes_nothing(env):
+    repo, mine = env
+    theirs = TestClient(app, headers={"X-Owner-Token": OTHER_TOKEN})
+    a = mine.post("/api/chat", json={"message": FIRST}).json()
+    assert theirs.delete(f"/api/trips/{a['trip_id']}").status_code == 404
+    assert theirs.delete("/api/trips").json() == {"deleted": 0}
+    assert a["trip_id"] in repo.trips
+
+
+def test_delete_all_removes_only_the_callers_data(env):
+    repo, mine = env
+    theirs = TestClient(app, headers={"X-Owner-Token": OTHER_TOKEN})
+    mine.post("/api/chat", json={"message": FIRST})
+    mine.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food, budget 30000"})
+    keep = theirs.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food, budget 30000"}).json()
+    assert mine.delete("/api/trips").json() == {"deleted": 2}
+    assert mine.get("/api/trips").json() == [] and list(repo.trips) == [keep["trip_id"]]
+
+
+def test_retention_policy_purges_only_stale_trips(env):
+    repo, client = env
+    from backend.service import ChatService
+    from agent.settings import Settings
+
+    old = client.post("/api/chat", json={"message": FIRST}).json()["trip_id"]
+    repo.trips[old]["updated_at"] = "2020-01-01T00:00:00+00:00"
+    fresh = client.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food, budget 30000"}).json()["trip_id"]
+    from datetime import datetime, timezone
+
+    repo.trips[fresh]["updated_at"] = datetime.now(timezone.utc).isoformat()
+    svc = ChatService(repo, lambda: None, Settings(_env_file=None, trip_retention_days=30))
+    assert svc.purge_expired() == 1 and list(repo.trips) == [fresh]
+    assert ChatService(repo, lambda: None, Settings(_env_file=None, trip_retention_days=0)).purge_expired() == 0
+
+
+def test_security_headers_and_no_store_on_api_and_docs_off_by_default(env):
+    _, client = env
+    r = client.get("/api/trips")
+    assert r.headers["cache-control"] == "no-store" and r.headers["x-content-type-options"] == "nosniff"
+    assert r.headers["x-frame-options"] == "DENY" and r.headers["referrer-policy"] == "no-referrer"
+    assert client.get("/docs").status_code == 404 and client.get("/openapi.json").status_code == 404
+
+
+def test_optional_access_code_gates_every_endpoint(env, monkeypatch):
+    _, client = env
+    code = _secured(monkeypatch)
+    assert client.get("/health").status_code == 200  # liveness stays open
+    for r in (client.get("/api/trips"), client.post("/api/chat", json={"message": "hi"}), client.delete("/api/trips")):
+        assert r.status_code == 401 and r.json()["detail"]["code"] == "access_code_required"
+    assert client.get("/api/trips", headers={"X-Access-Code": "wrong"}).status_code == 401
+    assert client.get("/api/trips", headers={"X-Access-Code": code}).status_code == 200
+    ok = client.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food"}, headers={"X-Access-Code": code})
+    assert ok.status_code == 200
+
+
+def test_wrong_access_codes_are_rate_limited_even_for_the_right_code_afterwards(env, monkeypatch):
+    _, client = env
+    code = _secured(monkeypatch)
+    statuses = [client.get("/api/trips", headers={"X-Access-Code": f"guess-{i}"}).status_code for i in range(5)]
+    assert statuses[:3] == [401, 401, 401] and statuses[3:] == [429, 429]
+    assert client.get("/api/trips", headers={"X-Access-Code": code}).status_code == 429  # locked out: guessing gains nothing
+
+
+def test_websocket_honours_the_access_code(env, monkeypatch):
+    _, client = env
+    code = _secured(monkeypatch)
+    with client.websocket_connect("/ws/chat", headers={"origin": "http://localhost:3000"}) as ws:
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food", "owner_token": TOKEN})
+        assert ws.receive_json()["error"]["code"] == "access_code_required"
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food", "owner_token": TOKEN, "access_code": code})
+        ev = ws.receive_json()
+        while ev["type"] not in ("done", "error"):
+            ev = ws.receive_json()
+        assert ev["type"] == "done"

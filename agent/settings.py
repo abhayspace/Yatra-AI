@@ -23,6 +23,11 @@ class Settings(BaseSettings):
     supabase_url: str = ""
     supabase_service_role_key: SecretStr = SecretStr("")
 
+    # Optional shared access code. When set, every API call must present it (X-Access-Code); use it for public deployments.
+    access_code: SecretStr = SecretStr("")
+    enable_api_docs: bool = False  # expose /docs and /openapi.json
+    trip_retention_days: int = Field(default=90, ge=0, le=3650)  # trips untouched this long are deleted; 0 keeps them forever
+
     cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
 
     # Explicit ceilings so no run can spin forever.
