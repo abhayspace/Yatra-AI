@@ -62,6 +62,10 @@ class ScriptedLLM(LLMClient):
                 action = "other"
             d = {k: (v.isoformat() if isinstance(v, date) else v) for k, v in delta.items()}
             return schema(action=action, delta=d, question=request if action == "question" else None)
+        if task == "plan_tools":
+            facts = json.loads(_between(user, "<trip_facts>", "</trip_facts>"))
+            tools = ["weather"] + ([] if facts.get("destinations") else ["compare_alternatives"])
+            return schema(tools=tools, rationale="Scripted: forecast always, comparison when recommending a destination.")
         if task == "compose_reply":
             facts = json.loads(_between(user, "<trip_facts>", "</trip_facts>"))
             return schema(reply=self.reply_text(facts, request), day_themes=self.themes(facts))

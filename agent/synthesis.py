@@ -27,13 +27,20 @@ class AnswerDraft(BaseModel):
     answer: str = Field(max_length=1000)
 
 
+def _alt_amounts(facts: dict[str, Any]) -> list[float]:
+    out: list[float] = []
+    for a in facts.get("alternatives_costed", []):
+        out += [a["total_cost_inr"], abs(a["difference_vs_chosen_inr"])]
+    return out
+
+
 def rupees(x: float) -> str:
     return f"₹{x:,.0f}"
 
 
 def build_facts(
     intent: TripIntent, itinerary: Itinerary, report: BudgetReport, weather_summary: str | None,
-    alternatives: list[str], change_summary: list[str],
+    alternatives: list[str], change_summary: list[str], costed_alternatives: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     return {
         "destination": itinerary.destination_name,
@@ -59,6 +66,10 @@ def build_facts(
         "notes": itinerary.notes,
         "other_destinations_considered": alternatives,
         "change_summary": change_summary,
+        "alternatives_costed": [
+            {"name": a["name"], "total_cost_inr": a["total_cost"], "difference_vs_chosen_inr": a["difference_vs_chosen"],
+             "within_budget": a["within_budget"]} for a in (costed_alternatives or [])
+        ],
     }
 
 
@@ -102,7 +113,7 @@ def compose_reply(
     system = REPLY_SYSTEM.format(turn_kind=TURN_KIND_REVISED if revised else TURN_KIND_NEW)
     user = f"<trip_facts>\n{json.dumps(facts, ensure_ascii=False)}\n</trip_facts>\n\n{wrap_user_request(user_message)}"
     draft = llm.complete_structured("compose_reply", system, user, ReplyDraft)
-    allowed = allowed_amounts(itinerary, report, intent.budget)
+    allowed = allowed_amounts(itinerary, report, intent.budget, _alt_amounts(facts))
 
     violations = validate_reply(draft.reply, allowed)
     themes = [t.strip() for t in draft.day_themes]
@@ -122,7 +133,7 @@ def compose_reply(
 def answer_question(llm: LLMClient, question: str, facts: dict[str, Any], itinerary: Itinerary, report: BudgetReport, intent: TripIntent) -> tuple[str, list[str]]:
     user = f"<trip_facts>\n{json.dumps(facts, ensure_ascii=False)}\n</trip_facts>\n\n{wrap_user_request(question)}"
     draft = llm.complete_structured("answer_question", ANSWER_SYSTEM, user, AnswerDraft)
-    violations = validate_reply(draft.answer, allowed_amounts(itinerary, report, intent.budget))
+    violations = validate_reply(draft.answer, allowed_amounts(itinerary, report, intent.budget, _alt_amounts(facts)))
     if violations:
         return (
             f"The plan for {facts['destination']} totals {rupees(facts['total_cost_inr'])} for {facts['travelers']} traveller(s). "

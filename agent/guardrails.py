@@ -77,9 +77,10 @@ def extract_amounts(text: str) -> list[tuple[float, bool]]:
     return out
 
 
-def allowed_amounts(itinerary: Itinerary | None, report: BudgetReport | None, user_budget: float | None = None) -> set[float]:
+def allowed_amounts(itinerary: Itinerary | None, report: BudgetReport | None, user_budget: float | None = None,
+                    extra: list[float] | None = None) -> set[float]:
     """Every rupee figure a reply may legitimately quote: those the tools produced, and the user's own budget."""
-    vals: set[float] = {0.0}
+    vals: set[float] = {0.0, *(extra or [])}
     if user_budget:
         vals.add(float(user_budget))
     if report:

@@ -34,7 +34,7 @@ def test_itinerary_cites_dataset_and_live_weather(make_graph, settings):
 
 KNOWN_TOOLS = {
     "input_guard", "output_guard", "intent_parser", "followup_parser", "plan", "destination_search", "place_search", "weather",
-    "itinerary_builder", "budget", "budget_adjust", "replan", "answer", "clarify", "new_trip",
+    "itinerary_builder", "budget", "budget_adjust", "compare_alternatives", "replan", "answer", "clarify", "new_trip",
 }
 
 

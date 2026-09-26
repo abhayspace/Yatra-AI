@@ -28,10 +28,12 @@ from agent.data import find_origin, get_destination, load_dataset, match_destina
 from agent.errors import GraphLimitError, LLMError, ToolError
 from agent.guardrails import detect_injection, sanitize_user_text
 from agent.llm_client import LLMClient
+from agent.planner import decide_plan
 from agent.models import BudgetReport, FollowUpParse, Itinerary, SourceRef, ToolCall, TripIntent
 from agent.settings import Settings, get_settings
 from agent.state import TripState
 from agent.synthesis import answer_question, build_facts, compose_reply, rupees
+from agent.tools.alternatives import compare_alternatives
 from agent.tools.budget import compute_budget
 from agent.tools.destination_search import PlaceMatches, SearchQuery, SearchResult, search_destinations, search_places
 from agent.tools.intent_parser import apply_defaults, apply_delta, parse_followup, parse_intent
@@ -225,11 +227,10 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
     def plan(state: TripState) -> dict[str, Any]:
         started = time.perf_counter()
         intent = apply_defaults(_intent(state), deps.today())
-        tool_plan = [
-            {"tool": "destination_search"}, {"tool": "place_search"}, {"tool": "weather"},
-            {"tool": "itinerary_builder"}, {"tool": "budget"},
-        ]
+        decision = decide_plan(llm, intent)
+        tool_plan = [{"tool": t} for t in decision.tools] + [{"tool": "itinerary_builder"}, {"tool": "budget"}]
         rung = initial_rung(intent.budget, intent.duration_days, intent.travelers)
+        label = "Model-chosen tools" if decision.source == "model" else "Default tool plan"
         return {
             "intent": intent.model_dump(mode="json"),
             "tool_plan": tool_plan,
@@ -237,7 +238,9 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
             "revisions": 0,
             "tool_trace": [_call("plan", "Planned the steps", started,
                                  " → ".join(t["tool"].replace("_", " ") for t in tool_plan),
-                                 result={"assumptions": intent.assumptions})],
+                                 args={"source": decision.source, "rationale": decision.rationale},
+                                 result={"assumptions": intent.assumptions, "tools": decision.tools, "note": label},
+                                 status="ok" if decision.source == "model" else "flagged")],
         }
 
     def call_tools(state: TripState) -> dict[str, Any]:
@@ -269,6 +272,24 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
                 update["weather"] = report.model_dump(mode="json") if report else {}
         update.update(candidates=candidates, tool_trace=trace, warnings=warnings, missing_fields=[])
         return update
+
+    def compare_alts(state: TripState) -> dict[str, Any]:
+        """Optional tool chosen by the plan: cost the runner-up destinations."""
+        if not any(t.get("tool") == "compare_alternatives" for t in state.get("tool_plan", [])):
+            return {}
+        started = time.perf_counter()
+        cands = dict(state.get("candidates") or {})
+        search = SearchResult.model_validate(cands["search"])
+        it = Itinerary.model_validate(state["itinerary"])
+        alts = compare_alternatives(_intent(state), search, it.total_cost, state.get("plan_rung", 1))
+        cands["alternatives_costed"] = [a.model_dump(mode="json") for a in alts]
+        summary = "; ".join(f"{a.name.split(' (')[0]} {rupees(a.total_cost)}" for a in alts) or "No comparable alternatives"
+        return {
+            "candidates": cands,
+            "tool_trace": [_call("compare_alternatives", "Compared alternatives", started, summary,
+                                 args={"chosen": it.destination_name, "chosen_total": it.total_cost},
+                                 result={"alternatives": cands["alternatives_costed"]})],
+        }
 
     def build_node(state: TripState) -> dict[str, Any]:
         started = time.perf_counter()
@@ -345,7 +366,8 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
         if state.get("weather"):
             weather_summary = WeatherReport.model_validate(state["weather"]).summary
         alternatives = [c["name"].split(" (")[0] for c in ((state.get("candidates") or {}).get("search") or {}).get("candidates", [])[1:]]
-        facts = build_facts(intent, itinerary, report, weather_summary, alternatives, change_summary)
+        costed = (state.get("candidates") or {}).get("alternatives_costed") or []
+        facts = build_facts(intent, itinerary, report, weather_summary, alternatives, change_summary, costed)
         reply, themes, violations = compose_reply(llm, state.get("user_message", ""), facts, itinerary, report, intent, revised)
         trace: list[dict[str, Any]] = []
         if themes:
@@ -383,7 +405,7 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
         itinerary = Itinerary.model_validate(state["itinerary"])
         report = BudgetReport.model_validate(state["budget_report"])
         weather = WeatherReport.model_validate(state["weather"]).summary if state.get("weather") else None
-        facts = build_facts(intent, itinerary, report, weather, [], [])
+        facts = build_facts(intent, itinerary, report, weather, [], [], [])
         question = (state.get("delta") or {}).get("question") or state["user_message"]
         answer, violations = answer_question(llm, question, facts, itinerary, report, intent)
         trace = [_call("answer", "Answered from the current plan", started, "Answered without changing the itinerary")]
@@ -459,6 +481,7 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
             trace.append(entry)
             warnings.extend(warn)
             update["weather"] = report.model_dump(mode="json") if report else {}
+        cands["alternatives_costed"] = []  # computed for the previous constraints; no longer valid
         update.update(candidates=cands, tool_trace=trace, warnings=warnings)
         return update
 
@@ -471,6 +494,7 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
         "build_itinerary": _wrap(build_node, "itinerary_builder", "Building the itinerary"),
         "check_budget": _wrap(check_budget, "budget", "Computing the budget"),
         "adjust_plan": _wrap(adjust_plan, "budget_adjust", "Adjusting to the budget"),
+        "compare_alts": _wrap(compare_alts, "compare_alternatives", "Comparing alternatives"),
         "synthesize": _wrap(synthesize, "synthesize", "Writing the reply"),
         "parse_followup": _wrap(parse_followup_node, "followup_parser", "Interpreting your follow-up"),
         "answer_question": _wrap(answer_question_node, "answer", "Answering your question"),
@@ -522,7 +546,7 @@ def route_after_tools(state: TripState) -> Literal["clarify", "build_itinerary",
     return "clarify" if state.get("missing_fields") else "build_itinerary"
 
 
-def make_route_after_budget(settings: Settings) -> Callable[[TripState], str]:
+def make_route_after_budget(settings: Settings, done_node: str = "synthesize") -> Callable[[TripState], str]:
     def route_after_budget(state: TripState) -> str:
         if state.get("error"):
             return END
@@ -533,7 +557,7 @@ def make_route_after_budget(settings: Settings) -> Callable[[TripState], str]:
             and state.get("revisions", 0) < settings.max_budget_revisions
         ):
             return "adjust_plan"
-        return "synthesize"
+        return done_node
 
     return route_after_budget
 
@@ -593,7 +617,7 @@ def build_graph(deps: Deps):
     nodes = make_nodes(deps)
     g = StateGraph(TripState)
     for name in ("guard_input", "parse_intent", "clarify", "plan", "call_tools", "build_itinerary", "check_budget",
-                 "adjust_plan", "synthesize"):
+                 "adjust_plan", "compare_alts", "synthesize"):
         g.add_node(name, nodes[name])
     g.add_node("patch", build_patch_graph(nodes, deps.settings))
 
@@ -603,8 +627,9 @@ def build_graph(deps: Deps):
     g.add_conditional_edges("plan", route_or_end("call_tools"), ["call_tools", END])
     g.add_conditional_edges("call_tools", route_after_tools, ["clarify", "build_itinerary", END])
     g.add_conditional_edges("build_itinerary", route_or_end("check_budget"), ["check_budget", END])
-    g.add_conditional_edges("check_budget", make_route_after_budget(deps.settings), ["adjust_plan", "synthesize", END])
+    g.add_conditional_edges("check_budget", make_route_after_budget(deps.settings, "compare_alts"), ["adjust_plan", "compare_alts", END])
     g.add_edge("adjust_plan", "build_itinerary")
+    g.add_edge("compare_alts", "synthesize")
     g.add_edge("clarify", END)
     g.add_edge("synthesize", END)
     g.add_conditional_edges("patch", route_after_patch, ["parse_intent", END])

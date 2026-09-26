@@ -28,7 +28,8 @@ def test_should_replan_is_a_real_conditional_branch(compiled):
     edges = [(e.source, e.target, e.conditional) for e in compiled.get_graph().edges]
     assert ("guard_input", "patch", True) in edges and ("guard_input", "parse_intent", True) in edges
     assert ("adjust_plan", "build_itinerary", False) in edges  # the recovery loop
-    assert ("check_budget", "adjust_plan", True) in edges and ("check_budget", "synthesize", True) in edges
+    assert ("check_budget", "adjust_plan", True) in edges and ("check_budget", "compare_alts", True) in edges
+    assert ("compare_alts", "synthesize", False) in edges
 
 
 def test_should_replan_routes_on_existing_itinerary():

@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  Brain, Calculator, CalendarRange, ChevronDown, CircleAlert, CloudSun, Info, MapPin, MessageSquare, Plus, RefreshCw,
+  ArrowLeftRight, Brain, Calculator, CalendarRange, ChevronDown, CircleAlert, CloudSun, Info, MapPin, MessageSquare, Plus, RefreshCw,
   Route, Scale, Search, ShieldAlert, ShieldCheck, Wrench, type LucideIcon,
 } from "lucide-react";
 import { createElement, useState } from "react";
@@ -20,6 +20,7 @@ const TOOL_ICONS: Record<string, LucideIcon> = {
   itinerary_builder: CalendarRange,
   budget: Calculator,
   budget_adjust: Scale,
+  compare_alternatives: ArrowLeftRight,
   input_guard: ShieldAlert,
   output_guard: ShieldCheck,
   replan: RefreshCw,
@@ -74,6 +75,20 @@ function Details({ call }: { call: ToolCall }) {
           </li>
         ))}
       </ol>
+    );
+  }
+  if (call.name === "compare_alternatives") {
+    const alts = (call.result.alternatives as { destination_id: string; name: string; total_cost: number; difference_vs_chosen: number; within_budget: boolean | null }[] | undefined) ?? [];
+    if (!alts.length) return null;
+    return (
+      <ul className="mt-2 space-y-1.5">
+        {alts.map((a) => (
+          <li key={a.destination_id} className="flex justify-between gap-2 rounded-lg bg-muted/60 px-2.5 py-1.5 text-caption">
+            <span className="font-medium">{a.name.replace(/\s*\(.*\)/, "")}</span>
+            <span className="tabular-nums text-muted-foreground">{rupees(a.total_cost)} ({a.difference_vs_chosen >= 0 ? "+" : "-"}{rupees(Math.abs(a.difference_vs_chosen))}){a.within_budget === false ? " · over budget" : ""}</span>
+          </li>
+        ))}
+      </ul>
     );
   }
   if (call.name === "weather") {
