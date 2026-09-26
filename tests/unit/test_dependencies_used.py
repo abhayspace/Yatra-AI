@@ -35,20 +35,25 @@ def test_dev_requirements_only_add_test_tools():
 
 
 def test_every_frontend_dependency_is_used():
-    pkg = json.loads((ROOT / "frontend" / "package.json").read_text())
-    used_text = "\n".join(
-        p.read_text() for d in ("app", "components", "lib") for p in (ROOT / "frontend" / d).rglob("*") if p.suffix in {".ts", ".tsx", ".css"}
-    ) + "\n".join(p.read_text() for p in (ROOT / "frontend").glob("*.mjs")) + (ROOT / "frontend/next.config.ts").read_text()
-    tooling = {  # consumed by the build/lint toolchain rather than imported from source
-        "tailwindcss": "@import \"tailwindcss\"", "@tailwindcss/postcss": "postcss.config.mjs", "typescript": "tsconfig.json",
-        "eslint": "eslint.config.mjs", "eslint-config-next": "eslint.config.mjs", "@types/node": None, "@types/react": None, "@types/react-dom": None,
-        "react-dom": None,  # required peer of next, loaded by the framework
+    front = ROOT / "frontend"
+    pkg = json.loads((front / "package.json").read_text())
+    source = "\n".join(
+        p.read_text() for d in ("app", "components", "lib") for p in (front / d).rglob("*") if p.suffix in {".ts", ".tsx", ".css"}
+    )
+    # consumed by the build/lint toolchain (or loaded by the framework) instead of being imported from source
+    toolchain = {
+        "tailwindcss": lambda: '@import "tailwindcss"' in (front / "app/globals.css").read_text(),
+        "@tailwindcss/postcss": lambda: "@tailwindcss/postcss" in (front / "postcss.config.mjs").read_text(),
+        "typescript": lambda: (front / "tsconfig.json").exists(),
+        "eslint": lambda: (front / "eslint.config.mjs").exists(),
+        "eslint-config-next": lambda: "eslint-config-next" in (front / "eslint.config.mjs").read_text(),
+        "@types/node": lambda: (front / "tsconfig.json").exists(),
+        "@types/react": lambda: (front / "tsconfig.json").exists(),
+        "@types/react-dom": lambda: (front / "tsconfig.json").exists(),
+        "react-dom": lambda: "next" in pkg["dependencies"],  # required peer of next
     }
     for name in {**pkg.get("dependencies", {}), **pkg.get("devDependencies", {})}:
-        if name in tooling:
-            hint = tooling[name]
-            if hint:
-                haystack = used_text if hint.startswith("@import") else (ROOT / "frontend" / hint).read_text() if (ROOT / "frontend" / hint).exists() else ""
-                assert hint.split("/")[0].strip('"') in haystack or hint in haystack or name.split("/")[-1] in haystack, name
-            continue
-        assert re.search(rf"""["']{re.escape(name)}(?:/[^"']*)?["']""", used_text), f"frontend dependency {name} is never imported"
+        if name in toolchain:
+            assert toolchain[name](), f"{name} is declared but its tool is not configured"
+        else:
+            assert re.search(rf"""["']{re.escape(name)}(?:/[^"']*)?["']""", source), f"frontend dependency {name} is never imported"
