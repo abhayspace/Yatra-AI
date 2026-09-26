@@ -106,7 +106,18 @@ class AzureFoundryLLM(LLMClient):
         except anthropic.AuthenticationError as exc:
             raise LLMError("Azure AI Foundry rejected the API key.") from exc
         except anthropic.NotFoundError as exc:
-            raise LLMError("The Azure AI Foundry deployment name was not found.") from exc
+            raise LLMError(
+                f"Azure AI Foundry has no deployment named '{self._model}'. "
+                "Set AZURE_AI_FOUNDRY_DEPLOYMENT_NAME to the name of your Claude Sonnet deployment."
+            ) from exc
+        except anthropic.BadRequestError as exc:
+            code = ((exc.body or {}).get("error") or {}).get("code") if isinstance(exc.body, dict) else None
+            if code == "unknown_model":
+                raise LLMError(
+                    f"Azure AI Foundry does not recognise the model '{self._model}' on its Anthropic route. "
+                    "AZURE_AI_FOUNDRY_DEPLOYMENT_NAME must be a Claude Sonnet deployment."
+                ) from exc
+            raise LLMError("Azure AI Foundry rejected the request (HTTP 400).") from exc
         except anthropic.RateLimitError as exc:
             raise LLMError("The Azure AI Foundry deployment is rate limited; try again shortly.") from exc
         except anthropic.APIStatusError as exc:

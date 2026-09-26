@@ -154,3 +154,31 @@ def test_api_errors_become_llm_errors_without_leaking_details(status, cls_name):
     with pytest.raises(LLMError) as exc:
         llm.complete_structured("t", "s", "u", Out)
     assert "secret-detail-abc" not in str(exc.value)
+
+
+def test_unknown_model_error_explains_the_fix():
+    import anthropic
+
+    llm = AzureFoundryLLM(settings(azure_ai_foundry_deployment_name="gpt-4.1-mini"))
+
+    def create(**kw):
+        err = _status_error(anthropic.BadRequestError, 400, "Unknown model: gpt-4.1-mini")
+        err.body = {"error": {"code": "unknown_model", "message": "Unknown model"}}
+        raise err
+
+    llm._client.messages.create = create
+    with pytest.raises(LLMError, match="Claude Sonnet deployment"):
+        llm.complete_structured("t", "s", "u", Out)
+
+
+def test_missing_deployment_error_names_the_setting():
+    import anthropic
+
+    llm = AzureFoundryLLM(settings())
+
+    def create(**kw):
+        raise _status_error(anthropic.NotFoundError, 404, "DeploymentNotFound")
+
+    llm._client.messages.create = create
+    with pytest.raises(LLMError, match="AZURE_AI_FOUNDRY_DEPLOYMENT_NAME"):
+        llm.complete_structured("t", "s", "u", Out)
