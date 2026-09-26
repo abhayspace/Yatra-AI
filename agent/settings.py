@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     supabase_url: str = ""
     supabase_service_role_key: SecretStr = SecretStr("")
 
-    cors_origins: str = "http://localhost:3000"
+    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
 
     # Explicit ceilings so no run can spin forever.
     max_graph_steps: int = Field(default=30, ge=5, le=200)
