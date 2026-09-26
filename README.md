@@ -35,7 +35,7 @@ typical mid-season week, generated or written by `scripts/build_dataset.py`. The
 
 ### What has and has not been verified
 
-- **Verified here:** 241 offline tests pass (unit, end-to-end trajectories, API, security); the Supabase migration applied
+- **Verified here:** 243 offline tests pass (unit, end-to-end trajectories, API, security); the Supabase migration applied
   cleanly to a real Postgres/PostgREST stack, where the repository code passed create, read, update, version-uniqueness and
   row-level-security checks (the anon role is blocked), and the configured Supabase project was read from and written to
   successfully by the backend; both Docker images build and `docker compose up` came up healthy and read from Supabase;
@@ -165,7 +165,7 @@ Quick check that your Foundry deployment works: `YATRA_LIVE=1 pytest tests/live 
 ## Tests and evals
 
 ```bash
-pytest                                    # 241 tests: no network, no credentials, no LLM calls (10 live tests skip)
+pytest                                    # 243 tests: no network, no credentials, no LLM calls (10 live tests skip)
 python -m evals.run_evals                 # the 17 trajectory cases, offline, writes evals/results/*.json
 cd frontend && npm run lint && npm run build
 ```
