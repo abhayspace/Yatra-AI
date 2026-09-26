@@ -24,8 +24,9 @@ TODAY = date(2026, 10, 1)
 
 
 def _between(text: str, open_tag: str, close_tag: str) -> str:
-    m = re.search(re.escape(open_tag) + r"\n?(.*?)\n?" + re.escape(close_tag), text, re.S)
-    return m.group(1) if m else ""
+    """Contents of the last <tag>...</tag> block; the current request always comes last in a prompt."""
+    found = re.findall(re.escape(open_tag) + r"\n?(.*?)\n?" + re.escape(close_tag), text, re.S)
+    return found[-1] if found else ""
 
 
 class ScriptedLLM(LLMClient):
@@ -39,6 +40,11 @@ class ScriptedLLM(LLMClient):
         if task == "parse_intent":
             h = heuristic_extract(request, self.today)
             data = {k: v for k, v in h.items() if k in LLMIntentOut.model_fields}
+            if "destinations" not in data:  # a real model would also pick up places the dataset does not know
+                origin = h.get("origin", "")
+                names = [n for n in re.findall(r"\b(?:in|to|visit|explore)\s+([A-Z][a-z]+)\b", request) if n != origin]
+                if names:
+                    data["destinations"] = names[:1]
             return schema(**data)
         if task == "parse_followup":
             facts = _between(user, "<trip_facts>", "</trip_facts>")
@@ -93,7 +99,7 @@ class InventedPriceLLM(ScriptedLLM):
 CODES = {"clear": 1, "rain": 63}
 
 
-def weather_transport(rainy_dates: set[str] | None = None, hot: bool = False, fail: bool = False) -> httpx.MockTransport:
+def weather_transport(rainy_offsets: set[int] | None = None, hot: bool = False, fail: bool = False) -> httpx.MockTransport:
     """Open-Meteo lookalike that answers forecast and archive calls with plausible data."""
     calls: list[httpx.Request] = []
 
@@ -106,7 +112,7 @@ def weather_transport(rainy_dates: set[str] | None = None, hot: bool = False, fa
         n = (end - start).days + 1
         days = [(start + timedelta(days=i)).isoformat() for i in range(n)]
         archive = "archive" in request.url.host
-        wet = [(d in (rainy_dates or set())) for d in days]
+        wet = [(i in (rainy_offsets or set())) for i in range(n)]
         daily = {
             "time": days,
             "weather_code": [63 if w else 1 for w in wet],

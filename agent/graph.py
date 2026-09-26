@@ -205,7 +205,11 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
             names = ", ".join((state.get("candidates") or {}).get("unknown", [])) or "that place"
             options = ", ".join(c["name"].split(" (")[0] for c in (state.get("candidates") or {}).get("alternatives", []))
             parts.append(f"I don't have data for {names} yet." + (f" Based on your interests I could plan {options} instead. Should I go with one of those?" if options else ""))
-        return {"reply": " ".join(parts) or "Could you tell me a little more about the trip?"}
+        return {
+            "reply": " ".join(parts) or "Could you tell me a little more about the trip?",
+            "tool_trace": [_call("clarify", "Asked for missing details", time.perf_counter(),
+                                 "Needs: " + ", ".join(missing).replace("_", " "), status="flagged")],
+        }
 
     # ---- planning path
 
@@ -351,7 +355,7 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
     def parse_followup_node(state: TripState) -> dict[str, Any]:
         started = time.perf_counter()
         intent = _intent(state)
-        parsed = parse_followup(state["user_message"], intent, state.get("itinerary"), llm, deps.today())
+        parsed = parse_followup(state["user_message"], intent, state.get("itinerary"), llm, deps.today(), state.get("history"))
         return {
             "delta": parsed.model_dump(mode="json"),
             "tool_trace": [_call("followup_parser", "Interpreted your follow-up", started,

@@ -15,7 +15,7 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 
 from agent.data import find_origin, load_dataset, match_destinations, normalize
 from agent.errors import ToolError
-from agent.guardrails import wrap_user_request
+from agent.guardrails import sanitize_user_text, wrap_user_request
 from agent.llm_client import LLMClient
 from agent.models import INTERESTS, FollowUpParse, IntentDelta, TripIntent
 from agent.prompts import FOLLOWUP_SYSTEM, INTENT_SYSTEM
@@ -61,7 +61,7 @@ def _interests_in(text: str) -> list[str]:
 
 def _find_amount(text: str) -> float | None:
     patterns = [
-        r"(?:under|below|within|upto|up to|max(?:imum)?|less than|around|about|budget(?: of| is)?|for|to|of)\s*(?:rs\.?|inr|₹)?\s*(?P<a>[0-9][0-9,]*(?:\.[0-9]+)?\s*(?:k|lakhs?|lacs?|l)?)\b(?!\s*(?:days?|nights?|people|persons?|travell?ers?|of us|adults?))",
+        r"(?:under|below|within|upto|up to|max(?:imum)?|less than|around|about|budget(?: of| is)?|for|to|of)\s*(?:only |just |about |around |roughly |now |at )?(?:rs\.?|inr|₹)?\s*(?P<a>[0-9][0-9,]*(?:\.[0-9]+)?\s*(?:k|lakhs?|lacs?|l)?)\b(?!\s*(?:days?|nights?|people|persons?|travell?ers?|of us|adults?))",
         r"(?:₹|rs\.?|inr)\s*(?P<a>[0-9][0-9,]*(?:\.[0-9]+)?\s*(?:k|lakhs?|lacs?|l)?)\b",
         r"(?P<a>[0-9][0-9,]*(?:\.[0-9]+)?\s*(?:k|lakhs?|lacs?))\s*(?:budget|total|max|rupees|inr)?\b",
     ]
@@ -384,13 +384,28 @@ def _summarise_for_prompt(intent: TripIntent, itinerary: dict | None) -> str:
     return "\n".join(lines)
 
 
+def _render_history(history: list[dict[str, str]] | None) -> str:
+    """Recent turns for context. Earlier user text is re-wrapped as data; assistant text is our own."""
+    lines = []
+    for turn in (history or [])[-6:]:
+        if turn.get("role") == "user":
+            lines.append("user: " + wrap_user_request(turn.get("content", ""), 500).replace("\n", " "))
+        else:
+            lines.append("assistant: " + sanitize_user_text(turn.get("content", ""), 500))
+    return "<recent_turns>\n" + "\n".join(lines) + "\n</recent_turns>\n\n" if lines else ""
+
+
 def parse_followup(
     message: str, intent: TripIntent, itinerary: dict | None, llm: LLMClient, today: date | None = None,
+    history: list[dict[str, str]] | None = None,
 ) -> FollowUpParse:
     """Interpret a follow-up as a change to the existing trip, a question, or a new trip."""
     today = today or date.today()
     system = FOLLOWUP_SYSTEM.format(interests=", ".join(INTERESTS), today=today.isoformat())
-    user = f"<trip_facts>\n{_summarise_for_prompt(intent, itinerary)}\n</trip_facts>\n\n{wrap_user_request(message)}"
+    user = (
+        f"<trip_facts>\n{_summarise_for_prompt(intent, itinerary)}\n</trip_facts>\n\n"
+        f"{_render_history(history)}{wrap_user_request(message)}"
+    )
     raw = llm.complete_structured("parse_followup", system, user, _LLMFollowUpOut)
 
     heur = heuristic_delta(message, intent, today)
