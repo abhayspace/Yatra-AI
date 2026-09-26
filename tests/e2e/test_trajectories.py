@@ -30,3 +30,25 @@ def test_itinerary_cites_dataset_and_live_weather(make_graph, settings):
     state = run_turn(make_graph(), settings, "3 days in Goa from Mumbai for 2 people, food, budget 30000")
     kinds = [s["kind"] for s in state["itinerary"]["sources"]]
     assert kinds == ["dataset", "weather"]
+
+
+KNOWN_TOOLS = {
+    "input_guard", "output_guard", "intent_parser", "followup_parser", "plan", "destination_search", "place_search", "weather",
+    "itinerary_builder", "budget", "budget_adjust", "replan", "answer", "clarify", "new_trip",
+}
+
+
+@pytest.mark.parametrize("case", CASES, ids=[c["id"] for c in CASES])
+def test_trace_entries_and_outputs_follow_their_schemas(case, make_graph, settings):
+    """Every tool call is on the allowlist and validates as a ToolCall; itinerary and budget validate as models."""
+    from agent.models import BudgetReport, Itinerary, ToolCall
+
+    rainy = set(case.get("offline_weather", {}).get("rainy_day_offsets", []))
+    result = run_case(case, make_graph(rainy_offsets=rainy or None), settings)
+    for turn in result.turns:
+        for entry in turn.state["tool_trace"]:
+            ToolCall.model_validate(entry)
+            assert entry["name"] in KNOWN_TOOLS, entry["name"]
+        if turn.state.get("itinerary"):
+            it = Itinerary.model_validate(turn.state["itinerary"])
+            assert round(it.total_cost) == round(BudgetReport.model_validate(turn.state["budget_report"]).total)
