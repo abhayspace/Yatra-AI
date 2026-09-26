@@ -1,0 +1,20 @@
+# Azure Developer CLI (azd) definition: two container services deployed to Azure Container Apps.
+#   azd auth login && azd env new <name> && azd up
+name: yatra-ai
+metadata:
+  template: yatra-ai@1.0.0
+services:
+  backend:
+    project: .
+    language: python
+    host: containerapp
+    docker:
+      path: ./backend/Dockerfile
+      context: .
+  frontend:
+    project: ./frontend
+    language: ts
+    host: containerapp
+    docker:
+      path: ./Dockerfile
+      context: .
