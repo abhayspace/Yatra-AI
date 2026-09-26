@@ -50,6 +50,12 @@ export interface CostLines {
   local_transport: number;
 }
 
+export interface SourceRef {
+  kind: "dataset" | "weather";
+  label: string;
+  detail: string;
+}
+
 export interface Itinerary {
   destination_id: string;
   destination_name: string;
@@ -66,6 +72,7 @@ export interface Itinerary {
   cost_lines: CostLines;
   total_cost: number;
   notes: string[];
+  sources: SourceRef[];
 }
 
 export type BudgetStatus = "within_budget" | "tight" | "over_budget" | "no_budget_given";

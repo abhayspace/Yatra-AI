@@ -11,3 +11,4 @@ if os.environ.get("YATRA_LIVE") != "1":
     ):
         os.environ[_name] = ""
     os.environ["CORS_ORIGINS"] = "http://localhost:3000"
+    os.environ["RATE_LIMIT_PER_MINUTE"] = "0"

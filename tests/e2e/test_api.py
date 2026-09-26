@@ -185,3 +185,41 @@ def test_websocket_rejects_foreign_origin(env):
     with pytest.raises(Exception):
         with client.websocket_connect("/ws/chat", headers={"origin": "http://evil.example"}):
             pass
+
+
+def test_every_response_carries_a_request_id_and_valid_inbound_ids_are_kept(env):
+    _, client = env
+    r = client.get("/health")
+    assert len(r.headers["x-request-id"]) == 16
+    r = client.get("/health", headers={"X-Request-ID": "trace-1234567890"})
+    assert r.headers["x-request-id"] == "trace-1234567890"
+    r = client.get("/health", headers={"X-Request-ID": "bad id with spaces<script>"})
+    assert r.headers["x-request-id"] != "bad id with spaces<script>"
+
+
+def test_chat_endpoint_is_rate_limited_per_client(env, monkeypatch):
+    import backend.main as main
+    from backend.ratelimit import RateLimiter
+
+    _, client = env
+    monkeypatch.setattr(main, "limiter", RateLimiter(2))
+    ok = [client.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food"}).status_code for _ in range(2)]
+    blocked = client.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food"})
+    assert ok == [200, 200] and blocked.status_code == 429
+    assert blocked.json()["detail"]["code"] == "rate_limited" and int(blocked.headers["retry-after"]) >= 1
+    other = client.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food"}, headers={"X-Forwarded-For": "203.0.113.9"})
+    assert other.status_code == 200
+
+
+def test_websocket_turns_are_rate_limited_too(env, monkeypatch):
+    import backend.main as main
+    from backend.ratelimit import RateLimiter
+
+    _, client = env
+    monkeypatch.setattr(main, "limiter", RateLimiter(1))
+    with client.websocket_connect("/ws/chat", headers={"origin": "http://localhost:3000"}) as ws:
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food"})
+        while ws.receive_json()["type"] not in ("done", "error"):
+            pass
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food"})
+        assert ws.receive_json()["error"]["code"] == "rate_limited"

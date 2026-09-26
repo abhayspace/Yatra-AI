@@ -9,7 +9,7 @@ from typing import Any, Protocol
 
 import httpx
 from postgrest.exceptions import APIError
-from supabase import Client, create_client
+from supabase import Client, ClientOptions, create_client
 
 from agent.settings import get_settings
 
@@ -49,8 +49,8 @@ def _wrap(fn):
 
 
 class SupabaseRepository:
-    def __init__(self, url: str, service_role_key: str):
-        self._db: Client = create_client(url, service_role_key)
+    def __init__(self, url: str, service_role_key: str, timeout: float = 10.0):
+        self._db: Client = create_client(url, service_role_key, options=ClientOptions(postgrest_client_timeout=timeout))
 
     @_wrap
     def create_trip(self) -> dict[str, Any]:
@@ -100,4 +100,4 @@ class SupabaseRepository:
 def get_repository() -> TripRepository:
     settings = get_settings()
     settings.require_supabase()
-    return SupabaseRepository(settings.supabase_url, settings.supabase_service_role_key.get_secret_value())
+    return SupabaseRepository(settings.supabase_url, settings.supabase_service_role_key.get_secret_value(), settings.db_timeout_seconds)

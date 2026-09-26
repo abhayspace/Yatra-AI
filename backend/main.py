@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import logging
+import re
+import uuid
 from contextlib import asynccontextmanager
 from functools import lru_cache
 from typing import Any, Iterator
@@ -15,6 +17,8 @@ from starlette.concurrency import iterate_in_threadpool
 from agent.graph import Deps, build_graph
 from agent.llm_client import get_llm
 from agent.settings import ConfigError, Settings, get_settings
+from backend.observability import request_id_var, setup_logging
+from backend.ratelimit import RateLimiter
 from backend.repository import PersistenceError, get_repository
 from backend.schemas import ChatRequest
 from backend.service import ChatService, TripNotFound
@@ -35,12 +39,38 @@ def get_service() -> ChatService:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logging.basicConfig(level=logging.INFO)
+    setup_logging()
     yield
 
 
 app = FastAPI(title="Yatra AI API", version="1.0.0", lifespan=lifespan)
 _settings = get_settings()
+limiter = RateLimiter(_settings.rate_limit_per_minute)
+_REQUEST_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,64}$")
+
+
+@app.middleware("http")
+async def correlation_id(request: Request, call_next):
+    """Attach a request id to every log line and echo it back so a failure can be traced."""
+    inbound = request.headers.get("x-request-id", "")
+    rid = inbound if _REQUEST_ID_RE.match(inbound) else uuid.uuid4().hex[:16]
+    token = request_id_var.set(rid)
+    try:
+        response = await call_next(request)
+    finally:
+        request_id_var.reset(token)
+    response.headers["X-Request-ID"] = rid
+    return response
+
+
+def client_key(request: Request | WebSocket) -> str:
+    """Client address for rate limiting; honours the first X-Forwarded-For hop set by the ingress."""
+    forwarded = request.headers.get("x-forwarded-for", "")
+    if forwarded:
+        return forwarded.split(",")[0].strip()[:64]
+    return request.client.host if request.client else "unknown"
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_settings.cors_origin_list,
@@ -97,8 +127,12 @@ def get_trip(trip_id: str, service: ChatService = Depends(get_service)) -> dict[
 
 
 @app.post("/api/chat")
-def chat(req: ChatRequest, service: ChatService = Depends(get_service)) -> dict[str, Any]:
+def chat(req: ChatRequest, request: Request, service: ChatService = Depends(get_service)) -> dict[str, Any]:
     """Run one turn and return the final result (the WebSocket streams the same turn live)."""
+    key = client_key(request)
+    if not limiter.allow(key):
+        raise HTTPException(429, {"code": "rate_limited", "message": "You're sending requests too quickly. Please wait a moment."},
+                            headers={"Retry-After": str(limiter.retry_after(key))})
     last: dict[str, Any] = {}
     for event in service.run_turn(req.trip_id, req.message):
         last = event
@@ -133,6 +167,9 @@ async def chat_ws(ws: WebSocket) -> None:
             except ValidationError:
                 await ws.send_json({"type": "error", "error": {"code": "invalid", "message": "Please send a message between 1 and 2000 characters."}})
                 continue
+            if not limiter.allow(client_key(ws)):
+                await ws.send_json({"type": "error", "error": {"code": "rate_limited", "message": "You're sending requests too quickly. Please wait a moment."}})
+                continue
             try:
                 service = _resolve_service()
             except Exception as exc:  # noqa: BLE001 - e.g. missing configuration
@@ -140,8 +177,12 @@ async def chat_ws(ws: WebSocket) -> None:
                 message = str(exc) if isinstance(exc, ConfigError) else "Something went wrong on our side."
                 await ws.send_json({"type": "error", "error": {"code": code, "message": message}})
                 continue
+            token = request_id_var.set(uuid.uuid4().hex[:16])
             events: Iterator[dict[str, Any]] = service.run_turn(req.trip_id, req.message)
-            async for event in iterate_in_threadpool(events):
-                await ws.send_json(event)
+            try:
+                async for event in iterate_in_threadpool(events):
+                    await ws.send_json(event)
+            finally:
+                request_id_var.reset(token)
     except WebSocketDisconnect:
         return

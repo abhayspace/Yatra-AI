@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import time
 from typing import Any, Callable, Iterator
 from uuid import UUID
 
@@ -71,6 +72,7 @@ class ChatService:
 
     def run_turn(self, trip_id: str | None, message: str) -> Iterator[dict[str, Any]]:
         """Yield progress events and finish with a single `done` or `error` event."""
+        started = time.perf_counter()
         try:
             trip = self.get_trip(trip_id) if trip_id else self.repo.create_trip()
             yield {"type": "trip", "trip_id": trip["id"]}
@@ -88,14 +90,25 @@ class ChatService:
                 else:
                     final = data
             assert final is not None
-            yield {"type": "done", "result": self._persist(trip, final).model_dump(mode="json")}
+            result = self._persist(trip, final)
+            log.info("turn.completed", extra={
+                "trip_id": trip["id"], "duration_ms": int((time.perf_counter() - started) * 1000),
+                "tool_calls": len(result.tool_trace), "flagged": sum(1 for t in result.tool_trace if t["status"] != "ok"),
+                "version": result.version, "error_code": result.error.code if result.error else None,
+                "message_chars": len(message),
+            })
+            yield {"type": "done", "result": result.model_dump(mode="json")}
         except TripNotFound:
+            log.warning("turn.failed", extra={"error_code": "not_found"})
             yield {"type": "error", "error": ApiError(code="not_found", message="That trip no longer exists.").model_dump()}
         except PersistenceError as exc:
+            log.error("turn.failed", extra={"error_code": "database"})
             yield {"type": "error", "error": ApiError(code="database", message=str(exc)).model_dump()}
         except ConfigError as exc:
+            log.error("turn.failed", extra={"error_code": "config"})
             yield {"type": "error", "error": ApiError(code="config", message=str(exc)).model_dump()}
         except GraphLimitError as exc:
+            log.warning("turn.failed", extra={"error_code": "limit"})
             yield {"type": "error", "error": ApiError(code="limit", message=str(exc)).model_dump()}
         except Exception:  # noqa: BLE001 - never leak internals to the browser
             log.exception("unhandled error while running a turn")

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { CategoryPill } from "./activity-icon";
 import { CostBreakdown } from "./cost-breakdown";
 import { DayCard } from "./day-card";
+import { SourcesNote } from "./sources-note";
 import { VersionHistory } from "./version-history";
 import { WeatherIcon } from "./weather-strip";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -94,6 +95,8 @@ export function ItineraryView({
           </TabsContent>
         ))}
       </Tabs>
+
+      <SourcesNote sources={itinerary.sources ?? []} />
     </div>
   );
 }

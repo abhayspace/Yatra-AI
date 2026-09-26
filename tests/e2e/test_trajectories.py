@@ -22,3 +22,11 @@ def test_dataset_covers_every_required_capability_and_edge_case():
     assert {"intent", "destination_search", "weather", "budget", "itinerary", "replan", "safety"} <= caps
     assert {"happy_path", "tight_budget_achievable", "tight_budget_impossible", "prompt_injection"} <= ids
     assert any(c["id"].startswith("replan_") for c in CASES)
+
+
+def test_itinerary_cites_dataset_and_live_weather(make_graph, settings):
+    from agent.runner import run_turn
+
+    state = run_turn(make_graph(), settings, "3 days in Goa from Mumbai for 2 people, food, budget 30000")
+    kinds = [s["kind"] for s in state["itinerary"]["sources"]]
+    assert kinds == ["dataset", "weather"]

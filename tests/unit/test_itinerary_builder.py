@@ -197,3 +197,9 @@ def test_places_from_a_different_destination_are_rejected():
     request["places"] = search_places("jaipur", ["food"])
     with pytest.raises(ToolError):
         build_itinerary(request)
+
+
+def test_itinerary_states_its_data_provenance():
+    it = build_itinerary(req())
+    assert [s.kind for s in it.sources] == ["dataset"]
+    assert "not live prices" in it.sources[0].detail and "destinations.json" in it.sources[0].detail

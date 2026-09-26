@@ -17,11 +17,11 @@ from datetime import date, timedelta
 
 from pydantic import BaseModel, Field, field_validator
 
-from agent.data import find_origin, get_destination
+from agent.data import find_origin, get_destination, load_dataset
 from agent.errors import ToolError
 from agent.models import (
     INTERESTS, MAX_TRAVELERS, MAX_TRIP_DAYS, Attraction, Block, CostLines, Day, DayWeather,
-    Destination, Itinerary, Pace, Restaurant, Tier,
+    Destination, Itinerary, Pace, Restaurant, SourceRef, Tier,
 )
 from agent.tools.destination_search import PlaceMatches
 from agent.tools.weather import WeatherReport
@@ -365,6 +365,11 @@ def build_itinerary(req: BuildRequest | dict) -> Itinerary:
         start_date=r.start_date.isoformat() if r.start_date else None, duration_days=n, travelers=travelers,
         pace=r.pace, stay_tier=tier, transport_mode=option.mode, rooms=rooms, nights=nights, days=days,
         cost_lines=lines, total_cost=float(sum(lines.model_dump().values())), notes=notes,
+        sources=[SourceRef(
+            kind="dataset", label="Curated destinations dataset",
+            detail=f"Places, fares, stays and typical costs come from data/destinations.json (v{load_dataset().meta.get('version', 1)}). "
+                   "They are illustrative estimates, not live prices; nothing is booked.",
+        )],
     )
 
 

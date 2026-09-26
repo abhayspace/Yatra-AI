@@ -231,6 +231,14 @@ class CostLines(BaseModel):
     local_transport: float = 0.0
 
 
+class SourceRef(BaseModel):
+    """Where a class of figures in the itinerary comes from (provenance shown to the user)."""
+
+    kind: Literal["dataset", "weather"]
+    label: str
+    detail: str
+
+
 class Itinerary(BaseModel):
     destination_id: str
     destination_name: str
@@ -247,6 +255,7 @@ class Itinerary(BaseModel):
     cost_lines: CostLines
     total_cost: float
     notes: list[str] = Field(default_factory=list)
+    sources: list[SourceRef] = Field(default_factory=list)
 
 
 # --------------------------------------------------------------------------- budget

@@ -28,7 +28,7 @@ from agent.data import find_origin, get_destination, load_dataset, match_destina
 from agent.errors import GraphLimitError, LLMError, ToolError
 from agent.guardrails import detect_injection, sanitize_user_text
 from agent.llm_client import LLMClient
-from agent.models import BudgetReport, Itinerary, ToolCall, TripIntent, FollowUpParse
+from agent.models import BudgetReport, FollowUpParse, Itinerary, SourceRef, ToolCall, TripIntent
 from agent.settings import Settings, get_settings
 from agent.state import TripState
 from agent.synthesis import answer_question, build_facts, compose_reply, rupees
@@ -282,6 +282,11 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
             duration_days=intent.duration_days, travelers=intent.travelers, pace=intent.pace, interests=intent.interests,
             rung=rung, places=PlaceMatches.model_validate(cands["places"]), weather=weather, locked=locked,
         ))
+        if weather:
+            detail = "Open-Meteo forecast for the trip dates (live HTTP request)."
+            if weather.used_archive:
+                detail = "Open-Meteo: live forecast where available; last year's recorded weather for dates beyond the 16-day forecast window."
+            itinerary.sources.append(SourceRef(kind="weather", label="Open-Meteo weather", detail=detail))
         acts = sum(1 for d in itinerary.days for b in d.blocks if b.kind == "activity")
         kept = f", kept {len(locked)} unchanged day(s)" if locked else ""
         return {
