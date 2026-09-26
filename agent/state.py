@@ -30,6 +30,7 @@ class TripState(TypedDict, total=False):
 
     # results
     itinerary: dict[str, Any]  # Itinerary
+    previous_itinerary: dict[str, Any]  # the version being revised, kept for locking days and diffing
     budget_report: dict[str, Any]  # BudgetReport
     change_summary: list[str]  # human-readable diff vs the previous version
     reply: str  # assistant message for this turn

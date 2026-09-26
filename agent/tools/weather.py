@@ -170,7 +170,8 @@ def fetch_weather(
     tmax_vals = [w.temp_max_c for w in ordered if w.temp_max_c is not None]
     bits = []
     if tmax_vals:
-        bits.append(f"highs {min(tmax_vals):.0f}-{max(tmax_vals):.0f}°C")
+        lo, hi = min(tmax_vals), max(tmax_vals)
+        bits.append(f"highs {lo:.0f}°C" if round(lo) == round(hi) else f"highs {lo:.0f}-{hi:.0f}°C")
     bits.append(f"{len(rainy_days)} rainy day(s)" if rainy_days else "no significant rain expected")
     if hot_days:
         bits.append(f"{len(hot_days)} very hot day(s)")

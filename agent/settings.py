@@ -27,7 +27,7 @@ class Settings(BaseSettings):
 
     # Explicit ceilings so no run can spin forever.
     max_graph_steps: int = Field(default=30, ge=5, le=200)
-    max_budget_revisions: int = Field(default=3, ge=0, le=6)
+    max_budget_revisions: int = Field(default=4, ge=0, le=6)
     llm_timeout_seconds: float = Field(default=60.0, gt=0, le=300)
     llm_max_tokens: int = Field(default=2048, ge=256, le=8192)
     max_message_chars: int = Field(default=2000, ge=100, le=10000)

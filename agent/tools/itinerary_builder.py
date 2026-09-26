@@ -116,9 +116,14 @@ def _mode_category(mode: str) -> str:
     return mode if mode in ("train", "flight", "bus", "cab") else "cab"
 
 
-def _pick_transport(dest: Destination, origin: str, rung: Rung):
+def _pick_transport(dest: Destination, origin: str, rung: Rung, days: int):
+    """Fastest option, or the cheapest one whose round trip fits in at most half of the trip."""
     options = dest.transport_from[origin]
-    return min(options, key=lambda o: o.hours) if rung.transport == "fast" else min(options, key=lambda o: (o.one_way_per_person, o.hours))
+    fastest = min(options, key=lambda o: o.hours)
+    if rung.transport == "fast":
+        return fastest
+    practical = [o for o in options if 2 * o.hours <= 0.5 * days * 24]
+    return min(practical, key=lambda o: (o.one_way_per_person, o.hours)) if practical else fastest
 
 
 class _DayCtx:
@@ -165,7 +170,7 @@ def build_itinerary(req: BuildRequest | dict) -> Itinerary:
     plan = PACE_PLAN[r.pace]
     b_t, l_t, d_t = plan["meals"]
 
-    option = _pick_transport(dest, origin.name, rung)
+    option = _pick_transport(dest, origin.name, rung, n)
     hours = option.hours
     arrival_abs = 7.0 + hours
     departure_abs = n * 24 - 1.0 - hours

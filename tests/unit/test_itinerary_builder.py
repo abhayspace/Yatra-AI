@@ -118,10 +118,23 @@ def test_locked_days_keep_their_activities():
         assert [b.place_id for b in again.days[d - 1].blocks if b.kind == "activity"] == locked[d]
 
 
-def test_long_travel_time_is_flagged_and_limits_days():
-    it = build_itinerary(req(dest="coorg", origin="Delhi", days=2, rung=3))  # cheapest mode is a ~40h train
-    assert any("leaves almost no time" in n for n in it.notes)
-    assert sum(1 for d in it.days for b in d.blocks if b.kind == "activity") == 0
+def test_cheapest_transport_must_be_practical_for_trip_length():
+    short = build_itinerary(req(dest="darjeeling", days=3, rung=3))  # ~28h train is impractical for 3 days
+    long = build_itinerary(req(dest="darjeeling", days=9, rung=3))
+    assert short.transport_mode == "flight" and long.transport_mode == "train"
+
+
+def test_travel_that_leaves_no_time_on_site_is_flagged():
+    from agent.data import load_dataset
+
+    flagged = []
+    for dest in load_dataset().destinations:
+        it = build_itinerary(req(dest=dest.id, origin="Kochi", days=1, rung=1))
+        if any("leaves almost no time" in n for n in it.notes):
+            flagged.append(it)
+    assert flagged
+    for it in flagged:
+        assert sum(1 for d in it.days for b in d.blocks if b.kind == "activity") <= 1
 
 
 def test_day_trip_has_no_stay_cost():
