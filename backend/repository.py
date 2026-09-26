@@ -19,10 +19,10 @@ class PersistenceError(RuntimeError):
 
 
 class TripRepository(Protocol):
-    def create_trip(self) -> dict[str, Any]: ...
+    def create_trip(self, owner_hash: str) -> dict[str, Any]: ...
     def get_trip(self, trip_id: str) -> dict[str, Any] | None: ...
-    def list_trips(self, limit: int = 30) -> list[dict[str, Any]]: ...
-    def latest_trip(self) -> dict[str, Any] | None: ...
+    def list_trips(self, owner_hash: str, limit: int = 30) -> list[dict[str, Any]]: ...
+    def latest_trip(self, owner_hash: str) -> dict[str, Any] | None: ...
     def update_trip(self, trip_id: str, fields: dict[str, Any]) -> dict[str, Any]: ...
     def add_message(self, trip_id: str, role: str, content: str, tool_trace: list[dict] | None = None,
                     itinerary_version: int | None = None, is_error: bool = False) -> dict[str, Any]: ...
@@ -32,6 +32,8 @@ class TripRepository(Protocol):
     def list_versions(self, trip_id: str) -> list[dict[str, Any]]: ...
 
 
+OWNER_KEY = "owner_hash"  # stored inside trips.state_json, so no schema change is needed
+OWNER_FILTER = f"state_json->>{OWNER_KEY}"  # PostgREST JSON-path filter
 TRIP_LIST_COLUMNS = "id,created_at,updated_at,title,origin,destination,start_date,duration_days,travelers,budget,interests,pace,current_version"
 
 
@@ -53,8 +55,8 @@ class SupabaseRepository:
         self._db: Client = create_client(url, service_role_key, options=ClientOptions(postgrest_client_timeout=timeout))
 
     @_wrap
-    def create_trip(self) -> dict[str, Any]:
-        return self._db.table("trips").insert({}).execute().data[0]
+    def create_trip(self, owner_hash: str) -> dict[str, Any]:
+        return self._db.table("trips").insert({"state_json": {OWNER_KEY: owner_hash}}).execute().data[0]
 
     @_wrap
     def get_trip(self, trip_id: str) -> dict[str, Any] | None:
@@ -62,12 +64,14 @@ class SupabaseRepository:
         return rows[0] if rows else None
 
     @_wrap
-    def list_trips(self, limit: int = 30) -> list[dict[str, Any]]:
-        return self._db.table("trips").select(TRIP_LIST_COLUMNS).order("updated_at", desc=True).limit(limit).execute().data
+    def list_trips(self, owner_hash: str, limit: int = 30) -> list[dict[str, Any]]:
+        return (self._db.table("trips").select(TRIP_LIST_COLUMNS).eq(OWNER_FILTER, owner_hash)
+                .order("updated_at", desc=True).limit(limit).execute().data)
 
     @_wrap
-    def latest_trip(self) -> dict[str, Any] | None:
-        rows = self._db.table("trips").select("*").order("updated_at", desc=True).limit(1).execute().data
+    def latest_trip(self, owner_hash: str) -> dict[str, Any] | None:
+        rows = (self._db.table("trips").select("*").eq(OWNER_FILTER, owner_hash)
+                .order("updated_at", desc=True).limit(1).execute().data)
         return rows[0] if rows else None
 
     @_wrap

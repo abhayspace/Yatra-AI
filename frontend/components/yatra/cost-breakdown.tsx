@@ -32,6 +32,7 @@ export function CostBreakdown({ report, travelers }: { report: BudgetReport; tra
           <p className="text-sm text-muted-foreground">
             {rupees(report.per_person)} per person · {travelers} traveller{travelers === 1 ? "" : "s"}
           </p>
+          <p className="mt-1 text-caption text-muted-foreground">A planning estimate from a curated dataset, not a live quote. Nothing is booked.</p>
         </div>
         <CostBadge status={report.status} />
       </div>

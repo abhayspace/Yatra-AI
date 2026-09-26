@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from functools import lru_cache
 from typing import Any, Iterator
 
-from fastapi import Depends, FastAPI, HTTPException, Request, WebSocket, WebSocketDisconnect
+from fastapi import Depends, FastAPI, Header, HTTPException, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
@@ -18,6 +18,7 @@ from agent.graph import Deps, build_graph
 from agent.llm_client import get_llm
 from agent.settings import ConfigError, Settings, get_settings
 from backend.observability import request_id_var, setup_logging
+from backend.owner import Unauthorized, owner_hash
 from backend.ratelimit import RateLimiter
 from backend.repository import PersistenceError, get_repository
 from backend.schemas import ChatRequest
@@ -64,23 +65,38 @@ async def correlation_id(request: Request, call_next):
 
 
 def client_key(request: Request | WebSocket) -> str:
-    """Client address for rate limiting; honours the first X-Forwarded-For hop set by the ingress."""
-    forwarded = request.headers.get("x-forwarded-for", "")
-    if forwarded:
-        return forwarded.split(",")[0].strip()[:64]
+    """Client address for rate limiting.
+
+    Behind N trusted proxies the real client is the Nth entry from the right of X-Forwarded-For (each trusted
+    proxy appends the address it saw); entries further left are client-supplied and ignored, so they cannot be spoofed.
+    """
+    hops = get_settings().trusted_proxy_hops
+    forwarded = [p.strip() for p in request.headers.get("x-forwarded-for", "").split(",") if p.strip()]
+    if hops and len(forwarded) >= hops:
+        return forwarded[-hops][:64]
     return request.client.host if request.client else "unknown"
+
+
+def owner(x_owner_token: str | None = Header(default=None)) -> str:
+    """Dependency: hash of the caller's anonymous owner token (see backend/owner.py)."""
+    return owner_hash(x_owner_token)
 
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_settings.cors_origin_list,
     allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type"],
+    allow_headers=["Content-Type", "X-Owner-Token", "X-Request-ID"],
 )
 
 
 def _error_response(status: int, code: str, message: str) -> JSONResponse:
     return JSONResponse(status_code=status, content={"detail": {"code": code, "message": message}})
+
+
+@app.exception_handler(Unauthorized)
+async def _unauthorized(request: Request, exc: Unauthorized) -> JSONResponse:
+    return _error_response(401, "unauthorized", "This browser has no valid owner token. Reload the page and try again.")
 
 
 @app.exception_handler(TripNotFound)
@@ -110,31 +126,30 @@ def health() -> dict[str, str]:
 
 
 @app.get("/api/trips")
-def list_trips(service: ChatService = Depends(get_service)) -> list[dict[str, Any]]:
-    return service.repo.list_trips()
+def list_trips(who: str = Depends(owner), service: ChatService = Depends(get_service)) -> list[dict[str, Any]]:
+    return service.list_trips(who)
 
 
 @app.get("/api/trips/latest")
-def latest_trip(service: ChatService = Depends(get_service)) -> dict[str, Any] | None:
-    """The most recently updated trip with its messages and versions, or null if there are none."""
-    trip = service.repo.latest_trip()
-    return service.trip_payload(trip) if trip else None
+def latest_trip(who: str = Depends(owner), service: ChatService = Depends(get_service)) -> dict[str, Any] | None:
+    """This browser's most recently updated trip with its messages and versions, or null if there are none."""
+    return service.latest_payload(who)
 
 
 @app.get("/api/trips/{trip_id}")
-def get_trip(trip_id: str, service: ChatService = Depends(get_service)) -> dict[str, Any]:
-    return service.trip_payload(service.get_trip(trip_id))
+def get_trip(trip_id: str, who: str = Depends(owner), service: ChatService = Depends(get_service)) -> dict[str, Any]:
+    return service.trip_payload(service.get_trip(trip_id, who))
 
 
 @app.post("/api/chat")
-def chat(req: ChatRequest, request: Request, service: ChatService = Depends(get_service)) -> dict[str, Any]:
+def chat(req: ChatRequest, request: Request, who: str = Depends(owner), service: ChatService = Depends(get_service)) -> dict[str, Any]:
     """Run one turn and return the final result (the WebSocket streams the same turn live)."""
     key = client_key(request)
     if not limiter.allow(key):
         raise HTTPException(429, {"code": "rate_limited", "message": "You're sending requests too quickly. Please wait a moment."},
                             headers={"Retry-After": str(limiter.retry_after(key))})
     last: dict[str, Any] = {}
-    for event in service.run_turn(req.trip_id, req.message):
+    for event in service.run_turn(req.trip_id, req.message, who):
         last = event
     if last.get("type") == "error":
         status = {"not_found": 404, "database": 503, "config": 503, "limit": 422}.get(last["error"]["code"], 500)
@@ -167,6 +182,11 @@ async def chat_ws(ws: WebSocket) -> None:
             except ValidationError:
                 await ws.send_json({"type": "error", "error": {"code": "invalid", "message": "Please send a message between 1 and 2000 characters."}})
                 continue
+            try:
+                who = owner_hash(raw.get("owner_token") if isinstance(raw, dict) else None)
+            except Unauthorized:
+                await ws.send_json({"type": "error", "error": {"code": "unauthorized", "message": "This browser has no valid owner token. Reload the page and try again."}})
+                continue
             if not limiter.allow(client_key(ws)):
                 await ws.send_json({"type": "error", "error": {"code": "rate_limited", "message": "You're sending requests too quickly. Please wait a moment."}})
                 continue
@@ -178,7 +198,7 @@ async def chat_ws(ws: WebSocket) -> None:
                 await ws.send_json({"type": "error", "error": {"code": code, "message": message}})
                 continue
             token = request_id_var.set(uuid.uuid4().hex[:16])
-            events: Iterator[dict[str, Any]] = service.run_turn(req.trip_id, req.message)
+            events: Iterator[dict[str, Any]] = service.run_turn(req.trip_id, req.message, who)
             try:
                 async for event in iterate_in_threadpool(events):
                     await ws.send_json(event)

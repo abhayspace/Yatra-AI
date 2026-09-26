@@ -33,6 +33,9 @@ class Settings(BaseSettings):
     max_message_chars: int = Field(default=2000, ge=100, le=10000)
     rate_limit_per_minute: int = Field(default=20, ge=0, le=1000)  # chat turns per client per minute; 0 disables
     db_timeout_seconds: float = Field(default=10.0, gt=0, le=60)
+    # Number of trusted reverse proxies in front of the API (Azure Container Apps ingress = 1). The client address is
+    # taken that many entries from the right of X-Forwarded-For, where the trusted proxy appended it. 0 ignores the header.
+    trusted_proxy_hops: int = Field(default=1, ge=0, le=5)
 
     @property
     def cors_origin_list(self) -> list[str]:

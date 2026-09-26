@@ -1,3 +1,4 @@
+import { getOwnerToken } from "./owner";
 import type { ApiErrorBody, ChatResult, StreamEvent, TripPayload, TripSummary } from "./types";
 
 export class ApiRequestError extends Error {
@@ -33,7 +34,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   try {
     res = await fetch(`${base}${path}`, {
       ...init,
-      headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
+      headers: { "Content-Type": "application/json", "X-Owner-Token": getOwnerToken(), ...(init?.headers ?? {}) },
     });
   } catch {
     throw new ApiRequestError(NETWORK_ERROR);
@@ -97,7 +98,7 @@ export async function runTurn(
 
     socket.onopen = () => {
       opened = true;
-      socket.send(JSON.stringify({ trip_id: tripId, message }));
+      socket.send(JSON.stringify({ trip_id: tripId, message, owner_token: getOwnerToken() }));
     };
     socket.onmessage = (msg) => {
       let event: StreamEvent;

@@ -9,6 +9,8 @@ from backend.service import ChatService
 from tests.fake_repository import InMemoryRepository
 from tests.fakes import TODAY, ScriptedLLM, weather_transport
 
+TOKEN = "t" * 40
+OTHER_TOKEN = "u" * 40
 FIRST = "Plan a 5-day trip from Delhi for 2 people under ₹50K, focused on nature and food, with a relaxed itinerary."
 
 
@@ -19,7 +21,7 @@ def env():
     deps = Deps(llm=ScriptedLLM(), settings=settings, http_client=httpx.Client(transport=weather_transport()), today=lambda: TODAY)
     graph = build_graph(deps)
     app.dependency_overrides[get_service] = lambda: ChatService(repo, lambda: graph, settings)
-    yield repo, TestClient(app)
+    yield repo, TestClient(app, headers={"X-Owner-Token": TOKEN})
     app.dependency_overrides.clear()
 
 
@@ -128,7 +130,7 @@ def test_llm_outage_returns_error_payload_and_records_the_turn(env, monkeypatch)
     r = client.post("/api/chat", json={"message": FIRST})
     body = r.json()
     assert r.status_code == 200 and body["error"]["code"] == "llm" and body["itinerary"] is None
-    assert repo.messages[-1]["is_error"] is True and repo.trips[body["trip_id"]]["state_json"] == {}
+    assert repo.messages[-1]["is_error"] is True and "itinerary" not in repo.trips[body["trip_id"]]["state_json"]
 
 
 def test_missing_configuration_is_reported_cleanly(monkeypatch):
@@ -139,7 +141,7 @@ def test_missing_configuration_is_reported_cleanly(monkeypatch):
 
     app.dependency_overrides[get_service] = broken
     try:
-        r = TestClient(app).get("/api/trips")
+        r = TestClient(app).get("/api/trips", headers={"X-Owner-Token": TOKEN})
         assert r.status_code == 503 and r.json()["detail"]["code"] == "config"
     finally:
         app.dependency_overrides.clear()
@@ -156,7 +158,7 @@ def test_cors_only_allows_configured_origin(env):
 def test_websocket_streams_progress_then_result(env):
     repo, client = env
     with client.websocket_connect("/ws/chat", headers={"origin": "http://localhost:3000"}) as ws:
-        ws.send_json({"message": FIRST})
+        ws.send_json({"message": FIRST, "owner_token": TOKEN})
         events = []
         while True:
             ev = ws.receive_json()
@@ -169,14 +171,14 @@ def test_websocket_streams_progress_then_result(env):
         assert "destination_search" in tools and "weather" in tools and "budget" in tools
         assert events[-1]["type"] == "done" and events[-1]["result"]["itinerary"]["duration_days"] == 5
         # a follow-up on the same socket
-        ws.send_json({"trip_id": events[-1]["result"]["trip_id"], "message": "swap in more food, less nature"})
+        ws.send_json({"trip_id": events[-1]["result"]["trip_id"], "message": "swap in more food, less nature", "owner_token": TOKEN})
         last = None
         while True:
             last = ws.receive_json()
             if last["type"] in ("done", "error"):
                 break
         assert last["type"] == "done" and last["result"]["version"] == 2
-        ws.send_json({"message": ""})
+        ws.send_json({"message": "", "owner_token": TOKEN})
         assert ws.receive_json()["error"]["code"] == "invalid"
 
 
@@ -218,8 +220,84 @@ def test_websocket_turns_are_rate_limited_too(env, monkeypatch):
     _, client = env
     monkeypatch.setattr(main, "limiter", RateLimiter(1))
     with client.websocket_connect("/ws/chat", headers={"origin": "http://localhost:3000"}) as ws:
-        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food"})
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food", "owner_token": TOKEN})
         while ws.receive_json()["type"] not in ("done", "error"):
             pass
-        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food"})
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food", "owner_token": TOKEN})
         assert ws.receive_json()["error"]["code"] == "rate_limited"
+
+
+# ------------------------------------------------------------------ ownership / isolation
+
+
+def test_requests_without_a_valid_owner_token_are_rejected(env):
+    _, client = env
+    bare = TestClient(app)
+    for method, path, kw in [("get", "/api/trips", {}), ("get", "/api/trips/latest", {}), ("get", "/api/trips/" + "0" * 8 + "-0000-0000-0000-" + "0" * 12, {}),
+                             ("post", "/api/chat", {"json": {"message": "hi"}})]:
+        r = getattr(bare, method)(path, **kw)
+        assert r.status_code == 401 and r.json()["detail"]["code"] == "unauthorized", path
+    for bad in ["short", "x" * 200, "has spaces in it but is long enough to pass length", "../../etc/passwd" + "a" * 30]:
+        assert bare.get("/api/trips", headers={"X-Owner-Token": bad}).status_code == 401
+
+
+def test_owners_cannot_see_or_modify_each_others_trips(env):
+    repo, mine = env
+    theirs = TestClient(app, headers={"X-Owner-Token": OTHER_TOKEN})
+    a = mine.post("/api/chat", json={"message": FIRST}).json()
+    assert theirs.get("/api/trips").json() == [] and theirs.get("/api/trips/latest").json() is None
+    assert theirs.get(f"/api/trips/{a['trip_id']}").status_code == 404
+    # even knowing the trip id, another owner cannot chat into it, and nothing changes
+    before = repo.get_trip(a["trip_id"])
+    r = theirs.post("/api/chat", json={"trip_id": a["trip_id"], "message": "actually make it 3 days"})
+    assert r.status_code == 404
+    assert repo.get_trip(a["trip_id"]) == before and len(repo.versions) == 1
+    # the owner still has full access; a second owner builds an independent history
+    assert mine.get(f"/api/trips/{a['trip_id']}").status_code == 200
+    b = theirs.post("/api/chat", json={"message": "3 days in Goa from Mumbai for 2, food, budget 30000"}).json()
+    assert b["trip_id"] != a["trip_id"] and len(theirs.get("/api/trips").json()) == 1 and len(mine.get("/api/trips").json()) == 1
+
+
+def test_owner_token_is_stored_only_as_a_hash_and_never_returned(env):
+    repo, client = env
+    body = client.post("/api/chat", json={"message": FIRST}).json()
+    stored = repo.trips[body["trip_id"]]["state_json"]["owner_hash"]
+    assert stored != TOKEN and len(stored) == 64
+    payload = client.get(f"/api/trips/{body['trip_id']}").text
+    assert TOKEN not in payload and stored not in payload and "owner_hash" not in payload
+    assert TOKEN not in client.get("/api/trips").text
+
+
+def test_websocket_requires_a_valid_owner_token_and_isolates_trips(env):
+    repo, client = env
+    with client.websocket_connect("/ws/chat", headers={"origin": "http://localhost:3000"}) as ws:
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food"})
+        assert ws.receive_json()["error"]["code"] == "unauthorized"
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food", "owner_token": "short"})
+        assert ws.receive_json()["error"]["code"] == "unauthorized"
+        assert repo.trips == {}
+        ws.send_json({"message": "3 days in Goa from Mumbai for 2, food", "owner_token": TOKEN})
+        events = []
+        while not events or events[-1]["type"] not in ("done", "error"):
+            events.append(ws.receive_json())
+        trip_id = events[-1]["result"]["trip_id"]
+        ws.send_json({"trip_id": trip_id, "message": "make it 2 days", "owner_token": OTHER_TOKEN})
+        last = ws.receive_json()
+        while last["type"] not in ("done", "error"):
+            last = ws.receive_json()
+        assert last["type"] == "error" and last["error"]["code"] == "not_found"
+        assert len(repo.versions) == 1
+
+
+def test_rate_limit_uses_the_address_added_by_the_trusted_proxy_not_client_supplied_entries(env, monkeypatch):
+    import backend.main as main
+    from backend.ratelimit import RateLimiter
+
+    _, client = env
+    monkeypatch.setattr(main, "limiter", RateLimiter(1))
+    msg = {"message": "3 days in Goa from Mumbai for 2, food"}
+    # a spoofed leftmost entry does not create a fresh bucket: the rightmost (proxy-added) address is what counts
+    first = client.post("/api/chat", json=msg, headers={"X-Forwarded-For": "1.1.1.1, 203.0.113.7"})
+    spoof = client.post("/api/chat", json=msg, headers={"X-Forwarded-For": "9.9.9.9, 203.0.113.7"})
+    other = client.post("/api/chat", json=msg, headers={"X-Forwarded-For": "1.1.1.1, 203.0.113.8"})
+    assert (first.status_code, spoof.status_code, other.status_code) == (200, 429, 200)

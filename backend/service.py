@@ -9,7 +9,7 @@ from uuid import UUID
 from agent.errors import GraphLimitError
 from agent.runner import snapshot_of, stream_turn
 from agent.settings import ConfigError, Settings
-from backend.repository import PersistenceError, TripRepository
+from backend.repository import OWNER_KEY, PersistenceError, TripRepository
 from backend.schemas import ApiError, ChatResult
 
 log = logging.getLogger("yatra.service")
@@ -58,23 +58,31 @@ class ChatService:
             "versions": self.repo.list_versions(trip["id"]),
         }
 
-    def get_trip(self, trip_id: str) -> dict[str, Any]:
+    def list_trips(self, owner: str) -> list[dict[str, Any]]:
+        return self.repo.list_trips(owner)
+
+    def latest_payload(self, owner: str) -> dict[str, Any] | None:
+        trip = self.repo.latest_trip(owner)
+        return self.trip_payload(trip) if trip else None
+
+    def get_trip(self, trip_id: str, owner: str) -> dict[str, Any]:
+        """The trip if it exists and belongs to `owner`; otherwise TripNotFound (never reveals other people's trips)."""
         try:
             UUID(trip_id)
         except ValueError as exc:
             raise TripNotFound() from exc
         trip = self.repo.get_trip(trip_id)
-        if not trip:
+        if not trip or (trip.get("state_json") or {}).get(OWNER_KEY) != owner:
             raise TripNotFound()
         return trip
 
     # ---- a turn
 
-    def run_turn(self, trip_id: str | None, message: str) -> Iterator[dict[str, Any]]:
+    def run_turn(self, trip_id: str | None, message: str, owner: str) -> Iterator[dict[str, Any]]:
         """Yield progress events and finish with a single `done` or `error` event."""
         started = time.perf_counter()
         try:
-            trip = self.get_trip(trip_id) if trip_id else self.repo.create_trip()
+            trip = self.get_trip(trip_id, owner) if trip_id else self.repo.create_trip(owner)
             yield {"type": "trip", "trip_id": trip["id"]}
             history = [{"role": m["role"], "content": m["content"]} for m in self.repo.list_messages(trip["id"])]
             self.repo.add_message(trip["id"], "user", message)
@@ -90,7 +98,7 @@ class ChatService:
                 else:
                     final = data
             assert final is not None
-            result = self._persist(trip, final)
+            result = self._persist(trip, final, owner)
             log.info("turn.completed", extra={
                 "trip_id": trip["id"], "duration_ms": int((time.perf_counter() - started) * 1000),
                 "tool_calls": len(result.tool_trace), "flagged": sum(1 for t in result.tool_trace if t["status"] != "ok"),
@@ -114,7 +122,7 @@ class ChatService:
             log.exception("unhandled error while running a turn")
             yield {"type": "error", "error": ApiError(code="internal", message="Something went wrong on our side. Please try again.").model_dump()}
 
-    def _persist(self, trip: dict[str, Any], final: dict[str, Any]) -> ChatResult:
+    def _persist(self, trip: dict[str, Any], final: dict[str, Any], owner: str) -> ChatResult:
         trip_id = trip["id"]
         trace = final.get("tool_trace", [])
         if final.get("error"):
@@ -127,7 +135,7 @@ class ChatService:
                 version=trip.get("current_version", 0), warnings=final.get("warnings", []),
             )
 
-        snapshot = snapshot_of(final)
+        snapshot = {**snapshot_of(final), OWNER_KEY: owner}
         itinerary, intent = final.get("itinerary"), final.get("intent") or {}
         new_version = final.get("version", 0)
         saved_version = new_version if itinerary and new_version > trip.get("current_version", 0) else None

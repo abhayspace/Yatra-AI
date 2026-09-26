@@ -6,7 +6,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from backend.repository import PersistenceError
+from backend.repository import OWNER_KEY, PersistenceError
 
 
 class InMemoryRepository:
@@ -25,12 +25,12 @@ class InMemoryRepository:
         if self.fail:
             raise PersistenceError("The database (Supabase) could not be reached.")
 
-    def create_trip(self):
+    def create_trip(self, owner_hash):
         self._check()
         now = self._now()
         trip = {"id": str(uuid.uuid4()), "created_at": now, "updated_at": now, "title": None, "origin": None, "destination": None,
                 "start_date": None, "duration_days": None, "travelers": None, "budget": None, "interests": [], "pace": None,
-                "state_json": {}, "current_version": 0}
+                "state_json": {OWNER_KEY: owner_hash}, "current_version": 0}
         self.trips[trip["id"]] = trip
         return copy.deepcopy(trip)
 
@@ -38,14 +38,17 @@ class InMemoryRepository:
         self._check()
         return copy.deepcopy(self.trips.get(trip_id))
 
-    def list_trips(self, limit=30):
+    def _owned(self, owner_hash):
+        return [t for t in self.trips.values() if t["state_json"].get(OWNER_KEY) == owner_hash]
+
+    def list_trips(self, owner_hash, limit=30):
         self._check()
-        rows = sorted(self.trips.values(), key=lambda t: t["updated_at"], reverse=True)[:limit]
+        rows = sorted(self._owned(owner_hash), key=lambda t: t["updated_at"], reverse=True)[:limit]
         return [{k: v for k, v in copy.deepcopy(t).items() if k != "state_json"} for t in rows]
 
-    def latest_trip(self):
+    def latest_trip(self, owner_hash):
         self._check()
-        rows = sorted(self.trips.values(), key=lambda t: t["updated_at"], reverse=True)
+        rows = sorted(self._owned(owner_hash), key=lambda t: t["updated_at"], reverse=True)
         return copy.deepcopy(rows[0]) if rows else None
 
     def update_trip(self, trip_id, fields):

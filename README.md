@@ -27,7 +27,7 @@ instead of starting over. Every itinerary revision is saved, so past trips and t
 | Azure deployment assets (Bicep + azd) | Implemented, compiles; **not deployed to a live subscription** |
 | Multi-city itineraries | **Not implemented.** A request naming several places is planned around the first one. |
 | Live prices, real bookings, payments | **Not implemented, by design.** All money is INR estimates from the dataset; nothing is booked. |
-| Users and authentication | **Not implemented, by design** (single-user demo). Endpoints are open but rate limited. |
+| Users and authentication | **No accounts or login, by design** (single-user demo). Instead each browser holds a random owner token and trips are scoped to its hash, so visitors cannot list, read or modify each other's trips. That is isolation, not authentication: anyone who copies a browser's token has its trips. |
 | Destinations outside the dataset | **Not supported.** 18 destinations, 29 departure cities. The agent says so instead of inventing. |
 
 The dataset holds 195 attractions and 143 restaurants. Every cost in it is a rounded, **illustrative estimate** for a
@@ -35,9 +35,9 @@ typical mid-season week, generated or written by `scripts/build_dataset.py`. The
 
 ### What has and has not been verified
 
-- **Verified here:** 243 offline tests pass (unit, end-to-end trajectories, API, security); the Supabase migration applied
+- **Verified here:** 248 offline tests pass (unit, end-to-end trajectories, API, security); the Supabase migration applied
   cleanly to a real Postgres/PostgREST stack, where the repository code passed create, read, update, version-uniqueness and
-  row-level-security checks (the anon role is blocked), and the configured Supabase project was read from and written to
+  row-level-security checks (the anon role is blocked) and the owner-scoped queries, and the configured Supabase project was read from and written to
   successfully by the backend; both Docker images build and `docker compose up` came up healthy and read from Supabase;
   the frontend passes `tsc`, ESLint and `next build` and was driven in a headless browser (chat, streaming trace, follow-up,
   reload persistence, dark mode, mobile layout, error banner) against the real FastAPI app with a scripted model; the Bicep
@@ -129,7 +129,7 @@ cp .env.example .env        # then fill in the five values below
 | `SUPABASE_URL` | Supabase project URL |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key |
 
-Optional: `CORS_ORIGINS`, `MAX_GRAPH_STEPS` (default 30), `MAX_BUDGET_REVISIONS` (4), `RATE_LIMIT_PER_MINUTE` (20), `API_URL` (frontend, default `http://localhost:8000`).
+Optional: `CORS_ORIGINS`, `MAX_GRAPH_STEPS` (default 30), `MAX_BUDGET_REVISIONS` (4), `RATE_LIMIT_PER_MINUTE` (20), `TRUSTED_PROXY_HOPS` (1; set 0 if nothing sits in front of the API), `API_URL` (frontend, default `http://localhost:8000`).
 
 **With Docker (one command):**
 
@@ -141,11 +141,11 @@ docker compose up --build
 Use `localhost` (not another hostname) in the browser, or add your origin to `CORS_ORIGINS`.
 If port 3000 or 8000 is taken, set `FRONTEND_PORT` / `BACKEND_PORT` (and `API_URL`, `CORS_ORIGINS` to match).
 
-**Without Docker** (Python 3.12 or newer, Node 22):
+**Without Docker** (Python 3.12 or newer, Node 22). `make setup` creates `.venv` with the pinned versions from `constraints.txt`; or by hand:
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements-dev.txt
+pip install -r requirements-dev.txt -c constraints.txt
 uvicorn backend.main:app --reload --port 8000
 
 # second terminal
@@ -165,10 +165,13 @@ Quick check that your Foundry deployment works: `YATRA_LIVE=1 pytest tests/live 
 ## Tests and evals
 
 ```bash
-pytest                                    # 243 tests: no network, no credentials, no LLM calls (10 live tests skip)
-python -m evals.run_evals                 # the 17 trajectory cases, offline, writes evals/results/*.json
-cd frontend && npm run lint && npm run build
+make test                                 # or: pytest. 248 tests: no network, no credentials, no LLM calls (10 live tests skip)
+make eval                                 # or: python -m evals.run_evals. The 17 trajectory cases, offline, writes evals/results/*.json
+make frontend-check                       # tsc, ESLint, next build
+make eval-live                            # real Claude deployment + LLM judge (needs .env)
 ```
+
+Tests never read your `.env`; they blank the credentials so nothing can reach a real database or model by accident.
 
 | Layer | Where | What it checks |
 |---|---|---|
@@ -193,8 +196,12 @@ show how well Claude understands unusual phrasing; that is what the live evals a
 - **Bounded execution.** Explicit `MAX_GRAPH_STEPS` cap (enforced in every node and as LangGraph's `recursion_limit`), a cap on budget-adjustment loops, timeouts on the LLM (60 s), Open-Meteo (10 s) and Supabase (10 s) calls, message length limit, and a per-client rate limit on chat turns.
 - **Secrets.** Only environment variables via a typed settings object; `.env` is git-ignored, `.env.example` has placeholders; infra passes secrets as `@secure()` parameters into Key Vault, referenced by Container Apps secrets.
   The service role key never reaches the frontend. Logs are structured JSON with a request id and contain no message text, prompts or keys.
+- **Trip isolation.** Every list, read and chat call needs the browser's owner token (`X-Owner-Token` header, or `owner_token` on WebSocket messages); only its SHA-256 hash is stored, inside `trips.state_json`.
+  A trip that belongs to someone else is indistinguishable from a missing one (404), so knowing a trip id is not enough. Client addresses for rate limiting are taken from the proxy-added end of
+  `X-Forwarded-For` (`TRUSTED_PROXY_HOPS`), so a spoofed leftmost entry does not get a fresh quota.
 - **Errors.** Internal errors are logged server-side and returned as short designed messages; the UI renders banners, never stack traces.
-- **Known gaps.** No authentication (out of scope), so anyone who can reach the deployment can use it; the rate limiter is per process and best-effort. The LLM client uses the Foundry key, not managed identity.
+- **Known gaps.** There is no login, so anyone who can reach the deployment can start their own trips and spend model tokens (bounded by the rate limit); the limiter is per process, so with several replicas the effective limit is multiplied (set `maxReplicas` to 1 in `infra/resources.bicep` if that matters).
+  The service role key bypasses row level security, so isolation is enforced in the backend. There is no retention or deletion workflow. The LLM client uses the Foundry key, not managed identity.
 
 ## Deploy to Azure
 
@@ -227,11 +234,11 @@ This template was compiled with Bicep but not deployed to a live subscription in
 agent/            graph.py (state machine) · state.py · llm_client.py (Azure AI Foundry, the only place a client is built)
                   guardrails.py · prompts.py · synthesis.py · runner.py · settings.py · models.py · data.py
 agent/tools/     intent_parser.py · destination_search.py · weather.py · budget.py · itinerary_builder.py
-backend/          main.py (FastAPI: REST + WebSocket) · service.py · repository.py (Supabase) · ratelimit.py · observability.py
+backend/          main.py (FastAPI: REST + WebSocket) · service.py · repository.py (Supabase) · owner.py · ratelimit.py · observability.py
 data/             destinations.json (grounding dataset)      scripts/build_dataset.py (how it is generated)
 supabase/         migrations/ (schema)
 frontend/         Next.js app: app/ · components/ui (shadcn) · components/yatra (chat, itinerary, tool trace, ...) · lib/
 infra/ azure.yaml Bicep + azd            evals/ dataset, harness, runner, LLM judge         tests/ unit · e2e · live
+Makefile · constraints.txt (pinned Python versions)
 ```
 
-`AGENTS.md` and `.agents/` were added by the repository owner for hackathon evaluation tooling and are not used by the app.
