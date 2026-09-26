@@ -155,8 +155,9 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
             try:
                 update = fn(state)
             except (LLMError, ToolError) as exc:
+                kind = "llm" if isinstance(exc, LLMError) else "tool"
                 return {"step_count": steps, "error": str(exc),
-                        "tool_trace": [_call(name, label, started, str(exc), status="error")]}
+                        "tool_trace": [_call(name, label, started, str(exc), result={"kind": kind}, status="error")]}
             update["step_count"] = steps
             return update
 

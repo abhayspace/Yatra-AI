@@ -21,3 +21,7 @@ next-env.d.ts
 .DS_Store
 .azure/
 evals/results/
+
+# supabase CLI local state
+supabase/.temp/
+supabase/.branches/
