@@ -85,6 +85,11 @@ def _supported_origins() -> str:
     return ", ".join(sorted(load_dataset().origins))
 
 
+def _supported_destinations() -> str:
+    names = sorted(d.name.split(" (")[0] for d in load_dataset().destinations)
+    return "I can plan trips to: " + ", ".join(names) + "."
+
+
 # --------------------------------------------------------------------------- shared tool runners
 
 
@@ -195,6 +200,9 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
         intent = _intent(state)
         missing = state.get("missing_fields", [])
         parts: list[str] = []
+        unknown_named = [n for n in intent.destinations if not match_destinations(n)]
+        if unknown_named and "known_destination" not in missing:
+            parts.append(f"I don't have data for {', '.join(unknown_named)} yet. {_supported_destinations()}")
         if "origin" in missing:
             if intent.origin:
                 parts.append(f"I don't have fares from {intent.origin} yet. I can plan trips from: {_supported_origins()}. Which of these is closest?")
@@ -205,7 +213,7 @@ def make_nodes(deps: Deps) -> dict[str, Callable[[TripState], dict[str, Any]]]:
         if "known_destination" in missing:
             names = ", ".join((state.get("candidates") or {}).get("unknown", [])) or "that place"
             options = ", ".join(c["name"].split(" (")[0] for c in (state.get("candidates") or {}).get("alternatives", []))
-            parts.append(f"I don't have data for {names} yet." + (f" Based on your interests I could plan {options} instead. Should I go with one of those?" if options else ""))
+            parts.append(f"I don't have data for {names} yet." + (f" Based on your interests I could plan {options} instead. Should I go with one of those?" if options else f" {_supported_destinations()}"))
         return {
             "reply": " ".join(parts) or "Could you tell me a little more about the trip?",
             "tool_trace": [_call("clarify", "Asked for missing details", time.perf_counter(),

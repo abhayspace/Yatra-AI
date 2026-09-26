@@ -124,6 +124,99 @@
    "lat": 23.26,
    "lon": 77.41,
    "aliases": []
+  },
+  "Patna": {
+   "name": "Patna",
+   "lat": 25.59,
+   "lon": 85.14,
+   "aliases": []
+  },
+  "Indore": {
+   "name": "Indore",
+   "lat": 22.72,
+   "lon": 75.86,
+   "aliases": []
+  },
+  "Visakhapatnam": {
+   "name": "Visakhapatnam",
+   "lat": 17.69,
+   "lon": 83.22,
+   "aliases": [
+    "vizag",
+    "visakhapatnam"
+   ]
+  },
+  "Coimbatore": {
+   "name": "Coimbatore",
+   "lat": 11.02,
+   "lon": 76.96,
+   "aliases": [
+    "kovai"
+   ]
+  },
+  "Thiruvananthapuram": {
+   "name": "Thiruvananthapuram",
+   "lat": 8.52,
+   "lon": 76.94,
+   "aliases": [
+    "trivandrum"
+   ]
+  },
+  "Surat": {
+   "name": "Surat",
+   "lat": 21.17,
+   "lon": 72.83,
+   "aliases": []
+  },
+  "Kanpur": {
+   "name": "Kanpur",
+   "lat": 26.45,
+   "lon": 80.35,
+   "aliases": []
+  },
+  "Bhubaneswar": {
+   "name": "Bhubaneswar",
+   "lat": 20.3,
+   "lon": 85.82,
+   "aliases": []
+  },
+  "Ranchi": {
+   "name": "Ranchi",
+   "lat": 23.34,
+   "lon": 85.31,
+   "aliases": []
+  },
+  "Raipur": {
+   "name": "Raipur",
+   "lat": 21.25,
+   "lon": 81.63,
+   "aliases": []
+  },
+  "Dehradun": {
+   "name": "Dehradun",
+   "lat": 30.32,
+   "lon": 78.03,
+   "aliases": []
+  },
+  "Amritsar": {
+   "name": "Amritsar",
+   "lat": 31.63,
+   "lon": 74.87,
+   "aliases": []
+  },
+  "Vadodara": {
+   "name": "Vadodara",
+   "lat": 22.31,
+   "lon": 73.18,
+   "aliases": [
+    "baroda"
+   ]
+  },
+  "Madurai": {
+   "name": "Madurai",
+   "lat": 9.93,
+   "lon": 78.12,
+   "aliases": []
   }
  },
  "destinations": [
@@ -707,6 +800,199 @@
       "one_way_per_person": 3950,
       "hours": 4.1
      }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3350,
+      "hours": 40.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4750,
+      "hours": 5.1
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 21.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1600,
+      "hours": 26.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 4.0
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 26.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.2
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 16.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1300,
+      "hours": 19.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3500,
+      "hours": 3.6
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2000,
+      "hours": 22.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 4.0
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1600,
+      "hours": 17.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1350,
+      "hours": 20.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.7
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2950,
+      "hours": 34.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.8
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2900,
+      "hours": 34.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.7
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 37.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4600,
+      "hours": 4.9
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 26.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.3
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 42.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.2
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3650,
+      "hours": 44.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4950,
+      "hours": 5.3
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 20.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1500,
+      "hours": 24.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.9
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1850,
+      "hours": 20.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1500,
+      "hours": 25.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.9
+     }
     ]
    }
   },
@@ -1242,6 +1528,164 @@
       "one_way_per_person": 4650,
       "hours": 5.0
      }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3900,
+      "hours": 47.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.7
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3050,
+      "hours": 35.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4600,
+      "hours": 4.9
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2450,
+      "hours": 27.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.5
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 750,
+      "hours": 4.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 650,
+      "hours": 4.2
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 850,
+      "hours": 6.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 6.4
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2850,
+      "hours": 33.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.8
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3800,
+      "hours": 45.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5100,
+      "hours": 5.6
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3150,
+      "hours": 36.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4650,
+      "hours": 5.0
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3550,
+      "hours": 42.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4950,
+      "hours": 5.4
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2900,
+      "hours": 33.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.8
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 6.1
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5800,
+      "hours": 6.4
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3050,
+      "hours": 35.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4600,
+      "hours": 4.9
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 750,
+      "hours": 4.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 650,
+      "hours": 4.6
+     }
     ]
    }
   },
@@ -1769,6 +2213,174 @@
       "one_way_per_person": 3450,
       "hours": 3.5
      }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 21.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1500,
+      "hours": 27.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.6
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1850,
+      "hours": 22.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.6
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2900,
+      "hours": 36.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.5
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5100,
+      "hours": 5.4
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5450,
+      "hours": 5.8
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 28.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.0
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1150,
+      "hours": 12.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1000,
+      "hours": 15.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3100,
+      "hours": 3.1
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2650,
+      "hours": 33.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.3
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 26.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 3.9
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 26.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 3.9
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 400,
+      "hours": 2.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 400,
+      "hours": 2.1
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1000,
+      "hours": 10.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 850,
+      "hours": 12.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3000,
+      "hours": 2.9
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2100,
+      "hours": 25.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.8
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5250,
+      "hours": 5.6
+     }
     ]
    }
   },
@@ -2212,6 +2824,109 @@
       "mode": "flight",
       "one_way_per_person": 4700,
       "hours": 4.1
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 4800,
+      "hours": 4.2
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 4800,
+      "hours": 4.2
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5550,
+      "hours": 5.1
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6350,
+      "hours": 6.0
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6650,
+      "hours": 6.4
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 4.5
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 23.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 3.6
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 4.9
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5000,
+      "hours": 4.4
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 4.5
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 8.1
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 8.1
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 4900,
+      "hours": 4.3
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6500,
+      "hours": 6.2
      }
     ]
    }
@@ -2747,6 +3462,199 @@
       "mode": "flight",
       "one_way_per_person": 3050,
       "hours": 3.0
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 24.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3650,
+      "hours": 3.7
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1150,
+      "hours": 13.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1000,
+      "hours": 15.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.0
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2550,
+      "hours": 32.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.2
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 43.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4650,
+      "hours": 4.9
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 4950,
+      "hours": 5.3
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 18.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1300,
+      "hours": 22.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3350,
+      "hours": 3.4
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 12.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 15.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.0
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 31.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4000,
+      "hours": 4.1
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 26.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.8
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1850,
+      "hours": 22.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.6
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 12.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 14.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.0
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1250,
+      "hours": 14.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1050,
+      "hours": 17.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3150,
+      "hours": 3.1
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1300,
+      "hours": 15.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1150,
+      "hours": 18.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3200,
+      "hours": 3.2
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3650,
+      "hours": 47.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4800,
+      "hours": 5.1
      }
     ]
    }
@@ -3290,6 +4198,204 @@
       "one_way_per_person": 3000,
       "hours": 2.9
      }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2350,
+      "hours": 29.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.0
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 850,
+      "hours": 9.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 10.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2850,
+      "hours": 2.8
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 31.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4000,
+      "hours": 4.1
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 38.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 4.6
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 45.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 4.9
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1000,
+      "hours": 11.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 850,
+      "hours": 13.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2950,
+      "hours": 2.9
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 18.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1300,
+      "hours": 22.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3350,
+      "hours": 3.3
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2650,
+      "hours": 33.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4100,
+      "hours": 4.2
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2400,
+      "hours": 30.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.0
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1850,
+      "hours": 23.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.6
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1650,
+      "hours": 20.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 24.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.4
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1700,
+      "hours": 20.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 25.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.5
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 750,
+      "hours": 8.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 700,
+      "hours": 9.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2800,
+      "hours": 2.7
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3300,
+      "hours": 42.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.8
+     }
     ]
    }
   },
@@ -3803,6 +4909,179 @@
       "one_way_per_person": 4500,
       "hours": 4.9
      }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1300,
+      "hours": 10.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1050,
+      "hours": 11.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3500,
+      "hours": 3.7
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 33.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.1
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 29.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.9
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5650,
+      "hours": 6.3
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5950,
+      "hours": 6.6
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3650,
+      "hours": 42.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5150,
+      "hours": 5.6
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 20.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1650,
+      "hours": 25.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.3
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 20.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1650,
+      "hours": 25.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.3
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 14.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 16.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.9
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 24.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.5
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2550,
+      "hours": 27.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.7
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 34.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4750,
+      "hours": 5.2
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 40.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.5
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5700,
+      "hours": 6.3
+     }
     ]
    }
   },
@@ -4233,6 +5512,104 @@
       "mode": "flight",
       "one_way_per_person": 6350,
       "hours": 4.4
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6350,
+      "hours": 4.3
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6450,
+      "hours": 4.5
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7200,
+      "hours": 5.4
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8000,
+      "hours": 6.3
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8300,
+      "hours": 6.7
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6700,
+      "hours": 4.8
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6000,
+      "hours": 3.9
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7000,
+      "hours": 5.1
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6600,
+      "hours": 4.7
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6700,
+      "hours": 4.8
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 3.2
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 3.2
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6550,
+      "hours": 4.6
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8150,
+      "hours": 6.5
      }
     ]
    }
@@ -4747,6 +6124,174 @@
       "one_way_per_person": 4550,
       "hours": 4.9
      }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 43.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.7
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 29.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.8
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2400,
+      "hours": 25.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.6
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1050,
+      "hours": 6.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 850,
+      "hours": 7.3
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1450,
+      "hours": 12.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1200,
+      "hours": 15.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3650,
+      "hours": 3.8
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2450,
+      "hours": 26.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.7
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3550,
+      "hours": 40.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.5
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 34.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4750,
+      "hours": 5.2
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3450,
+      "hours": 39.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5000,
+      "hours": 5.5
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 29.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.9
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5500,
+      "hours": 6.1
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5650,
+      "hours": 6.3
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2650,
+      "hours": 28.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.8
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1350,
+      "hours": 11.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 12.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.7
+     }
     ]
    }
   },
@@ -5255,6 +6800,184 @@
       "mode": "flight",
       "one_way_per_person": 4450,
       "hours": 4.7
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 40.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.2
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 32.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.7
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1850,
+      "hours": 19.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1500,
+      "hours": 23.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 4.0
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 9.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 11.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.4
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 13.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1150,
+      "hours": 16.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3500,
+      "hours": 3.6
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 31.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.7
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 40.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.2
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2550,
+      "hours": 28.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.5
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 35.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.9
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2400,
+      "hours": 26.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.4
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 5.8
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 6.1
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2900,
+      "hours": 33.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.8
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1050,
+      "hours": 8.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 900,
+      "hours": 10.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3250,
+      "hours": 3.3
      }
     ]
    }
@@ -5788,6 +7511,204 @@
       "one_way_per_person": 3250,
       "hours": 3.2
      }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 700,
+      "hours": 7.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 650,
+      "hours": 7.8
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1700,
+      "hours": 20.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 25.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.5
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 22.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3500,
+      "hours": 3.6
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3300,
+      "hours": 42.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.8
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 48.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.2
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 28.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3850,
+      "hours": 4.0
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 800,
+      "hours": 8.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 10.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2850,
+      "hours": 2.8
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 16.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1200,
+      "hours": 20.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3250,
+      "hours": 3.2
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 900,
+      "hours": 9.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 800,
+      "hours": 11.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2900,
+      "hours": 2.8
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1150,
+      "hours": 13.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1000,
+      "hours": 15.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.0
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1600,
+      "hours": 19.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1350,
+      "hours": 23.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.4
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 27.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.9
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 26.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.8
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3450,
+      "hours": 44.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4650,
+      "hours": 4.9
+     }
     ]
    }
   },
@@ -6218,6 +8139,4300 @@
       "mode": "flight",
       "one_way_per_person": 8600,
       "hours": 5.4
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8200,
+      "hours": 5.0
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8700,
+      "hours": 5.6
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7550,
+      "hours": 4.2
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8150,
+      "hours": 4.9
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8200,
+      "hours": 5.0
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8950,
+      "hours": 5.9
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8600,
+      "hours": 5.5
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7550,
+      "hours": 4.2
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7950,
+      "hours": 4.7
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8000,
+      "hours": 4.8
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 9200,
+      "hours": 6.2
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 9550,
+      "hours": 6.6
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8950,
+      "hours": 5.9
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8050,
+      "hours": 4.8
+     }
+    ]
+   }
+  },
+  {
+   "id": "shimla",
+   "name": "Shimla",
+   "state": "Himachal Pradesh",
+   "region": "Himachal Pradesh",
+   "aliases": [
+    "simla",
+    "kufri",
+    "mashobra",
+    "himachal",
+    "queen of hills"
+   ],
+   "lat": 31.1048,
+   "lon": 77.1734,
+   "tagline": "Colonial hill-station charm, pine forests and the Kalka-Shimla toy train.",
+   "best_months": [
+    3,
+    4,
+    5,
+    6,
+    10,
+    11,
+    12
+   ],
+   "avoid_months": [
+    7,
+    8
+   ],
+   "avoid_reason": "monsoon: landslides and heavy rain on the hill roads",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 300,
+    "air_surcharge": 1500
+   },
+   "stay": {
+    "budget": 1300,
+    "mid": 3800,
+    "premium": 10500
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 750
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 650,
+    "premium": 1400
+   },
+   "local_transport_per_day": 1300,
+   "attractions": [
+    {
+     "id": "shimla-ridge-mall",
+     "name": "The Ridge and Mall Road walk",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "heritage",
+      "relaxation"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Shimla",
+     "note": "Colonial promenade with cafes and views of the hills"
+    },
+    {
+     "id": "shimla-christ-church",
+     "name": "Christ Church and Scandal Point",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "spiritual"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Shimla",
+     "note": "Neo-Gothic church on the Ridge"
+    },
+    {
+     "id": "shimla-jakhu",
+     "name": "Jakhu Temple and ropeway",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 250,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Jakhu",
+     "note": "Hilltop Hanuman temple reached by ropeway or a forest climb"
+    },
+    {
+     "id": "shimla-kufri",
+     "name": "Kufri and Himalayan Nature Park",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure",
+      "wildlife"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 700,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kufri",
+     "note": "Pony rides, viewpoints and Himalayan wildlife enclosures"
+    },
+    {
+     "id": "shimla-viceregal-lodge",
+     "name": "Viceregal Lodge (Rashtrapati Niwas)",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 50,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Shimla",
+     "note": "Grand colonial-era estate and gardens"
+    },
+    {
+     "id": "shimla-toy-train",
+     "name": "Toy train ride to Shoghi and back",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 900,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Shimla",
+     "note": "UNESCO-listed narrow-gauge railway through tunnels and pines"
+    },
+    {
+     "id": "shimla-mashobra",
+     "name": "Mashobra and Naldehra drive",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Mashobra",
+     "note": "Deodar forests, meadows and the Naldehra golf course"
+    },
+    {
+     "id": "shimla-chadwick",
+     "name": "Chadwick Falls walk",
+     "type": "nature",
+     "themes": [
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Shimla",
+     "note": "Short forest trail to a seasonal waterfall"
+    },
+    {
+     "id": "shimla-state-museum",
+     "name": "Himachal State Museum",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 50,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Shimla",
+     "note": "Pahari miniature paintings and folk art"
+    },
+    {
+     "id": "shimla-tattapani",
+     "name": "Tattapani hot springs",
+     "type": "wellness",
+     "themes": [
+      "wellness",
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 5,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Tattapani",
+     "note": "Sulphur springs by the Sutlej river"
+    },
+    {
+     "id": "shimla-food-walk-shimla",
+     "name": "Shimla street food and cafe walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 900,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Shimla",
+     "note": "Chaat, momos, siddu and coffee with a local guide"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "shimla-indian-coffee-house",
+     "name": "Indian Coffee House",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Filter coffee and masala dosa",
+     "area": "Mall Road"
+    },
+    {
+     "id": "shimla-choice",
+     "name": "Choice Restaurant",
+     "cuisine": "Indian and Chinese",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Butter chicken and fried rice",
+     "area": "Mall Road"
+    },
+    {
+     "id": "shimla-wake-and-bake",
+     "name": "Wake & Bake",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Wood-fired pizza and coffee",
+     "area": "Shimla"
+    },
+    {
+     "id": "shimla-cafe-sol",
+     "name": "Cafe Sol",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Rooftop cafe with mountain views",
+     "area": "Shimla"
+    },
+    {
+     "id": "shimla-baljees",
+     "name": "Baljees",
+     "cuisine": "Indian and continental",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Old-school restaurant known for pastries",
+     "area": "Mall Road"
+    },
+    {
+     "id": "shimla-ashiana",
+     "name": "Ashiana Restaurant",
+     "cuisine": "Himachali",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Himachali dham and siddu",
+     "area": "The Ridge"
+    },
+    {
+     "id": "shimla-simla-times",
+     "name": "Cafe Simla Times",
+     "cuisine": "Continental",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 800,
+     "signature": "Grills and bakes in a heritage lane",
+     "area": "Mall Road"
+    },
+    {
+     "id": "shimla-wildflower-dining",
+     "name": "Wildflower Hall dining",
+     "cuisine": "Fine dining",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 2500,
+     "signature": "Multi-course dinner with valley views",
+     "area": "Chharabra"
+    }
+   ],
+   "themes": [
+    "nature",
+    "heritage",
+    "relaxation",
+    "culture",
+    "spiritual",
+    "adventure",
+    "shopping",
+    "wildlife",
+    "wellness",
+    "food"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 900,
+      "hours": 8.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 800,
+      "hours": 9.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 3.0
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2900,
+      "hours": 35.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5900,
+      "hours": 4.6
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6600,
+      "hours": 5.5
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 36.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5950,
+      "hours": 4.7
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6650,
+      "hours": 5.5
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 38.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 6050,
+      "hours": 4.8
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2950,
+      "hours": 36.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5950,
+      "hours": 4.7
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2200,
+      "hours": 25.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 4.1
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1300,
+      "hours": 13.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 16.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4800,
+      "hours": 3.3
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1500,
+      "hours": 16.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 19.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4900,
+      "hours": 3.5
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 550,
+      "hours": 3.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 500,
+      "hours": 2.7
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7050,
+      "hours": 6.0
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 38.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 6050,
+      "hours": 4.8
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2400,
+      "hours": 28.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5550,
+      "hours": 4.2
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 22.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5250,
+      "hours": 3.9
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 25.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 4.0
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2100,
+      "hours": 24.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 4.0
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3250,
+      "hours": 40.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 6150,
+      "hours": 4.9
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6900,
+      "hours": 5.8
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7200,
+      "hours": 6.2
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 30.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 4.3
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1500,
+      "hours": 16.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 19.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4900,
+      "hours": 3.5
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3050,
+      "hours": 37.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 6000,
+      "hours": 4.7
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 29.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 4.3
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 29.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 4.3
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 650,
+      "hours": 4.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 600,
+      "hours": 4.7
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 850,
+      "hours": 7.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 8.0
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 26.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5450,
+      "hours": 4.1
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7050,
+      "hours": 6.0
+     }
+    ]
+   }
+  },
+  {
+   "id": "gangtok",
+   "name": "Gangtok",
+   "state": "Sikkim",
+   "region": "Sikkim",
+   "aliases": [
+    "sikkim",
+    "nathula",
+    "tsomgo",
+    "changu lake",
+    "rumtek"
+   ],
+   "lat": 27.3389,
+   "lon": 88.6065,
+   "tagline": "Monasteries, mountain lakes and Kanchenjunga views in the capital of Sikkim.",
+   "best_months": [
+    3,
+    4,
+    5,
+    9,
+    10,
+    11
+   ],
+   "avoid_months": [
+    6,
+    7,
+    8
+   ],
+   "avoid_reason": "monsoon: landslides on the roads to the lakes and passes",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 1000,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1500,
+    "mid": 3800,
+    "premium": 10000
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 700
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 600,
+    "premium": 1300
+   },
+   "local_transport_per_day": 1800,
+   "attractions": [
+    {
+     "id": "gangtok-mg-marg",
+     "name": "MG Marg promenade",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "food",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Gangtok",
+     "note": "Pedestrian street with cafes and craft shops"
+    },
+    {
+     "id": "gangtok-tsomgo",
+     "name": "Tsomgo (Changu) Lake and Baba Mandir",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 6,
+     "cost_per_person": 1800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "East Sikkim",
+     "note": "High-altitude lake by shared taxi (permit needed)"
+    },
+    {
+     "id": "gangtok-rumtek",
+     "name": "Rumtek Monastery",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Rumtek",
+     "note": "Seat of the Karmapa with Tibetan art"
+    },
+    {
+     "id": "gangtok-ropeway",
+     "name": "Gangtok ropeway",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 150,
+     "indoor": false,
+     "best_time": "any",
+     "area": "Gangtok",
+     "note": "Cable-car views over the town and valley"
+    },
+    {
+     "id": "gangtok-enchey",
+     "name": "Enchey Monastery",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Gangtok",
+     "note": "Quiet hilltop monastery"
+    },
+    {
+     "id": "gangtok-hanuman-tok",
+     "name": "Hanuman Tok and Ganesh Tok viewpoints",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "spiritual"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Gangtok",
+     "note": "Temples with sweeping views"
+    },
+    {
+     "id": "gangtok-tashi-sunrise",
+     "name": "Tashi Viewpoint sunrise",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Gangtok",
+     "note": "Sunrise over Kanchenjunga (weather permitting)"
+    },
+    {
+     "id": "gangtok-banjhakri",
+     "name": "Banjhakri Falls Energy Park",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 60,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Gangtok",
+     "note": "Waterfall park themed on Sikkimese shamans"
+    },
+    {
+     "id": "gangtok-nathula",
+     "name": "Nathula Pass excursion",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature",
+      "heritage"
+     ],
+     "duration_hours": 9,
+     "cost_per_person": 3500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "East Sikkim",
+     "note": "Indo-China border pass (permit and Tue-Sun only)"
+    },
+    {
+     "id": "gangtok-zoo-gangtok",
+     "name": "Himalayan Zoological Park",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Bulbulay",
+     "note": "Red pandas and Himalayan black bears"
+    },
+    {
+     "id": "gangtok-sikkim-food",
+     "name": "Sikkimese food trail",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 800,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Gangtok",
+     "note": "Momos, sel roti, gundruk and chhurpi"
+    },
+    {
+     "id": "gangtok-namgyal",
+     "name": "Namgyal Institute of Tibetology",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 50,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Gangtok",
+     "note": "Buddhist manuscripts and thangkas"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "gangtok-roll-house",
+     "name": "The Roll House",
+     "cuisine": "Street food",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Kathi rolls and momos",
+     "area": "MG Marg"
+    },
+    {
+     "id": "gangtok-thakali",
+     "name": "Thakali Restaurant",
+     "cuisine": "Nepali",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Thakali thali with gundruk",
+     "area": "Gangtok"
+    },
+    {
+     "id": "gangtok-taste-of-tibet",
+     "name": "Taste of Tibet",
+     "cuisine": "Tibetan",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 550,
+     "signature": "Thukpa and phing",
+     "area": "Gangtok"
+    },
+    {
+     "id": "gangtok-nimtho",
+     "name": "Nimtho",
+     "cuisine": "Sikkimese",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Traditional Sikkimese set meal",
+     "area": "Gangtok"
+    },
+    {
+     "id": "gangtok-bakers-cafe",
+     "name": "Baker's Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 400,
+     "signature": "Fresh bakes and coffee",
+     "area": "MG Marg"
+    },
+    {
+     "id": "gangtok-tashi-delek",
+     "name": "Tashi Delek Restaurant",
+     "cuisine": "Continental and Tibetan",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 800,
+     "signature": "Set dinners in a heritage hotel",
+     "area": "Gangtok"
+    },
+    {
+     "id": "gangtok-dragon-wok",
+     "name": "Dragon Wok",
+     "cuisine": "Chinese",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Hakka noodles and chilli chicken",
+     "area": "MG Marg"
+    },
+    {
+     "id": "gangtok-mayfair-dining",
+     "name": "Mayfair dining",
+     "cuisine": "Fine dining",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 2000,
+     "signature": "Multi-cuisine dinner in a resort",
+     "area": "Gangtok"
+    }
+   ],
+   "themes": [
+    "nature",
+    "culture",
+    "relaxation",
+    "spiritual",
+    "heritage",
+    "food",
+    "adventure",
+    "shopping",
+    "wildlife"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2850,
+      "hours": 28.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4750,
+      "hours": 5.2
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 4100,
+      "hours": 45.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 6.3
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 4300,
+      "hours": 48.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5750,
+      "hours": 6.4
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 14.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 17.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.4
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 4000,
+      "hours": 44.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5550,
+      "hours": 6.2
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 37.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.8
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 4000,
+      "hours": 44.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5550,
+      "hours": 6.2
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3800,
+      "hours": 41.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 6.0
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 32.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4900,
+      "hours": 5.4
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2200,
+      "hours": 20.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1750,
+      "hours": 24.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.7
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2950,
+      "hours": 30.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.4
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6200,
+      "hours": 7.0
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1450,
+      "hours": 10.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1150,
+      "hours": 11.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 4.1
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2950,
+      "hours": 30.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4800,
+      "hours": 5.3
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 30.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.4
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 11.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 13.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.2
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3300,
+      "hours": 34.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.6
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2950,
+      "hours": 30.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.4
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6000,
+      "hours": 6.8
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6300,
+      "hours": 7.1
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3900,
+      "hours": 43.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5500,
+      "hours": 6.1
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 21.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1850,
+      "hours": 26.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.8
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 21.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1850,
+      "hours": 26.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.8
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 15.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1450,
+      "hours": 18.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.4
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2550,
+      "hours": 25.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 5.0
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 27.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.2
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3350,
+      "hours": 35.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5100,
+      "hours": 5.6
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 41.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 6.0
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6050,
+      "hours": 6.8
+     }
+    ]
+   }
+  },
+  {
+   "id": "ooty",
+   "name": "Ooty (Udhagamandalam)",
+   "state": "Tamil Nadu",
+   "region": "Nilgiri Hills",
+   "aliases": [
+    "udhagamandalam",
+    "nilgiris",
+    "coonoor",
+    "nilgiri hills"
+   ],
+   "lat": 11.4064,
+   "lon": 76.6932,
+   "tagline": "Nilgiri tea slopes, a heritage mountain railway and misty lakes.",
+   "best_months": [
+    3,
+    4,
+    5,
+    9,
+    10,
+    11,
+    12
+   ],
+   "avoid_months": [
+    6,
+    7,
+    8
+   ],
+   "avoid_reason": "monsoon: heavy rain and fog reduce views",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 500,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1500,
+    "mid": 3800,
+    "premium": 10000
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 700
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 600,
+    "premium": 1300
+   },
+   "local_transport_per_day": 1500,
+   "attractions": [
+    {
+     "id": "ooty-nmr",
+     "name": "Nilgiri Mountain Railway ride",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 600,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Ooty",
+     "note": "UNESCO-listed rack-and-pinion train to Coonoor"
+    },
+    {
+     "id": "ooty-botanical",
+     "name": "Government Botanical Gardens",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Ooty",
+     "note": "Terraced gardens with rare trees and flowers"
+    },
+    {
+     "id": "ooty-ooty-lake",
+     "name": "Ooty Lake boating",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Ooty",
+     "note": "Pedal boats and rowing on a colonial-era lake"
+    },
+    {
+     "id": "ooty-doddabetta",
+     "name": "Doddabetta Peak",
+     "type": "nature",
+     "themes": [
+      "nature"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 20,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Doddabetta",
+     "note": "Highest point in the Nilgiris"
+    },
+    {
+     "id": "ooty-rose-garden",
+     "name": "Rose Garden",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 30,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Ooty",
+     "note": "Thousands of rose varieties on terraces"
+    },
+    {
+     "id": "ooty-tea-factory",
+     "name": "Tea factory and museum",
+     "type": "food",
+     "themes": [
+      "food",
+      "nature",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 100,
+     "indoor": true,
+     "best_time": "morning",
+     "area": "Ooty",
+     "note": "Watch tea processing and taste Nilgiri teas"
+    },
+    {
+     "id": "ooty-pykara",
+     "name": "Pykara Falls and Lake",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Pykara",
+     "note": "Waterfalls and boating away from town"
+    },
+    {
+     "id": "ooty-avalanche",
+     "name": "Avalanche and Emerald Lake",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Avalanche",
+     "note": "Shola forest and trout streams (forest permit)"
+    },
+    {
+     "id": "ooty-mudumalai",
+     "name": "Mudumalai Tiger Reserve safari",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 1500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Mudumalai",
+     "note": "Jeep safari with elephants, gaur and deer"
+    },
+    {
+     "id": "ooty-chocolate",
+     "name": "Homemade chocolate tasting",
+     "type": "food",
+     "themes": [
+      "food",
+      "shopping"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 0,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Ooty",
+     "note": "Sampling local chocolates on Commercial Road"
+    },
+    {
+     "id": "ooty-tribal-museum",
+     "name": "Tribal Research Centre museum",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 30,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Ooty",
+     "note": "Artefacts of the Toda and Kota communities"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "ooty-earls-secret",
+     "name": "Earl's Secret",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Bakes and Nilgiri coffee",
+     "area": "Ooty"
+    },
+    {
+     "id": "ooty-shinkows",
+     "name": "Shinkow's Chinese Restaurant",
+     "cuisine": "Chinese",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Chilli fish and hakka noodles",
+     "area": "Ooty"
+    },
+    {
+     "id": "ooty-hotel-preethi",
+     "name": "Preethi Residency dining",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Meals and dosas",
+     "area": "Ooty"
+    },
+    {
+     "id": "ooty-coonoor-cafe",
+     "name": "Coonoor tea lounge",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Nilgiri tea with snacks",
+     "area": "Coonoor"
+    },
+    {
+     "id": "ooty-nilgiri-kitchen",
+     "name": "Nilgiri Kitchen",
+     "cuisine": "Nilgiri home-style",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 550,
+     "signature": "Badaga-style vegetarian meals",
+     "area": "Ooty"
+    },
+    {
+     "id": "ooty-kabab-corner",
+     "name": "Kabab Corner",
+     "cuisine": "Mughlai",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 400,
+     "signature": "Tandoori and biryani",
+     "area": "Ooty"
+    },
+    {
+     "id": "ooty-savoy-dining",
+     "name": "Savoy dining room",
+     "cuisine": "Colonial",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1800,
+     "signature": "Heritage hotel dinner",
+     "area": "Ooty"
+    },
+    {
+     "id": "ooty-green-shop",
+     "name": "Green Shop Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 300,
+     "signature": "Sandwiches and hot chocolate",
+     "area": "Ooty"
+    }
+   ],
+   "themes": [
+    "nature",
+    "relaxation",
+    "adventure",
+    "heritage",
+    "food",
+    "culture",
+    "wildlife",
+    "shopping"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3900,
+      "hours": 47.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.6
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2200,
+      "hours": 24.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.3
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 900,
+      "hours": 6.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 7.2
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3650,
+      "hours": 43.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5000,
+      "hours": 5.4
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1300,
+      "hours": 12.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 14.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.5
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1750,
+      "hours": 18.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1450,
+      "hours": 22.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.9
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 22.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.1
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2950,
+      "hours": 34.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.9
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3600,
+      "hours": 42.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4950,
+      "hours": 5.4
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3650,
+      "hours": 43.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.4
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5500,
+      "hours": 6.0
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 850,
+      "hours": 6.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 750,
+      "hours": 6.3
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5650,
+      "hours": 6.2
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 28.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.5
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2850,
+      "hours": 33.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.8
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 44.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.5
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 31.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.7
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 25.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4100,
+      "hours": 4.3
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 650,
+      "hours": 3.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 550,
+      "hours": 2.6
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 9.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 11.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.4
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2600,
+      "hours": 29.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.6
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3550,
+      "hours": 42.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4950,
+      "hours": 5.4
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 34.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.9
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 40.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.2
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 30.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 4.6
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5450,
+      "hours": 5.9
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 6.1
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 32.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.7
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 950,
+      "hours": 7.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 800,
+      "hours": 8.0
+     }
+    ]
+   }
+  },
+  {
+   "id": "mysuru",
+   "name": "Mysuru (Mysore)",
+   "state": "Karnataka",
+   "region": "Karnataka",
+   "aliases": [
+    "mysore",
+    "srirangapatna",
+    "chamundi"
+   ],
+   "lat": 12.2958,
+   "lon": 76.6394,
+   "tagline": "Royal palaces, silk, sandalwood and Mysore pak.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    4,
+    5
+   ],
+   "avoid_reason": "hot pre-monsoon weather",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 300,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1300,
+    "mid": 3500,
+    "premium": 9000
+   },
+   "breakfast_pp": {
+    "budget": 130,
+    "mid": 300,
+    "premium": 650
+   },
+   "generic_meal_pp": {
+    "budget": 250,
+    "mid": 550,
+    "premium": 1200
+   },
+   "local_transport_per_day": 1000,
+   "attractions": [
+    {
+     "id": "mysuru-palace",
+     "name": "Mysore Palace",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": true,
+     "best_time": "morning",
+     "area": "Mysuru",
+     "note": "Indo-Saracenic royal palace, lit up on Sundays"
+    },
+    {
+     "id": "mysuru-chamundi",
+     "name": "Chamundi Hills and temple",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "nature"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Chamundi Hills",
+     "note": "Hilltop temple and the Nandi bull statue"
+    },
+    {
+     "id": "mysuru-brindavan",
+     "name": "Brindavan Gardens musical fountain",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "KRS",
+     "note": "Terraced gardens with an evening fountain show"
+    },
+    {
+     "id": "mysuru-devaraja",
+     "name": "Devaraja Market",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Mysuru",
+     "note": "Flower, spice and sandalwood stalls"
+    },
+    {
+     "id": "mysuru-philomena",
+     "name": "St Philomena's Church",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "spiritual"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Mysuru",
+     "note": "Neo-Gothic cathedral"
+    },
+    {
+     "id": "mysuru-zoo-mysuru",
+     "name": "Mysore Zoo",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 120,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Mysuru",
+     "note": "One of India's oldest zoos"
+    },
+    {
+     "id": "mysuru-jaganmohan",
+     "name": "Jaganmohan Palace and art gallery",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 50,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Mysuru",
+     "note": "Ravi Varma paintings and royal artefacts"
+    },
+    {
+     "id": "mysuru-srirangapatna",
+     "name": "Srirangapatna day trip",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture",
+      "spiritual"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Srirangapatna",
+     "note": "Tipu Sultan's island fort and Ranganathaswamy temple"
+    },
+    {
+     "id": "mysuru-somanathapura",
+     "name": "Somanathapura Keshava Temple",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 40,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Somanathapura",
+     "note": "Hoysala temple with intricate carvings"
+    },
+    {
+     "id": "mysuru-food-walk-mysuru",
+     "name": "Mysore pak and dosa food walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 800,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Mysuru",
+     "note": "Sweet shops and legacy tiffin rooms"
+    },
+    {
+     "id": "mysuru-silk-factory",
+     "name": "Silk and sandalwood factory visit",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Mysuru",
+     "note": "See silk weaving and sandalwood carving"
+    },
+    {
+     "id": "mysuru-karanji",
+     "name": "Karanji Lake nature park",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "wildlife",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Mysuru",
+     "note": "Walk-through aviary and butterfly park"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "mysuru-mylari",
+     "name": "Mylari Hotel",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Butter dosa",
+     "area": "Nazarbad"
+    },
+    {
+     "id": "mysuru-guru-sweets",
+     "name": "Guru Sweet Mart",
+     "cuisine": "Sweets",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 150,
+     "signature": "Original Mysore pak",
+     "area": "Devaraja Market"
+    },
+    {
+     "id": "mysuru-rrr",
+     "name": "RRR Restaurant",
+     "cuisine": "Andhra",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Andhra meals and biryani",
+     "area": "Gandhi Square"
+    },
+    {
+     "id": "mysuru-old-house",
+     "name": "The Old House",
+     "cuisine": "Continental",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Grills in a heritage home",
+     "area": "Mysuru"
+    },
+    {
+     "id": "mysuru-green-leaf",
+     "name": "Green Leaf",
+     "cuisine": "Vegetarian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 300,
+     "signature": "Karnataka thali",
+     "area": "Mysuru"
+    },
+    {
+     "id": "mysuru-onesta",
+     "name": "Onesta",
+     "cuisine": "Pizza",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Thin-crust pizza",
+     "area": "Mysuru"
+    },
+    {
+     "id": "mysuru-hotel-om",
+     "name": "Hotel Om Shanthi",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 200,
+     "signature": "Idli and vada",
+     "area": "Mysuru"
+    },
+    {
+     "id": "mysuru-lalitha-mahal",
+     "name": "Lalitha Mahal Palace dining",
+     "cuisine": "Fine dining",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 2200,
+     "signature": "Royal buffet in a palace hotel",
+     "area": "Chamundi Hills"
+    }
+   ],
+   "themes": [
+    "culture",
+    "heritage",
+    "nature",
+    "spiritual",
+    "relaxation",
+    "shopping",
+    "food",
+    "wildlife"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3600,
+      "hours": 44.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4900,
+      "hours": 5.2
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 22.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.8
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 650,
+      "hours": 5.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 600,
+      "hours": 4.9
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 41.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.0
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1150,
+      "hours": 11.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 13.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3200,
+      "hours": 3.2
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1500,
+      "hours": 16.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 19.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.5
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1750,
+      "hours": 19.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1450,
+      "hours": 24.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3600,
+      "hours": 3.7
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2650,
+      "hours": 32.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.4
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3300,
+      "hours": 40.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4650,
+      "hours": 5.0
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 41.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.0
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5150,
+      "hours": 5.6
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 900,
+      "hours": 8.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 800,
+      "hours": 9.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3000,
+      "hours": 3.0
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 5.8
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2200,
+      "hours": 26.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.1
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2550,
+      "hours": 30.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.4
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3450,
+      "hours": 42.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4750,
+      "hours": 5.1
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2450,
+      "hours": 29.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4100,
+      "hours": 4.3
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 23.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 4.0
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 700,
+      "hours": 5.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 600,
+      "hours": 5.5
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1150,
+      "hours": 12.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1000,
+      "hours": 14.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3200,
+      "hours": 3.2
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 27.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4000,
+      "hours": 4.2
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3250,
+      "hours": 40.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4650,
+      "hours": 4.9
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 33.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.5
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 38.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.8
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2400,
+      "hours": 28.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.2
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5100,
+      "hours": 5.5
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5300,
+      "hours": 5.7
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 29.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4100,
+      "hours": 4.3
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 950,
+      "hours": 9.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 850,
+      "hours": 10.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.1
+     }
+    ]
+   }
+  },
+  {
+   "id": "amritsar",
+   "name": "Amritsar",
+   "state": "Punjab",
+   "region": "Punjab",
+   "aliases": [
+    "punjab",
+    "golden temple",
+    "wagah"
+   ],
+   "lat": 31.634,
+   "lon": 74.8723,
+   "tagline": "The Golden Temple, Wagah border ceremony and Punjab's best food.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    5,
+    6
+   ],
+   "avoid_reason": "extreme summer heat above 42°C",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 100,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1300,
+    "mid": 3500,
+    "premium": 9500
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 700
+   },
+   "generic_meal_pp": {
+    "budget": 250,
+    "mid": 550,
+    "premium": 1300
+   },
+   "local_transport_per_day": 900,
+   "attractions": [
+    {
+     "id": "amritsar-golden-temple",
+     "name": "Golden Temple (Harmandir Sahib)",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "The holiest Sikh shrine, beautiful at sunrise and night"
+    },
+    {
+     "id": "amritsar-langar",
+     "name": "Langar community meal",
+     "type": "food",
+     "themes": [
+      "food",
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Old City",
+     "note": "Free vegetarian meal served to thousands daily"
+    },
+    {
+     "id": "amritsar-jallianwala",
+     "name": "Jallianwala Bagh",
+     "type": "heritage",
+     "themes": [
+      "heritage"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Old City",
+     "note": "Memorial to the 1919 massacre"
+    },
+    {
+     "id": "amritsar-wagah",
+     "name": "Wagah Border ceremony",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "heritage",
+      "adventure"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Wagah",
+     "note": "Daily flag-lowering ceremony at the border"
+    },
+    {
+     "id": "amritsar-partition-museum",
+     "name": "Partition Museum",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 50,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Old City",
+     "note": "Personal stories of the 1947 Partition"
+    },
+    {
+     "id": "amritsar-food-walk-amritsar",
+     "name": "Amritsari food walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 900,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "Kulcha, lassi, jalebi and fish with a local guide"
+    },
+    {
+     "id": "amritsar-durgiana",
+     "name": "Durgiana Temple",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "heritage"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "Silver-doored Hindu temple beside a sacred pool"
+    },
+    {
+     "id": "amritsar-gobindgarh",
+     "name": "Gobindgarh Fort",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 600,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Amritsar",
+     "note": "18th-century fort with shows and museums"
+    },
+    {
+     "id": "amritsar-hall-bazaar",
+     "name": "Hall Bazaar and Phulkari shopping",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Old City",
+     "note": "Punjabi juttis, phulkari and dry fruits"
+    },
+    {
+     "id": "amritsar-sadda-pind",
+     "name": "Sadda Pind village experience",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "food"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 700,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Amritsar",
+     "note": "Folk dance, rides and a village-style dinner"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "amritsar-kesar",
+     "name": "Kesar Da Dhaba",
+     "cuisine": "Punjabi",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Dal makhani and phirni",
+     "area": "Old City"
+    },
+    {
+     "id": "amritsar-bharawan",
+     "name": "Bharawan Da Dhaba",
+     "cuisine": "Punjabi vegetarian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 300,
+     "signature": "Chole kulche and paneer",
+     "area": "Town Hall"
+    },
+    {
+     "id": "amritsar-kulcha-land",
+     "name": "Kulcha Land",
+     "cuisine": "Amritsari kulcha",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Stuffed Amritsari kulcha",
+     "area": "Hall Gate"
+    },
+    {
+     "id": "amritsar-beera",
+     "name": "Beera Chicken House",
+     "cuisine": "Punjabi",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Tandoori chicken",
+     "area": "Lawrence Road"
+    },
+    {
+     "id": "amritsar-makhan-fish",
+     "name": "Makhan Fish and Chicken Corner",
+     "cuisine": "Amritsari fish",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Amritsari fried fish",
+     "area": "Majitha Road"
+    },
+    {
+     "id": "amritsar-gian-lassi",
+     "name": "Gian Chand Lassi",
+     "cuisine": "Lassi",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 150,
+     "signature": "Thick Amritsari lassi",
+     "area": "Old City"
+    },
+    {
+     "id": "amritsar-crystal",
+     "name": "Crystal Restaurant",
+     "cuisine": "Punjabi and Chinese",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Butter chicken and naan",
+     "area": "Cooper Road"
+    },
+    {
+     "id": "amritsar-pind-balluchi",
+     "name": "Village-style Punjabi dinner",
+     "cuisine": "Punjabi",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1400,
+     "signature": "Sarson da saag and makki roti",
+     "area": "Amritsar"
+    }
+   ],
+   "themes": [
+    "culture",
+    "heritage",
+    "spiritual",
+    "food",
+    "adventure",
+    "shopping"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1000,
+      "hours": 11.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 900,
+      "hours": 13.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3000,
+      "hours": 2.9
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 35.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.4
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5000,
+      "hours": 5.3
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3250,
+      "hours": 41.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.7
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.4
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3150,
+      "hours": 40.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.7
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2900,
+      "hours": 36.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.4
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 25.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.7
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1250,
+      "hours": 14.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1050,
+      "hours": 17.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3150,
+      "hours": 3.1
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1700,
+      "hours": 20.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 25.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.5
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 650,
+      "hours": 6.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 600,
+      "hours": 7.4
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 5.8
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 43.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4600,
+      "hours": 4.8
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 31.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4000,
+      "hours": 4.1
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2000,
+      "hours": 24.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3650,
+      "hours": 3.7
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2450,
+      "hours": 30.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3950,
+      "hours": 4.1
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 25.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.8
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3400,
+      "hours": 43.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4600,
+      "hours": 4.9
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5250,
+      "hours": 5.6
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5600,
+      "hours": 6.0
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2400,
+      "hours": 29.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.0
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1700,
+      "hours": 20.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 25.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.5
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3250,
+      "hours": 41.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.7
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 34.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.3
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2650,
+      "hours": 33.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4100,
+      "hours": 4.3
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 900,
+      "hours": 9.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 800,
+      "hours": 11.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2900,
+      "hours": 2.8
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 300,
+      "hours": 2.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 350,
+      "hours": 1.0
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 26.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.8
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 5.8
+     }
+    ]
+   }
+  },
+  {
+   "id": "hampi",
+   "name": "Hampi",
+   "state": "Karnataka",
+   "region": "Karnataka",
+   "aliases": [
+    "hospet",
+    "vijayanagara",
+    "anegundi"
+   ],
+   "lat": 15.335,
+   "lon": 76.46,
+   "tagline": "Boulder-strewn ruins of the Vijayanagara empire beside the Tungabhadra.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2
+   ],
+   "avoid_months": [
+    4,
+    5
+   ],
+   "avoid_reason": "intense heat above 40°C among unshaded ruins",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 300,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1200,
+    "mid": 3200,
+    "premium": 9000
+   },
+   "breakfast_pp": {
+    "budget": 130,
+    "mid": 300,
+    "premium": 650
+   },
+   "generic_meal_pp": {
+    "budget": 250,
+    "mid": 500,
+    "premium": 1100
+   },
+   "local_transport_per_day": 900,
+   "attractions": [
+    {
+     "id": "hampi-virupaksha",
+     "name": "Virupaksha Temple",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "heritage"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 40,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Hampi Bazaar",
+     "note": "Living 7th-century temple"
+    },
+    {
+     "id": "hampi-vittala",
+     "name": "Vittala Temple and stone chariot",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Vittala",
+     "note": "Musical pillars and the iconic stone chariot"
+    },
+    {
+     "id": "hampi-hemakuta-sunrise",
+     "name": "Hemakuta Hill sunrise",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "heritage",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Hampi Bazaar",
+     "note": "Sunrise over temple ruins and boulders"
+    },
+    {
+     "id": "hampi-hampi-bazaar",
+     "name": "Hampi Bazaar walk",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Hampi Bazaar",
+     "note": "Handicrafts and cafes along the ancient street"
+    },
+    {
+     "id": "hampi-lotus-mahal",
+     "name": "Lotus Mahal and Elephant Stables",
+     "type": "heritage",
+     "themes": [
+      "heritage"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 40,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Royal Centre",
+     "note": "Indo-Islamic pavilion and royal stables"
+    },
+    {
+     "id": "hampi-royal-enclosure",
+     "name": "Royal Enclosure and Queen's Bath",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 40,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Royal Centre",
+     "note": "Palace platforms and a lotus-shaped bath"
+    },
+    {
+     "id": "hampi-coracle",
+     "name": "Coracle ride on the Tungabhadra",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Virupapur",
+     "note": "Round basket boat spin on the river"
+    },
+    {
+     "id": "hampi-anegundi",
+     "name": "Anegundi village and Hanuman Hill",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Anegundi",
+     "note": "Climb 570 steps to a hilltop temple and sunset views"
+    },
+    {
+     "id": "hampi-sanapur",
+     "name": "Sanapur Lake sunset",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Sanapur",
+     "note": "Boulder-ringed lake at sunset"
+    },
+    {
+     "id": "hampi-cycling",
+     "name": "Cycling tour of the ruins",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "heritage",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Hampi",
+     "note": "Guided bike ride between scattered monuments"
+    },
+    {
+     "id": "hampi-daroji",
+     "name": "Daroji Bear Sanctuary",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature"
+     ],
+     "duration_hours": 3.5,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Daroji",
+     "note": "Sloth bears among granite hills"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "hampi-mango-tree",
+     "name": "Mango Tree",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Riverside thali and fresh juices",
+     "area": "Hampi"
+    },
+    {
+     "id": "hampi-waves",
+     "name": "Waves Rooftop Cafe",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Israeli and Indian dishes",
+     "area": "Virupapur"
+    },
+    {
+     "id": "hampi-gopi",
+     "name": "Gopi Guest House Restaurant",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 300,
+     "signature": "Karnataka thali",
+     "area": "Hampi Bazaar"
+    },
+    {
+     "id": "hampi-krishna-bhavan",
+     "name": "Udupi Krishna Bhavan",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 200,
+     "signature": "Idli, vada and filter coffee",
+     "area": "Hospet"
+    },
+    {
+     "id": "hampi-malligi",
+     "name": "Hotel Malligi",
+     "cuisine": "North and South Indian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 550,
+     "signature": "Buffet and tandoori",
+     "area": "Hospet"
+    },
+    {
+     "id": "hampi-little-tibet",
+     "name": "Little Tibet Cafe",
+     "cuisine": "Tibetan",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Momos and thukpa",
+     "area": "Hampi"
+    },
+    {
+     "id": "hampi-hoova",
+     "name": "Hoova Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 400,
+     "signature": "Fresh bakes and coffee",
+     "area": "Hampi Bazaar"
+    },
+    {
+     "id": "hampi-kamalapura-resort",
+     "name": "Kamalapura resort dining",
+     "cuisine": "Fine dining",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1600,
+     "signature": "Resort dinner",
+     "area": "Kamalapura"
+    }
+   ],
+   "themes": [
+    "heritage",
+    "nature",
+    "culture",
+    "relaxation",
+    "adventure",
+    "spiritual",
+    "shopping",
+    "wildlife"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 36.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.7
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 15.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1200,
+      "hours": 18.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.4
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 950,
+      "hours": 8.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 800,
+      "hours": 10.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.0
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3050,
+      "hours": 37.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.8
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1250,
+      "hours": 13.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 15.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.3
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1000,
+      "hours": 9.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 850,
+      "hours": 10.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3100,
+      "hours": 3.1
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1200,
+      "hours": 12.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1050,
+      "hours": 14.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3250,
+      "hours": 3.3
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2100,
+      "hours": 24.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3850,
+      "hours": 4.0
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 32.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.5
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 34.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 4.6
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3450,
+      "hours": 42.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4750,
+      "hours": 5.1
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1500,
+      "hours": 16.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 19.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.5
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3900,
+      "hours": 49.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5100,
+      "hours": 5.5
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1650,
+      "hours": 18.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 22.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.6
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2000,
+      "hours": 23.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.9
+     }
+    ],
+    "Patna": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3000,
+      "hours": 36.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.7
+     }
+    ],
+    "Indore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1900,
+      "hours": 21.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1550,
+      "hours": 26.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.8
+     }
+    ],
+    "Visakhapatnam": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 20.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1450,
+      "hours": 24.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3600,
+      "hours": 3.7
+     }
+    ],
+    "Coimbatore": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1300,
+      "hours": 13.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 15.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.3
+     }
+    ],
+    "Thiruvananthapuram": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1750,
+      "hours": 20.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1450,
+      "hours": 24.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3600,
+      "hours": 3.7
+     }
+    ],
+    "Surat": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1750,
+      "hours": 19.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1450,
+      "hours": 24.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3600,
+      "hours": 3.7
+     }
+    ],
+    "Kanpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 32.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.5
+     }
+    ],
+    "Bhubaneswar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2400,
+      "hours": 28.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.2
+     }
+    ],
+    "Ranchi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 32.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.5
+     }
+    ],
+    "Raipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 22.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.8
+     }
+    ],
+    "Dehradun": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3350,
+      "hours": 41.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.0
+     }
+    ],
+    "Amritsar": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3600,
+      "hours": 45.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4900,
+      "hours": 5.2
+     }
+    ],
+    "Vadodara": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1900,
+      "hours": 22.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.8
+     }
+    ],
+    "Madurai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 16.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1300,
+      "hours": 20.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.5
      }
     ]
    }

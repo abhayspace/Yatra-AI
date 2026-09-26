@@ -42,7 +42,9 @@ class ScriptedLLM(LLMClient):
             data = {k: v for k, v in h.items() if k in LLMIntentOut.model_fields}
             if "destinations" not in data:  # a real model would also pick up places the dataset does not know
                 origin = h.get("origin", "")
-                names = [n for n in re.findall(r"\b(?:in|to|visit|explore)\s+([A-Z][a-z]+)\b", request) if n != origin]
+                stop = {"explore", "plan", "visit", "see", "have", "go", "get", "the", "a", "an", "my", "our", "make", "nature", "food", "beach"}
+                names = [n for n in re.findall(r"\b(?:in|to|visit)\s+([A-Za-z]{3,})\b", request)
+                         if n.lower() not in stop and n.lower() != origin.lower() and not n.isdigit()]
                 if names:
                     data["destinations"] = names[:1]
             return schema(**data)
