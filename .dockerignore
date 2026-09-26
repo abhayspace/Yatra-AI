@@ -1,0 +1,16 @@
+.git
+.venv
+venv
+.env
+.env.*
+!.env.example
+**/__pycache__
+**/*.pyc
+.pytest_cache
+frontend/node_modules
+frontend/.next
+tests
+evals/results
+infra
+supabase
+.azure

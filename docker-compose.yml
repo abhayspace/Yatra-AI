@@ -1,0 +1,26 @@
+# Local development: backend + frontend, wired to your hosted Supabase project and Azure AI Foundry
+# deployment through .env (copy .env.example to .env first).
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file: .env
+    environment:
+      CORS_ORIGINS: http://localhost:3000
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      # the address the *browser* uses to reach the backend
+      API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

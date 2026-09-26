@@ -28,8 +28,8 @@ export function AppShell() {
   return (
     <div className="flex h-dvh flex-col">
       <Header onNewTrip={() => { y.newTrip(); setTab("chat"); }} onOpenTrips={() => setTripsOpen(true)} tripCount={y.trips.length} />
-      <main className="mx-auto grid min-h-0 w-full max-w-[1600px] flex-1 gap-3 p-3 pb-2 lg:grid-cols-[minmax(24rem,32rem)_1fr] lg:gap-4 lg:p-4">
-        <section className={cn("min-h-0 flex-col", tab === "chat" ? "flex" : "hidden lg:flex")} aria-label="Chat">
+      <main className="mx-auto grid min-h-0 w-full max-w-[1600px] flex-1 grid-cols-[minmax(0,1fr)] gap-3 p-3 pb-2 lg:grid-cols-[minmax(24rem,32rem)_minmax(0,1fr)] lg:gap-4 lg:p-4">
+        <section className={cn("min-h-0 min-w-0 flex-col", tab === "chat" ? "flex" : "hidden lg:flex")} aria-label="Chat">
           <ChatPanel
             booting={y.booting} bootError={y.bootError} onRetryBoot={y.retryBoot}
             messages={y.messages} busy={y.busy} progress={y.progress} error={y.error}
@@ -39,7 +39,7 @@ export function AppShell() {
           />
         </section>
         <section
-          className={cn("min-h-0 overflow-y-auto rounded-2xl scrollbar-thin", tab === "plan" ? "block" : "hidden lg:block")}
+          className={cn("min-h-0 min-w-0 overflow-y-auto rounded-2xl scrollbar-thin", tab === "plan" ? "block" : "hidden lg:block")}
           aria-label="Itinerary" data-testid="itinerary-panel"
         >
           {y.booting || firstPlanLoading ? (

@@ -230,7 +230,7 @@ def build_itinerary(req: BuildRequest | dict) -> Itinerary:
     cat = _mode_category(option.mode)
     add(out_day, time_of_day="morning", start=hhmm(7.0), end=hhmm(min(7.0 + hours, 23.75) % 24 if arr_day == out_day else 23.75),
         kind="transit", category=cat, title=_fmt_transit_title(origin.name, dest.name.split(" (")[0], option.mode, hours, True),
-        description=f"Outbound leg. About {option.one_way_per_person:,} per person one way.",
+        description=f"Outbound leg. About ₹{option.one_way_per_person:,} per person one way.",
         cost_per_person=option.one_way_per_person, cost_total=option.one_way_per_person * travelers)
     for d in range(out_day + 1, arr_day):
         add(d, time_of_day="morning", start="00:00", end="23:45", kind="transit", category=cat, title="In transit",
@@ -243,7 +243,7 @@ def build_itinerary(req: BuildRequest | dict) -> Itinerary:
     add(min(dep_day, n), time_of_day="evening" if dep_start >= 17 else "afternoon", start=hhmm(dep_start),
         end=hhmm(dep_start + hours if dep_day == ret_arrive_day else 23.75), kind="transit", category=cat,
         title=_fmt_transit_title(origin.name, dest.name.split(" (")[0], option.mode, hours, False),
-        description=f"Return leg. About {option.one_way_per_person:,} per person one way.",
+        description=f"Return leg. About ₹{option.one_way_per_person:,} per person one way.",
         cost_per_person=option.one_way_per_person, cost_total=option.one_way_per_person * travelers)
     for d in range(dep_day + 1, n + 1):
         add(d, time_of_day="morning", start="00:00", end="23:45", kind="transit", category=cat, title="In transit",

@@ -75,7 +75,7 @@ export function ItineraryView({
       )}
 
       <Tabs value={active} onValueChange={(v) => setDay(String(v))}>
-        <TabsList variant="line" className="no-scrollbar h-auto w-full justify-start gap-2 overflow-x-auto p-1.5" aria-label="Days">
+        <TabsList variant="line" className="no-scrollbar h-auto w-full justify-start gap-2 overflow-x-auto p-1.5 group-data-horizontal/tabs:h-auto" aria-label="Days">
           {itinerary.days.map((d) => {
             return (
               <TabsTrigger

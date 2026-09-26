@@ -8,7 +8,7 @@ export class ApiRequestError extends Error {
 
 const NETWORK_ERROR: ApiErrorBody = {
   code: "network",
-  message: "Can't reach the Yatra AI server. Check your connection or that the backend is running, then try again.",
+  message: "Check your connection, or that the backend is running, then try again.",
 };
 
 let apiUrlPromise: Promise<string> | null = null;
