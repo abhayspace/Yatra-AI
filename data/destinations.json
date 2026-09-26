@@ -1,0 +1,6226 @@
+{
+ "meta": {
+  "currency": "INR",
+  "note": "Illustrative planning estimates for a typical mid-season week, rounded. Not live fares or prices.",
+  "version": 1
+ },
+ "origins": {
+  "Delhi": {
+   "name": "Delhi",
+   "lat": 28.61,
+   "lon": 77.21,
+   "aliases": [
+    "new delhi",
+    "ncr",
+    "gurgaon",
+    "gurugram",
+    "noida",
+    "delhi ncr"
+   ]
+  },
+  "Mumbai": {
+   "name": "Mumbai",
+   "lat": 19.08,
+   "lon": 72.88,
+   "aliases": [
+    "bombay",
+    "navi mumbai",
+    "thane"
+   ]
+  },
+  "Bengaluru": {
+   "name": "Bengaluru",
+   "lat": 12.97,
+   "lon": 77.59,
+   "aliases": [
+    "bangalore",
+    "bengaluru"
+   ]
+  },
+  "Kolkata": {
+   "name": "Kolkata",
+   "lat": 22.57,
+   "lon": 88.36,
+   "aliases": [
+    "calcutta"
+   ]
+  },
+  "Chennai": {
+   "name": "Chennai",
+   "lat": 13.08,
+   "lon": 80.27,
+   "aliases": [
+    "madras"
+   ]
+  },
+  "Hyderabad": {
+   "name": "Hyderabad",
+   "lat": 17.39,
+   "lon": 78.49,
+   "aliases": [
+    "secunderabad"
+   ]
+  },
+  "Pune": {
+   "name": "Pune",
+   "lat": 18.52,
+   "lon": 73.86,
+   "aliases": [
+    "poona"
+   ]
+  },
+  "Ahmedabad": {
+   "name": "Ahmedabad",
+   "lat": 23.02,
+   "lon": 72.57,
+   "aliases": [
+    "amdavad"
+   ]
+  },
+  "Jaipur": {
+   "name": "Jaipur",
+   "lat": 26.91,
+   "lon": 75.79,
+   "aliases": []
+  },
+  "Lucknow": {
+   "name": "Lucknow",
+   "lat": 26.85,
+   "lon": 80.95,
+   "aliases": []
+  },
+  "Chandigarh": {
+   "name": "Chandigarh",
+   "lat": 30.73,
+   "lon": 76.78,
+   "aliases": [
+    "mohali",
+    "panchkula"
+   ]
+  },
+  "Kochi": {
+   "name": "Kochi",
+   "lat": 9.93,
+   "lon": 76.27,
+   "aliases": [
+    "cochin",
+    "ernakulam"
+   ]
+  },
+  "Guwahati": {
+   "name": "Guwahati",
+   "lat": 26.14,
+   "lon": 91.74,
+   "aliases": []
+  },
+  "Nagpur": {
+   "name": "Nagpur",
+   "lat": 21.15,
+   "lon": 79.09,
+   "aliases": []
+  },
+  "Bhopal": {
+   "name": "Bhopal",
+   "lat": 23.26,
+   "lon": 77.41,
+   "aliases": []
+  }
+ },
+ "destinations": [
+  {
+   "id": "goa",
+   "name": "Goa",
+   "state": "Goa",
+   "region": "West Coast",
+   "aliases": [
+    "north goa",
+    "south goa",
+    "panjim",
+    "panaji",
+    "calangute",
+    "baga"
+   ],
+   "lat": 15.4989,
+   "lon": 73.8278,
+   "tagline": "Beaches, Portuguese-era lanes and a serious seafood scene.",
+   "best_months": [
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    6,
+    7,
+    8
+   ],
+   "avoid_reason": "monsoon: heavy rain, rough seas and many beach shacks closed",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 400,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1600,
+    "mid": 4200,
+    "premium": 11000
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 300,
+    "premium": 700
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 600,
+    "premium": 1400
+   },
+   "local_transport_per_day": 800,
+   "attractions": [
+    {
+     "id": "goa-baga-watersports",
+     "name": "Baga Beach and water sports",
+     "type": "beach",
+     "themes": [
+      "beach",
+      "adventure"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1200,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "North Goa",
+     "note": "Parasailing, jet-ski and banana-boat packages"
+    },
+    {
+     "id": "goa-anjuna-market",
+     "name": "Anjuna flea market",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "North Goa",
+     "note": "Wednesday market: boho clothes, spices, souvenirs"
+    },
+    {
+     "id": "goa-aguada-fort",
+     "name": "Fort Aguada and Sinquerim sunset",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "North Goa",
+     "note": "17th-century Portuguese fort with a lighthouse"
+    },
+    {
+     "id": "goa-old-goa",
+     "name": "Old Goa churches",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture",
+      "spiritual"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old Goa",
+     "note": "Basilica of Bom Jesus and Se Cathedral, UNESCO sites"
+    },
+    {
+     "id": "goa-fontainhas",
+     "name": "Fontainhas Latin Quarter walk",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "heritage",
+      "food"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Panjim",
+     "note": "Guided walk through painted Portuguese-era lanes with bakery stops"
+    },
+    {
+     "id": "goa-dudhsagar",
+     "name": "Dudhsagar Falls jeep safari",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure",
+      "wildlife"
+     ],
+     "duration_hours": 6,
+     "cost_per_person": 900,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "South Goa",
+     "note": "Jeep ride through Mollem forest to a four-tier waterfall"
+    },
+    {
+     "id": "goa-palolem",
+     "name": "Palolem beach and kayaking",
+     "type": "beach",
+     "themes": [
+      "beach",
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 600,
+     "indoor": false,
+     "best_time": "any",
+     "area": "South Goa",
+     "note": "Crescent bay with calm water and dolphin-spotting boats"
+    },
+    {
+     "id": "goa-spice-plantation",
+     "name": "Spice plantation tour with lunch",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "food"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 700,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Ponda",
+     "note": "Walk a working plantation and eat a Goan thali on banana leaf"
+    },
+    {
+     "id": "goa-goan-cooking-class",
+     "name": "Goan cooking class",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1800,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Assagao",
+     "note": "Hands-on class: xacuti, prawn balchao, bebinca"
+    },
+    {
+     "id": "goa-mandovi-cruise",
+     "name": "Mandovi river sunset cruise",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nightlife",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 500,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Panjim",
+     "note": "Live Goan folk music on a river cruise"
+    },
+    {
+     "id": "goa-cabo-de-rama",
+     "name": "Cabo de Rama fort and cliffs",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "heritage"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "South Goa",
+     "note": "Quiet clifftop fort and a secluded beach below"
+    },
+    {
+     "id": "goa-arpora-bazaar",
+     "name": "Saturday Night Bazaar, Arpora",
+     "type": "nightlife",
+     "themes": [
+      "nightlife",
+      "shopping",
+      "food"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "North Goa",
+     "note": "Night market with live music and street food"
+    },
+    {
+     "id": "goa-ayurveda-spa",
+     "name": "Ayurvedic massage session",
+     "type": "wellness",
+     "themes": [
+      "wellness",
+      "relaxation"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 1800,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "North Goa",
+     "note": "Traditional abhyanga massage"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "goa-vinayak",
+     "name": "Vinayak Family Restaurant",
+     "cuisine": "Goan",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 450,
+     "signature": "Chicken cafreal and fish thali",
+     "area": "Assagao"
+    },
+    {
+     "id": "goa-ritz-classic",
+     "name": "Ritz Classic",
+     "cuisine": "Goan thali",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Goan fish curry-rice thali",
+     "area": "Panjim"
+    },
+    {
+     "id": "goa-fishermans-wharf",
+     "name": "Fisherman's Wharf",
+     "cuisine": "Goan seafood",
+     "meals": [
+      "dinner",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 900,
+     "signature": "Butter-garlic prawns",
+     "area": "Cavelossim"
+    },
+    {
+     "id": "goa-britto",
+     "name": "Britto's",
+     "cuisine": "Seafood",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 800,
+     "signature": "Fish recheado and beach-side seafood platter",
+     "area": "Baga"
+    },
+    {
+     "id": "goa-cafe-bodega",
+     "name": "Cafe Bodega",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Sourdough sandwiches and cold brew in a heritage house",
+     "area": "Panjim"
+    },
+    {
+     "id": "goa-gunpowder",
+     "name": "Gunpowder",
+     "cuisine": "Kerala and South Indian",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 1000,
+     "signature": "Appam with stew, Kerala fish curry",
+     "area": "Assagao"
+    },
+    {
+     "id": "goa-thalassa",
+     "name": "Thalassa",
+     "cuisine": "Greek",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1800,
+     "signature": "Sunset-view mezze and grilled seafood",
+     "area": "Vagator"
+    },
+    {
+     "id": "goa-martins-corner",
+     "name": "Martin's Corner",
+     "cuisine": "Goan seafood",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1500,
+     "signature": "Kingfish rawa fry and crab xec xec",
+     "area": "Betalbatim"
+    }
+   ],
+   "themes": [
+    "culture",
+    "nature",
+    "heritage",
+    "food",
+    "relaxation",
+    "beach",
+    "adventure",
+    "shopping",
+    "nightlife",
+    "spiritual",
+    "wildlife",
+    "wellness"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 37.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4600,
+      "hours": 4.9
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1200,
+      "hours": 11.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1000,
+      "hours": 13.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.4
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1350,
+      "hours": 13.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1150,
+      "hours": 16.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.5
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 42.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.2
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 19.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1500,
+      "hours": 24.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.8
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1450,
+      "hours": 14.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1200,
+      "hours": 17.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.5
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 9.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 900,
+      "hours": 11.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3200,
+      "hours": 3.3
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2000,
+      "hours": 22.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 4.0
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 32.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 4.6
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3050,
+      "hours": 36.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.9
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 42.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.2
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1650,
+      "hours": 17.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 21.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3600,
+      "hours": 3.7
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5450,
+      "hours": 5.9
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 21.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1600,
+      "hours": 27.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 4.0
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2150,
+      "hours": 24.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3950,
+      "hours": 4.1
+     }
+    ]
+   }
+  },
+  {
+   "id": "kerala",
+   "name": "Kerala (Kochi, Munnar, Alleppey)",
+   "state": "Kerala",
+   "region": "South India",
+   "aliases": [
+    "munnar",
+    "alleppey",
+    "alappuzha",
+    "kochi",
+    "cochin",
+    "backwaters",
+    "kumarakom",
+    "god's own country"
+   ],
+   "lat": 10.0889,
+   "lon": 77.0595,
+   "tagline": "Tea-covered hills, backwater houseboats and a spice-driven cuisine.",
+   "best_months": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    6,
+    7
+   ],
+   "avoid_reason": "peak monsoon: landslides in the hills and rough backwater conditions",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 500,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1800,
+    "mid": 4500,
+    "premium": 12000
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 800
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 650,
+    "premium": 1500
+   },
+   "local_transport_per_day": 1800,
+   "attractions": [
+    {
+     "id": "kerala-munnar-tea",
+     "name": "Tea plantation walk and factory visit",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "food"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Munnar",
+     "note": "Kolukkumalai or Kanan Devan estate walk with tea tasting"
+    },
+    {
+     "id": "kerala-eravikulam",
+     "name": "Eravikulam National Park",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "wildlife"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Munnar",
+     "note": "Nilgiri tahr sightings and rolling grassland"
+    },
+    {
+     "id": "kerala-top-station",
+     "name": "Top Station viewpoint",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Munnar",
+     "note": "Panoramic view over the Western Ghats"
+    },
+    {
+     "id": "kerala-mattupetty",
+     "name": "Mattupetty Dam boating",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 350,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Munnar",
+     "note": "Speedboat and pedal boats on a hill reservoir"
+    },
+    {
+     "id": "kerala-alleppey-houseboat",
+     "name": "Alleppey houseboat backwater cruise",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature",
+      "food"
+     ],
+     "duration_hours": 6,
+     "cost_per_person": 3500,
+     "indoor": false,
+     "best_time": "any",
+     "area": "Alleppey",
+     "note": "Day cruise on a kettuvallam with a Kerala lunch on board"
+    },
+    {
+     "id": "kerala-kumarakom-birds",
+     "name": "Kumarakom bird sanctuary",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kumarakom",
+     "note": "Migratory birds on Vembanad lake"
+    },
+    {
+     "id": "kerala-fort-kochi",
+     "name": "Fort Kochi heritage walk",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kochi",
+     "note": "Chinese fishing nets, Dutch Palace, Jew Town"
+    },
+    {
+     "id": "kerala-kathakali",
+     "name": "Kathakali performance",
+     "type": "culture",
+     "themes": [
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 400,
+     "indoor": true,
+     "best_time": "evening",
+     "area": "Kochi",
+     "note": "Classical dance-drama with a green-room makeup demo"
+    },
+    {
+     "id": "kerala-spice-market",
+     "name": "Mattancherry spice market and food walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture",
+      "shopping"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 900,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kochi",
+     "note": "Guided tasting through spice merchants and local bakeries"
+    },
+    {
+     "id": "kerala-kerala-cooking",
+     "name": "Kerala home-style cooking class",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1500,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Alleppey",
+     "note": "Learn karimeen pollichathu, appam and thoran with a local family"
+    },
+    {
+     "id": "kerala-ayurveda-kerala",
+     "name": "Ayurvedic massage and steam",
+     "type": "wellness",
+     "themes": [
+      "wellness",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 2200,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Munnar",
+     "note": "Traditional abhyangam and shirodhara session"
+    },
+    {
+     "id": "kerala-marari-beach",
+     "name": "Marari beach afternoon",
+     "type": "beach",
+     "themes": [
+      "beach",
+      "relaxation"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Alleppey",
+     "note": "Quiet fishing-village beach"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "kerala-saravana-munnar",
+     "name": "Saravana Bhavan Munnar",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Idli, dosa and unlimited meals",
+     "area": "Munnar"
+    },
+    {
+     "id": "kerala-rapsy",
+     "name": "Rapsy Restaurant",
+     "cuisine": "Kerala",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 400,
+     "signature": "Parotta with beef or chicken roast",
+     "area": "Munnar"
+    },
+    {
+     "id": "kerala-mayoori",
+     "name": "Mayoori Restaurant",
+     "cuisine": "Kerala",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 550,
+     "signature": "Kerala fish meals",
+     "area": "Munnar"
+    },
+    {
+     "id": "kerala-thaff",
+     "name": "Thaff Restaurant",
+     "cuisine": "Kerala Malabar",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Malabar biryani, karimeen fry",
+     "area": "Alleppey"
+    },
+    {
+     "id": "kerala-kashi-art-cafe",
+     "name": "Kashi Art Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Baked goods and coffee in an art gallery",
+     "area": "Fort Kochi"
+    },
+    {
+     "id": "kerala-dhe-puttu",
+     "name": "Dhe Puttu",
+     "cuisine": "Kerala",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Puttu with kadala curry",
+     "area": "Kochi"
+    },
+    {
+     "id": "kerala-fry-fish",
+     "name": "Fry's Fish Curry House",
+     "cuisine": "Kerala seafood",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 850,
+     "signature": "Meen moilee and prawn masala",
+     "area": "Fort Kochi"
+    },
+    {
+     "id": "kerala-fort-house",
+     "name": "Fort House Waterfront",
+     "cuisine": "Seafood",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1600,
+     "signature": "Waterfront grilled seafood",
+     "area": "Fort Kochi"
+    }
+   ],
+   "themes": [
+    "nature",
+    "relaxation",
+    "food",
+    "culture",
+    "wildlife",
+    "heritage",
+    "shopping",
+    "wellness",
+    "beach"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 5.9
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2450,
+      "hours": 27.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.5
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 9.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 11.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.4
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 45.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5100,
+      "hours": 5.5
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 13.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1150,
+      "hours": 15.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3500,
+      "hours": 3.6
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2000,
+      "hours": 21.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1650,
+      "hours": 26.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3900,
+      "hours": 4.1
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2300,
+      "hours": 25.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4100,
+      "hours": 4.3
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3200,
+      "hours": 37.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.1
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3850,
+      "hours": 46.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5150,
+      "hours": 5.6
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3900,
+      "hours": 47.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.6
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5650,
+      "hours": 6.2
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 700,
+      "hours": 4.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 600,
+      "hours": 3.7
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5750,
+      "hours": 6.3
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 31.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.7
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 36.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4650,
+      "hours": 5.0
+     }
+    ]
+   }
+  },
+  {
+   "id": "rishikesh",
+   "name": "Rishikesh",
+   "state": "Uttarakhand",
+   "region": "Himalayan foothills",
+   "aliases": [
+    "haridwar",
+    "tapovan",
+    "laxman jhula",
+    "yoga capital",
+    "uttarakhand"
+   ],
+   "lat": 30.0869,
+   "lon": 78.2676,
+   "tagline": "River rafting, ashrams and Ganga aarti at the edge of the Himalaya.",
+   "best_months": [
+    2,
+    3,
+    4,
+    9,
+    10,
+    11
+   ],
+   "avoid_months": [
+    7,
+    8
+   ],
+   "avoid_reason": "monsoon: rafting is suspended and roads can flood",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 150,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1200,
+    "mid": 3200,
+    "premium": 9000
+   },
+   "breakfast_pp": {
+    "budget": 120,
+    "mid": 250,
+    "premium": 600
+   },
+   "generic_meal_pp": {
+    "budget": 250,
+    "mid": 500,
+    "premium": 1100
+   },
+   "local_transport_per_day": 600,
+   "attractions": [
+    {
+     "id": "rishikesh-jhulas",
+     "name": "Laxman Jhula and Ram Jhula walk",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Tapovan",
+     "note": "Iconic suspension bridges over the Ganga"
+    },
+    {
+     "id": "rishikesh-ganga-aarti",
+     "name": "Ganga aarti at Triveni Ghat",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Triveni Ghat",
+     "note": "Evening lamp ceremony on the riverbank"
+    },
+    {
+     "id": "rishikesh-rafting",
+     "name": "River rafting, Shivpuri to Rishikesh",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1100,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Shivpuri",
+     "note": "16 km guided run through Grade II-III rapids"
+    },
+    {
+     "id": "rishikesh-neer-garh",
+     "name": "Neer Garh waterfall trek",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Lakshman Jhula",
+     "note": "Short forest trail to a tiered waterfall"
+    },
+    {
+     "id": "rishikesh-beatles-ashram",
+     "name": "Beatles Ashram (Chaurasi Kutia)",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 150,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Muni ki Reti",
+     "note": "Graffiti-covered ruins in a forest reserve"
+    },
+    {
+     "id": "rishikesh-yoga-class",
+     "name": "Morning yoga class at an ashram",
+     "type": "wellness",
+     "themes": [
+      "wellness",
+      "spiritual",
+      "relaxation"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Tapovan",
+     "note": "Drop-in hatha and pranayama session"
+    },
+    {
+     "id": "rishikesh-kunjapuri",
+     "name": "Kunjapuri Devi sunrise viewpoint",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "spiritual"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kunjapuri",
+     "note": "Sunrise over the Himalayan range from a hilltop temple"
+    },
+    {
+     "id": "rishikesh-cafe-hopping",
+     "name": "Tapovan cafe hopping",
+     "type": "food",
+     "themes": [
+      "food",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Tapovan",
+     "note": "Riverside cafes and bakeries"
+    },
+    {
+     "id": "rishikesh-rajaji",
+     "name": "Rajaji National Park jungle safari",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 3.5,
+     "cost_per_person": 1500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Chilla",
+     "note": "Jeep safari, elephant and deer sightings"
+    },
+    {
+     "id": "rishikesh-haridwar-har-ki-pauri",
+     "name": "Har Ki Pauri evening, Haridwar",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Haridwar",
+     "note": "Larger aarti ceremony a short drive away"
+    },
+    {
+     "id": "rishikesh-bungee",
+     "name": "Giant swing and flying fox",
+     "type": "adventure",
+     "themes": [
+      "adventure"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 3500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Mohan Chatti",
+     "note": "India's highest fixed-platform bungee jump area"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "rishikesh-chotiwala",
+     "name": "Chotiwala",
+     "cuisine": "North Indian vegetarian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Thali and jalebi",
+     "area": "Swarg Ashram"
+    },
+    {
+     "id": "rishikesh-madras-cafe",
+     "name": "Madras Cafe",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Filter coffee and masala dosa",
+     "area": "Tapovan"
+    },
+    {
+     "id": "rishikesh-little-buddha",
+     "name": "Little Buddha Cafe",
+     "cuisine": "Tibetan and continental",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 550,
+     "signature": "Thukpa and momos with a river view",
+     "area": "Laxman Jhula"
+    },
+    {
+     "id": "rishikesh-beatles-cafe",
+     "name": "The Beatles Cafe",
+     "cuisine": "Continental",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Wood-fired pizza and banana pancakes",
+     "area": "Laxman Jhula"
+    },
+    {
+     "id": "rishikesh-pyramid-cafe",
+     "name": "Pyramid Cafe",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Israeli breakfast and falafel",
+     "area": "Tapovan"
+    },
+    {
+     "id": "rishikesh-ramanas",
+     "name": "Ramana's Organic Cafe",
+     "cuisine": "Healthy vegetarian",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Organic bowls and fresh juices",
+     "area": "Tapovan"
+    },
+    {
+     "id": "rishikesh-ganga-view",
+     "name": "Ganga Beach Cafe",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Riverside dinner on the sands",
+     "area": "Ram Jhula"
+    },
+    {
+     "id": "rishikesh-the-glasshouse",
+     "name": "The Glasshouse on the Ganges",
+     "cuisine": "Continental",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1600,
+     "signature": "Fine dining with a river deck",
+     "area": "Kaudiyala"
+    }
+   ],
+   "themes": [
+    "spiritual",
+    "nature",
+    "culture",
+    "adventure",
+    "relaxation",
+    "heritage",
+    "wellness",
+    "food",
+    "wildlife"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 700,
+      "hours": 6.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 600,
+      "hours": 7.0
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 33.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.3
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3700,
+      "hours": 47.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.1
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2650,
+      "hours": 32.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4100,
+      "hours": 4.3
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3700,
+      "hours": 47.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.1
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 35.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.4
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 34.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.4
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 24.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.8
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 12.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 14.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.0
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 12.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 14.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3100,
+      "hours": 3.1
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 600,
+      "hours": 5.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 600,
+      "hours": 5.9
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5250,
+      "hours": 5.6
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 34.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.4
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2100,
+      "hours": 25.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3750,
+      "hours": 3.8
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1700,
+      "hours": 20.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 24.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "manali",
+   "name": "Manali",
+   "state": "Himachal Pradesh",
+   "region": "Himachal Pradesh",
+   "aliases": [
+    "himachal",
+    "kullu",
+    "solang",
+    "old manali",
+    "atal tunnel",
+    "kasol"
+   ],
+   "lat": 32.2396,
+   "lon": 77.1887,
+   "tagline": "Snow peaks, pine forests, cafes and easy adventure in the Beas valley.",
+   "best_months": [
+    3,
+    4,
+    5,
+    6,
+    9,
+    10,
+    12
+   ],
+   "avoid_months": [
+    7,
+    8
+   ],
+   "avoid_reason": "monsoon: landslides and road closures on the Kullu-Manali highway",
+   "access": {
+    "rail": false,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 300,
+    "air_surcharge": 800
+   },
+   "stay": {
+    "budget": 1400,
+    "mid": 3800,
+    "premium": 10000
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 300,
+    "premium": 650
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 600,
+    "premium": 1300
+   },
+   "local_transport_per_day": 1500,
+   "attractions": [
+    {
+     "id": "manali-hadimba",
+     "name": "Hadimba Devi Temple and cedar forest",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture",
+      "nature"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Manali",
+     "note": "Wooden pagoda-style temple inside a deodar forest"
+    },
+    {
+     "id": "manali-old-manali",
+     "name": "Old Manali cafe trail",
+     "type": "food",
+     "themes": [
+      "food",
+      "relaxation",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 0,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Old Manali",
+     "note": "Bakeries and riverside cafes"
+    },
+    {
+     "id": "manali-solang",
+     "name": "Solang Valley activities",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 1500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Solang",
+     "note": "Paragliding, zorbing or snow play depending on season"
+    },
+    {
+     "id": "manali-atal-tunnel",
+     "name": "Atal Tunnel and Sissu",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 5,
+     "cost_per_person": 800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Lahaul",
+     "note": "Drive through the world's longest highway tunnel above 10,000 ft"
+    },
+    {
+     "id": "manali-jogini-falls",
+     "name": "Jogini Waterfall trek",
+     "type": "nature",
+     "themes": [
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Vashisht",
+     "note": "Trail to a Himalayan waterfall"
+    },
+    {
+     "id": "manali-vashisht-springs",
+     "name": "Vashisht hot springs",
+     "type": "wellness",
+     "themes": [
+      "wellness",
+      "relaxation",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Vashisht",
+     "note": "Natural sulphur springs beside an old temple"
+    },
+    {
+     "id": "manali-beas-rafting",
+     "name": "Beas river rafting",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 800,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Kullu",
+     "note": "Short rafting run through the Kullu valley"
+    },
+    {
+     "id": "manali-mall-road",
+     "name": "Mall Road and Tibetan market",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Manali",
+     "note": "Woollens, shawls and street snacks"
+    },
+    {
+     "id": "manali-naggar-castle",
+     "name": "Naggar Castle and Roerich Art Gallery",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": true,
+     "best_time": "morning",
+     "area": "Naggar",
+     "note": "Medieval castle and the Roerich museum"
+    },
+    {
+     "id": "manali-manu-temple-hike",
+     "name": "Riverside picnic and easy walk at Manu Temple",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Old Manali",
+     "note": "Slow riverside walk and packed picnic"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "manali-mitthu-dhaba",
+     "name": "Mitthu Da Dhaba",
+     "cuisine": "Punjabi",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Butter chicken and dal makhani",
+     "area": "Manali"
+    },
+    {
+     "id": "manali-johnson-cafe",
+     "name": "Johnson's Cafe",
+     "cuisine": "Continental",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 900,
+     "signature": "Trout fish and garden seating",
+     "area": "Manali"
+    },
+    {
+     "id": "manali-chopsticks",
+     "name": "Chopsticks",
+     "cuisine": "Tibetan and Asian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Momos and thukpa",
+     "area": "Manali"
+    },
+    {
+     "id": "manali-drifters-cafe",
+     "name": "Drifter's Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Shakshuka and pancakes with a mountain view",
+     "area": "Old Manali"
+    },
+    {
+     "id": "manali-dylans",
+     "name": "Dylan's Toasted and Roasted",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Coffee and cheesecake",
+     "area": "Manali"
+    },
+    {
+     "id": "manali-casa-bella-vista",
+     "name": "Casa Bella Vista",
+     "cuisine": "Italian",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1400,
+     "signature": "Wood-fired pizza and pasta",
+     "area": "Old Manali"
+    },
+    {
+     "id": "manali-himachali-rasoi",
+     "name": "Himachali Rasoi",
+     "cuisine": "Himachali",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 400,
+     "signature": "Siddu, dham and madra",
+     "area": "Manali"
+    },
+    {
+     "id": "manali-the-lazy-dog",
+     "name": "The Lazy Dog",
+     "cuisine": "Continental",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1500,
+     "signature": "Riverside fine dining",
+     "area": "Manali"
+    }
+   ],
+   "themes": [
+    "nature",
+    "culture",
+    "relaxation",
+    "adventure",
+    "spiritual",
+    "food",
+    "wellness",
+    "shopping",
+    "heritage"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 13.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4000,
+      "hours": 3.2
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 4.8
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6050,
+      "hours": 5.7
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 4.8
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6100,
+      "hours": 5.7
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5500,
+      "hours": 5.0
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 4.9
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 4.2
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 19.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 3.5
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 22.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 3.6
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "bus",
+      "one_way_per_person": 650,
+      "hours": 6.3
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6500,
+      "hours": 6.2
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 4.9
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5000,
+      "hours": 4.4
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 4.1
+     }
+    ]
+   }
+  },
+  {
+   "id": "jaipur",
+   "name": "Jaipur",
+   "state": "Rajasthan",
+   "region": "Rajasthan",
+   "aliases": [
+    "pink city",
+    "rajasthan",
+    "amer",
+    "amber"
+   ],
+   "lat": 26.9124,
+   "lon": 75.7873,
+   "tagline": "Forts, palaces, bazaars and a rich Rajasthani food tradition.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    5,
+    6
+   ],
+   "avoid_reason": "extreme summer heat above 42°C",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 100,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1300,
+    "mid": 3600,
+    "premium": 10500
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 800
+   },
+   "generic_meal_pp": {
+    "budget": 250,
+    "mid": 600,
+    "premium": 1400
+   },
+   "local_transport_per_day": 1200,
+   "attractions": [
+    {
+     "id": "jaipur-amer-fort",
+     "name": "Amber Fort",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Amer",
+     "note": "Hilltop fort with the Sheesh Mahal mirror hall"
+    },
+    {
+     "id": "jaipur-city-palace",
+     "name": "City Palace and Jantar Mantar",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 700,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Old City",
+     "note": "Royal residence museum and the UNESCO astronomical observatory"
+    },
+    {
+     "id": "jaipur-hawa-mahal",
+     "name": "Hawa Mahal photo stop",
+     "type": "heritage",
+     "themes": [
+      "heritage"
+     ],
+     "duration_hours": 1,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "The Palace of Winds facade"
+    },
+    {
+     "id": "jaipur-nahargarh",
+     "name": "Nahargarh Fort sunset",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "heritage",
+      "relaxation"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Nahargarh",
+     "note": "Sunset view over the city"
+    },
+    {
+     "id": "jaipur-johari-bazaar",
+     "name": "Johari and Bapu Bazaar shopping",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Old City",
+     "note": "Block-print textiles, jewellery and juttis"
+    },
+    {
+     "id": "jaipur-chokhi-dhani",
+     "name": "Chokhi Dhani village evening",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "food"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 900,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Tonk Road",
+     "note": "Folk dance, puppetry and a traditional thali"
+    },
+    {
+     "id": "jaipur-food-walk",
+     "name": "Old City Rajasthani food walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1200,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "Kachori, ghewar, lassi and mirchi vada with a local guide"
+    },
+    {
+     "id": "jaipur-jaigarh",
+     "name": "Jaigarh Fort and the world's largest cannon on wheels",
+     "type": "heritage",
+     "themes": [
+      "heritage"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 150,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Amer",
+     "note": "Fort above Amber with panoramic views"
+    },
+    {
+     "id": "jaipur-elefun",
+     "name": "Elephant sanctuary visit",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 1000,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Amer",
+     "note": "Ethical elephant-care visit; no rides"
+    },
+    {
+     "id": "jaipur-block-print",
+     "name": "Block-printing workshop",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "shopping"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 700,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Sanganer",
+     "note": "Print your own fabric with local artisans"
+    },
+    {
+     "id": "jaipur-patrika-gate",
+     "name": "Patrika Gate and Jawahar Circle Garden",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Malviya Nagar",
+     "note": "Colourful gate and a landscaped garden"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "jaipur-lmb",
+     "name": "Laxmi Misthan Bhandar (LMB)",
+     "cuisine": "Rajasthani vegetarian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Dal baati churma and ghewar",
+     "area": "Johari Bazaar"
+    },
+    {
+     "id": "jaipur-rawat-misthan",
+     "name": "Rawat Misthan Bhandar",
+     "cuisine": "Rajasthani",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 200,
+     "signature": "Pyaaz kachori",
+     "area": "Station Road"
+    },
+    {
+     "id": "jaipur-handi",
+     "name": "Handi Restaurant",
+     "cuisine": "Mughlai",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Laal maas and butter chicken",
+     "area": "MI Road"
+    },
+    {
+     "id": "jaipur-spice-court",
+     "name": "Spice Court",
+     "cuisine": "Rajasthani",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 850,
+     "signature": "Laal maas and gatte ki sabzi",
+     "area": "Bani Park"
+    },
+    {
+     "id": "jaipur-tapri",
+     "name": "Tapri Central",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Chai and snacks with a city view",
+     "area": "C-Scheme"
+    },
+    {
+     "id": "jaipur-suvarna-mahal",
+     "name": "Suvarna Mahal",
+     "cuisine": "Royal Rajasthani",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 2200,
+     "signature": "Royal thali in a palace hotel",
+     "area": "Rambagh Palace"
+    },
+    {
+     "id": "jaipur-chokhi-thali",
+     "name": "Chokhi Dhani Thali",
+     "cuisine": "Rajasthani",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 800,
+     "signature": "Village-style thali",
+     "area": "Tonk Road"
+    },
+    {
+     "id": "jaipur-nibs-cafe",
+     "name": "Nibs Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Sandwiches and coffee",
+     "area": "Malviya Nagar"
+    }
+   ],
+   "themes": [
+    "culture",
+    "heritage",
+    "nature",
+    "relaxation",
+    "shopping",
+    "food",
+    "wildlife"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 700,
+      "hours": 7.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 650,
+      "hours": 8.3
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 23.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3600,
+      "hours": 3.7
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3050,
+      "hours": 38.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 4.6
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 34.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.3
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3150,
+      "hours": 40.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.6
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2250,
+      "hours": 27.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 3.9
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2000,
+      "hours": 24.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3650,
+      "hours": 3.7
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1250,
+      "hours": 14.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 17.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3150,
+      "hours": 3.1
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 300,
+      "hours": 2.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 350,
+      "hours": 1.0
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1200,
+      "hours": 14.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1050,
+      "hours": 16.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3100,
+      "hours": 3.1
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1050,
+      "hours": 12.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 14.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3000,
+      "hours": 3.0
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3650,
+      "hours": 46.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4750,
+      "hours": 5.0
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 39.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.6
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1600,
+      "hours": 19.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1350,
+      "hours": 23.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3350,
+      "hours": 3.4
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1100,
+      "hours": 12.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 14.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3050,
+      "hours": 3.0
+     }
+    ]
+   }
+  },
+  {
+   "id": "udaipur",
+   "name": "Udaipur",
+   "state": "Rajasthan",
+   "region": "Rajasthan",
+   "aliases": [
+    "city of lakes",
+    "lake pichola",
+    "rajasthan"
+   ],
+   "lat": 24.5854,
+   "lon": 73.7125,
+   "tagline": "Lakeside palaces, sunset boat rides and a romantic old town.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    5,
+    6
+   ],
+   "avoid_reason": "summer heat above 40°C",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 100,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1500,
+    "mid": 4000,
+    "premium": 12000
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 800
+   },
+   "generic_meal_pp": {
+    "budget": 280,
+    "mid": 650,
+    "premium": 1500
+   },
+   "local_transport_per_day": 1000,
+   "attractions": [
+    {
+     "id": "udaipur-city-palace-udaipur",
+     "name": "City Palace complex",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 400,
+     "indoor": true,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "Palace museum over Lake Pichola"
+    },
+    {
+     "id": "udaipur-pichola-boat",
+     "name": "Lake Pichola sunset boat ride",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature",
+      "heritage"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 500,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Lake Pichola",
+     "note": "Boat past Jag Mandir and the Lake Palace"
+    },
+    {
+     "id": "udaipur-saheliyon-ki-bari",
+     "name": "Saheliyon ki Bari garden",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation",
+      "heritage"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "Fountain garden built for royal ladies"
+    },
+    {
+     "id": "udaipur-monsoon-palace",
+     "name": "Monsoon Palace sunset",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "heritage"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Sajjangarh",
+     "note": "Hilltop palace with valley views"
+    },
+    {
+     "id": "udaipur-bagore-dance",
+     "name": "Bagore Ki Haveli folk dance show",
+     "type": "culture",
+     "themes": [
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 150,
+     "indoor": true,
+     "best_time": "evening",
+     "area": "Gangaur Ghat",
+     "note": "Rajasthani folk dance and puppet show"
+    },
+    {
+     "id": "udaipur-jagdish-temple",
+     "name": "Jagdish Temple and old-town lanes",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture",
+      "shopping"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "Indo-Aryan temple and nearby art shops"
+    },
+    {
+     "id": "udaipur-kumbhalgarh",
+     "name": "Kumbhalgarh Fort day trip",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 6,
+     "cost_per_person": 1500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kumbhalgarh",
+     "note": "Great wall of India, 80 km away"
+    },
+    {
+     "id": "udaipur-food-walk-udaipur",
+     "name": "Udaipur street food walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 900,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Old City",
+     "note": "Dal baati, mirchi bada and kulfi with a guide"
+    },
+    {
+     "id": "udaipur-cooking-udaipur",
+     "name": "Rajasthani cooking class",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1500,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Old City",
+     "note": "Learn laal maas and dal baati at a family home"
+    },
+    {
+     "id": "udaipur-shilpgram",
+     "name": "Shilpgram craft village",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "shopping"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Shilpgram",
+     "note": "Rural arts and crafts complex"
+    },
+    {
+     "id": "udaipur-fatehsagar",
+     "name": "Fateh Sagar lakefront evening",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Fateh Sagar",
+     "note": "Promenade with corn and street snacks"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "udaipur-natraj",
+     "name": "Natraj Dining Hall",
+     "cuisine": "Rajasthani thali",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Unlimited Rajasthani thali",
+     "area": "Old City"
+    },
+    {
+     "id": "udaipur-ambrai",
+     "name": "Ambrai",
+     "cuisine": "Indian",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1800,
+     "signature": "Lakeside dinner with a palace view",
+     "area": "Amet Haveli"
+    },
+    {
+     "id": "udaipur-upre",
+     "name": "Upre by 1559 AD",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1600,
+     "signature": "Rooftop dinner facing the Pichola",
+     "area": "Old City"
+    },
+    {
+     "id": "udaipur-millets-of-mewar",
+     "name": "Millets of Mewar",
+     "cuisine": "Rajasthani millet cuisine",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Millet thali and traditional sweets",
+     "area": "Old City"
+    },
+    {
+     "id": "udaipur-edelweiss",
+     "name": "Edelweiss Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "European bakes and coffee",
+     "area": "Old City"
+    },
+    {
+     "id": "udaipur-garden-cafe",
+     "name": "Jheel's Ginger Coffee Bar",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Sandwiches and coffee on the lake",
+     "area": "Lal Ghat"
+    },
+    {
+     "id": "udaipur-raj-bhog",
+     "name": "Raj Bhog",
+     "cuisine": "Rajasthani vegetarian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 400,
+     "signature": "Bajra roti and ker sangri",
+     "area": "Old City"
+    }
+   ],
+   "themes": [
+    "culture",
+    "heritage",
+    "nature",
+    "relaxation",
+    "shopping",
+    "food",
+    "spiritual",
+    "adventure"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1300,
+      "hours": 15.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 18.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3200,
+      "hours": 3.2
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 16.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1200,
+      "hours": 20.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3250,
+      "hours": 3.2
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 34.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.3
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2950,
+      "hours": 37.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.5
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2850,
+      "hours": 36.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4250,
+      "hours": 4.4
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 24.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3650,
+      "hours": 3.7
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1500,
+      "hours": 17.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 21.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.3
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 700,
+      "hours": 6.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 650,
+      "hours": 7.5
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 900,
+      "hours": 9.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 800,
+      "hours": 11.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2900,
+      "hours": 2.8
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1650,
+      "hours": 20.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1400,
+      "hours": 24.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.4
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1600,
+      "hours": 19.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1350,
+      "hours": 24.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.4
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3200,
+      "hours": 41.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.7
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 45.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 4.9
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1500,
+      "hours": 17.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 21.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.3
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1000,
+      "hours": 11.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 900,
+      "hours": 13.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3000,
+      "hours": 2.9
+     }
+    ]
+   }
+  },
+  {
+   "id": "darjeeling",
+   "name": "Darjeeling",
+   "state": "West Bengal",
+   "region": "Eastern Himalaya",
+   "aliases": [
+    "kalimpong",
+    "toy train",
+    "tiger hill",
+    "north bengal"
+   ],
+   "lat": 27.041,
+   "lon": 88.2663,
+   "tagline": "Tea gardens, the toy train and Kanchenjunga at sunrise.",
+   "best_months": [
+    3,
+    4,
+    5,
+    10,
+    11
+   ],
+   "avoid_months": [
+    6,
+    7,
+    8
+   ],
+   "avoid_reason": "monsoon: heavy rain, clouds hide the peaks and landslides are common",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 700,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1300,
+    "mid": 3500,
+    "premium": 9500
+   },
+   "breakfast_pp": {
+    "budget": 130,
+    "mid": 300,
+    "premium": 650
+   },
+   "generic_meal_pp": {
+    "budget": 250,
+    "mid": 550,
+    "premium": 1200
+   },
+   "local_transport_per_day": 1400,
+   "attractions": [
+    {
+     "id": "darjeeling-tiger-hill",
+     "name": "Tiger Hill sunrise",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 350,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Ghum",
+     "note": "Sunrise over Kanchenjunga (weather permitting)"
+    },
+    {
+     "id": "darjeeling-toy-train",
+     "name": "Darjeeling Himalayan Railway joyride",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 1500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Darjeeling",
+     "note": "UNESCO-listed steam toy train to Ghum"
+    },
+    {
+     "id": "darjeeling-happy-valley-tea",
+     "name": "Happy Valley Tea Estate tour",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "food"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 200,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Darjeeling",
+     "note": "Factory tour and first-flush tasting"
+    },
+    {
+     "id": "darjeeling-batasia",
+     "name": "Batasia Loop and Ghum Monastery",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "spiritual",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Ghum",
+     "note": "War memorial loop and Tibetan Buddhist monastery"
+    },
+    {
+     "id": "darjeeling-himalayan-zoo",
+     "name": "Padmaja Naidu Zoo and HMI",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "heritage",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Darjeeling",
+     "note": "Red pandas, snow leopards and the mountaineering museum"
+    },
+    {
+     "id": "darjeeling-mall-darj",
+     "name": "Chowrasta and the Mall",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "relaxation",
+      "food"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Darjeeling",
+     "note": "Promenade with tea shops and bookstores"
+    },
+    {
+     "id": "darjeeling-rock-garden",
+     "name": "Rock Garden and Ganga Maya Park",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Chunnu Summer Falls",
+     "note": "Terraced garden around a waterfall"
+    },
+    {
+     "id": "darjeeling-momo-walk",
+     "name": "Darjeeling momo and Tibetan food trail",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 700,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Darjeeling",
+     "note": "Momos, thukpa and butter tea"
+    },
+    {
+     "id": "darjeeling-singalila",
+     "name": "Sandakphu day hike at Manebhanjan",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 5,
+     "cost_per_person": 800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Manebhanjan",
+     "note": "Short section of the Singalila ridge trail"
+    },
+    {
+     "id": "darjeeling-tibetan-refugee",
+     "name": "Tibetan Refugee Self-Help Centre",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "shopping"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Darjeeling",
+     "note": "Handmade carpets and crafts"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "darjeeling-glenary",
+     "name": "Glenary's",
+     "cuisine": "Continental and bakery",
+     "meals": [
+      "breakfast",
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Cakes and Darjeeling tea",
+     "area": "Mall Road"
+    },
+    {
+     "id": "darjeeling-kunga",
+     "name": "Kunga Restaurant",
+     "cuisine": "Tibetan",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 300,
+     "signature": "Thenthuk and momos",
+     "area": "Gandhi Road"
+    },
+    {
+     "id": "darjeeling-sonam",
+     "name": "Sonam's Kitchen",
+     "cuisine": "Tibetan",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Butter tea and fried momo",
+     "area": "Darjeeling"
+    },
+    {
+     "id": "darjeeling-keventers",
+     "name": "Keventer's",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Sausage breakfast and milkshakes",
+     "area": "Nehru Road"
+    },
+    {
+     "id": "darjeeling-dekeva",
+     "name": "Dekeva",
+     "cuisine": "Continental",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Wood-fired dishes",
+     "area": "Nehru Road"
+    },
+    {
+     "id": "darjeeling-penang",
+     "name": "Penang Restaurant",
+     "cuisine": "Chinese",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Hakka noodles and chilli chicken",
+     "area": "Nehru Road"
+    },
+    {
+     "id": "darjeeling-the-elgin",
+     "name": "Elgin Tea Lounge",
+     "cuisine": "Colonial",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1800,
+     "signature": "Heritage hotel high tea",
+     "area": "Elgin Hotel"
+    },
+    {
+     "id": "darjeeling-hot-stimulating",
+     "name": "Hot Stimulating Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 400,
+     "signature": "Cappuccino and cookies",
+     "area": "Darjeeling"
+    }
+   ],
+   "themes": [
+    "nature",
+    "culture",
+    "relaxation",
+    "food",
+    "heritage",
+    "shopping",
+    "spiritual",
+    "wildlife",
+    "adventure"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2600,
+      "hours": 28.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4400,
+      "hours": 4.8
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3850,
+      "hours": 44.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5250,
+      "hours": 5.8
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 4050,
+      "hours": 47.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5400,
+      "hours": 5.9
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 13.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 16.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.9
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 43.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.7
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3250,
+      "hours": 36.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4850,
+      "hours": 5.3
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 43.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.7
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3550,
+      "hours": 40.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.5
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2850,
+      "hours": 31.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4600,
+      "hours": 5.0
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1950,
+      "hours": 19.1
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1550,
+      "hours": 23.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3950,
+      "hours": 4.2
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 30.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.9
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5850,
+      "hours": 6.5
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1300,
+      "hours": 10.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1050,
+      "hours": 12.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.7
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2650,
+      "hours": 28.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.8
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2700,
+      "hours": 29.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4500,
+      "hours": 4.9
+     }
+    ]
+   }
+  },
+  {
+   "id": "leh",
+   "name": "Leh-Ladakh",
+   "state": "Ladakh",
+   "region": "Ladakh",
+   "aliases": [
+    "ladakh",
+    "leh",
+    "nubra",
+    "pangong",
+    "khardung la"
+   ],
+   "lat": 34.1526,
+   "lon": 77.5771,
+   "tagline": "High-altitude monasteries, moonscapes and turquoise lakes.",
+   "best_months": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "avoid_months": [
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_reason": "winter: passes closed, many hotels shut and temperatures fall far below zero",
+   "access": {
+    "rail": false,
+    "air": true,
+    "bus": false,
+    "last_mile_pp": 300,
+    "air_surcharge": 2200
+   },
+   "stay": {
+    "budget": 1800,
+    "mid": 4500,
+    "premium": 12000
+   },
+   "breakfast_pp": {
+    "budget": 180,
+    "mid": 400,
+    "premium": 800
+   },
+   "generic_meal_pp": {
+    "budget": 350,
+    "mid": 700,
+    "premium": 1500
+   },
+   "local_transport_per_day": 2500,
+   "attractions": [
+    {
+     "id": "leh-shanti-stupa",
+     "name": "Shanti Stupa and Leh Palace",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "spiritual",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Leh",
+     "note": "Sunset from the hilltop stupa; nine-storey palace"
+    },
+    {
+     "id": "leh-thiksey",
+     "name": "Thiksey Monastery",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 30,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Thiksey",
+     "note": "Twelve-storey monastery resembling the Potala"
+    },
+    {
+     "id": "leh-hemis",
+     "name": "Hemis Monastery",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Hemis",
+     "note": "Ladakh's largest monastery"
+    },
+    {
+     "id": "leh-magnetic-hill",
+     "name": "Magnetic Hill and Sangam",
+     "type": "nature",
+     "themes": [
+      "nature"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Nimmu",
+     "note": "Confluence of the Indus and Zanskar"
+    },
+    {
+     "id": "leh-pangong",
+     "name": "Pangong Tso day excursion",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure",
+      "relaxation"
+     ],
+     "duration_hours": 10,
+     "cost_per_person": 3200,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Pangong",
+     "note": "Long drive to the changing-colour high-altitude lake"
+    },
+    {
+     "id": "leh-nubra",
+     "name": "Nubra Valley and Diskit",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature",
+      "culture"
+     ],
+     "duration_hours": 8,
+     "cost_per_person": 3000,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Nubra",
+     "note": "Khardung La pass, dunes and double-humped camels"
+    },
+    {
+     "id": "leh-leh-market",
+     "name": "Leh Main Bazaar",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Leh",
+     "note": "Pashmina, prayer flags and Tibetan snacks"
+    },
+    {
+     "id": "leh-acclimatise",
+     "name": "Slow acclimatisation day at Leh cafes",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "food"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 0,
+     "indoor": true,
+     "best_time": "any",
+     "area": "Leh",
+     "note": "Rest at altitude before higher passes"
+    },
+    {
+     "id": "leh-river-rafting-zanskar",
+     "name": "Zanskar-Indus rafting",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Nimmu",
+     "note": "Grade II-III rafting run"
+    },
+    {
+     "id": "leh-alchi",
+     "name": "Alchi Monastery",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture",
+      "spiritual"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 50,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Alchi",
+     "note": "11th-century murals"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "leh-tibetan-kitchen",
+     "name": "The Tibetan Kitchen",
+     "cuisine": "Tibetan",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Thukpa and momo",
+     "area": "Leh"
+    },
+    {
+     "id": "leh-gesmo",
+     "name": "Gesmo Restaurant",
+     "cuisine": "Continental",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Fresh bakery and coffee",
+     "area": "Leh"
+    },
+    {
+     "id": "leh-bon-appetit",
+     "name": "Bon Appetit",
+     "cuisine": "Ladakhi",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Skyu and tigmo",
+     "area": "Leh"
+    },
+    {
+     "id": "leh-lala-s-cafe",
+     "name": "Lala's Art Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Sandwiches and courtyard seating",
+     "area": "Leh"
+    },
+    {
+     "id": "leh-zomsa",
+     "name": "Zomsa Bakery",
+     "cuisine": "Bakery",
+     "meals": [
+      "breakfast"
+     ],
+     "tier": "budget",
+     "cost_per_person": 200,
+     "signature": "Apricot cake and butter tea",
+     "area": "Leh"
+    },
+    {
+     "id": "leh-chopsticks-leh",
+     "name": "Chopsticks Noodle Bar",
+     "cuisine": "Tibetan and Chinese",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 400,
+     "signature": "Noodles and momos",
+     "area": "Leh"
+    },
+    {
+     "id": "leh-the-grand-dragon",
+     "name": "Grand Dragon Restaurant",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1500,
+     "signature": "Hotel buffet",
+     "area": "Old Road"
+    },
+    {
+     "id": "leh-summer-harvest",
+     "name": "Summer Harvest",
+     "cuisine": "Ladakhi and Indian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Apricot dishes and veggies",
+     "area": "Leh"
+    }
+   ],
+   "themes": [
+    "nature",
+    "culture",
+    "heritage",
+    "spiritual",
+    "adventure",
+    "relaxation",
+    "food",
+    "shopping"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5650,
+      "hours": 3.5
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7000,
+      "hours": 5.1
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7750,
+      "hours": 6.0
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6900,
+      "hours": 5.0
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7750,
+      "hours": 6.0
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7150,
+      "hours": 5.3
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7050,
+      "hours": 5.2
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6500,
+      "hours": 4.5
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5900,
+      "hours": 3.8
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5950,
+      "hours": 3.9
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5350,
+      "hours": 3.2
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8150,
+      "hours": 6.5
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6850,
+      "hours": 4.9
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6650,
+      "hours": 4.7
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 6350,
+      "hours": 4.4
+     }
+    ]
+   }
+  },
+  {
+   "id": "coorg",
+   "name": "Coorg (Kodagu)",
+   "state": "Karnataka",
+   "region": "Western Ghats",
+   "aliases": [
+    "kodagu",
+    "madikeri",
+    "coffee country",
+    "kushalnagar"
+   ],
+   "lat": 12.4244,
+   "lon": 75.7382,
+   "tagline": "Coffee estates, misty hills, waterfalls and Kodava cuisine.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    6,
+    7,
+    8
+   ],
+   "avoid_reason": "heavy monsoon rainfall and leech-prone trails",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 700,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1500,
+    "mid": 4000,
+    "premium": 10500
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 700
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 600,
+    "premium": 1300
+   },
+   "local_transport_per_day": 1500,
+   "attractions": [
+    {
+     "id": "coorg-coffee-estate",
+     "name": "Coffee plantation walk and tasting",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "food"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Madikeri",
+     "note": "Walk an estate and taste fresh-roasted Coorg coffee"
+    },
+    {
+     "id": "coorg-abbey-falls",
+     "name": "Abbey Falls",
+     "type": "nature",
+     "themes": [
+      "nature"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 50,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Madikeri",
+     "note": "Waterfall inside a coffee and spice plantation"
+    },
+    {
+     "id": "coorg-raja-seat",
+     "name": "Raja's Seat sunset",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 20,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Madikeri",
+     "note": "Royal sunset viewpoint"
+    },
+    {
+     "id": "coorg-dubare",
+     "name": "Dubare Elephant Camp",
+     "type": "wildlife",
+     "themes": [
+      "wildlife",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kushalnagar",
+     "note": "Bathing and feeding elephants by the Cauvery"
+    },
+    {
+     "id": "coorg-namdroling",
+     "name": "Namdroling Monastery (Golden Temple)",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture",
+      "heritage"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Bylakuppe",
+     "note": "Tibetan settlement and golden Buddha statues"
+    },
+    {
+     "id": "coorg-iruppu",
+     "name": "Iruppu Falls trek",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Brahmagiri",
+     "note": "Forest walk to a sacred waterfall"
+    },
+    {
+     "id": "coorg-tadiandamol",
+     "name": "Tadiandamol peak trek",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 5,
+     "cost_per_person": 600,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Kakkabe",
+     "note": "Coorg's highest peak"
+    },
+    {
+     "id": "coorg-kodava-cooking",
+     "name": "Kodava cooking class",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1500,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Madikeri",
+     "note": "Pandi curry, kadambuttu and akki roti at a homestay"
+    },
+    {
+     "id": "coorg-madikeri-fort",
+     "name": "Madikeri Fort and museum",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 25,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Madikeri",
+     "note": "Old fort with a small museum"
+    },
+    {
+     "id": "coorg-harangi",
+     "name": "Harangi reservoir boating",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Harangi",
+     "note": "Calm reservoir with a picnic area"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "coorg-raintree",
+     "name": "Raintree Restaurant",
+     "cuisine": "Kodava",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Pandi curry with kadambuttu",
+     "area": "Madikeri"
+    },
+    {
+     "id": "coorg-coorg-cuisine",
+     "name": "Coorg Cuisine",
+     "cuisine": "Kodava",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 600,
+     "signature": "Bamboo shoot curry and akki roti",
+     "area": "Madikeri"
+    },
+    {
+     "id": "coorg-hotel-deepika",
+     "name": "Hotel Deepika",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 200,
+     "signature": "Neer dosa and filter coffee",
+     "area": "Madikeri"
+    },
+    {
+     "id": "coorg-the-coffee-cup",
+     "name": "The Coffee Cup",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 350,
+     "signature": "Coffee and snacks",
+     "area": "Madikeri"
+    },
+    {
+     "id": "coorg-madikeri-bakes",
+     "name": "Millers 49",
+     "cuisine": "Bakery",
+     "meals": [
+      "breakfast"
+     ],
+     "tier": "budget",
+     "cost_per_person": 180,
+     "signature": "Fresh bread and pastries",
+     "area": "Madikeri"
+    },
+    {
+     "id": "coorg-kaveri-food",
+     "name": "Kaveri Homestay Kitchen",
+     "cuisine": "Kodava home-cooked",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 800,
+     "signature": "Home-cooked Kodava meal",
+     "area": "Kushalnagar"
+    },
+    {
+     "id": "coorg-the-tamara-dining",
+     "name": "Tamara Dining",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1600,
+     "signature": "Estate dining",
+     "area": "Kabbinakad"
+    },
+    {
+     "id": "coorg-mysore-mess",
+     "name": "Mysore Mess",
+     "cuisine": "Andhra and Karnataka",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Meals on banana leaf",
+     "area": "Kushalnagar"
+    }
+   ],
+   "themes": [
+    "nature",
+    "culture",
+    "food",
+    "relaxation",
+    "heritage",
+    "adventure",
+    "wildlife",
+    "spiritual"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3850,
+      "hours": 44.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5250,
+      "hours": 5.8
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2100,
+      "hours": 20.9
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1650,
+      "hours": 25.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.3
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1050,
+      "hours": 7.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 850,
+      "hours": 7.5
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3750,
+      "hours": 43.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5200,
+      "hours": 5.7
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1550,
+      "hours": 13.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 16.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.9
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1750,
+      "hours": 16.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1450,
+      "hours": 20.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3850,
+      "hours": 4.1
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1900,
+      "hours": 18.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1550,
+      "hours": 22.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3950,
+      "hours": 4.2
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 31.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.9
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3500,
+      "hours": 40.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5050,
+      "hours": 5.5
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3650,
+      "hours": 42.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5150,
+      "hours": 5.6
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5550,
+      "hours": 6.1
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1150,
+      "hours": 8.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 950,
+      "hours": 9.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.6
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5800,
+      "hours": 6.4
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 26.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4350,
+      "hours": 4.7
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 30.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4550,
+      "hours": 4.9
+     }
+    ]
+   }
+  },
+  {
+   "id": "pondicherry",
+   "name": "Pondicherry",
+   "state": "Puducherry",
+   "region": "Coromandel Coast",
+   "aliases": [
+    "puducherry",
+    "pondy",
+    "auroville",
+    "white town"
+   ],
+   "lat": 11.9416,
+   "lon": 79.8083,
+   "tagline": "French Quarter cafes, seaside promenades and Auroville calm.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    5,
+    6
+   ],
+   "avoid_reason": "hot and humid, with rain from the northeast monsoon in November",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 500,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1500,
+    "mid": 3800,
+    "premium": 9500
+   },
+   "breakfast_pp": {
+    "budget": 150,
+    "mid": 350,
+    "premium": 700
+   },
+   "generic_meal_pp": {
+    "budget": 300,
+    "mid": 650,
+    "premium": 1400
+   },
+   "local_transport_per_day": 700,
+   "attractions": [
+    {
+     "id": "pondicherry-white-town",
+     "name": "White Town heritage walk",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture",
+      "relaxation"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "White Town",
+     "note": "Yellow-walled French colonial lanes"
+    },
+    {
+     "id": "pondicherry-promenade",
+     "name": "Rock Beach promenade sunrise",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "beach"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Promenade",
+     "note": "Early walk along the seafront"
+    },
+    {
+     "id": "pondicherry-auroville",
+     "name": "Auroville and Matrimandir",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "wellness",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Auroville",
+     "note": "Experimental township with the golden Matrimandir"
+    },
+    {
+     "id": "pondicherry-paradise-beach",
+     "name": "Paradise Beach boat trip",
+     "type": "beach",
+     "themes": [
+      "beach",
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Chunnambar",
+     "note": "Backwater ferry to a sandy beach"
+    },
+    {
+     "id": "pondicherry-aurobindo",
+     "name": "Sri Aurobindo Ashram",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "White Town",
+     "note": "Quiet ashram and samadhi"
+    },
+    {
+     "id": "pondicherry-french-food-walk",
+     "name": "French Quarter cafe and food walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1000,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "White Town",
+     "note": "Croissants, crepes and Tamil-French fusion"
+    },
+    {
+     "id": "pondicherry-scuba",
+     "name": "Discover scuba at Temple Reef",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 4500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Pondicherry",
+     "note": "Beginner scuba with an instructor"
+    },
+    {
+     "id": "pondicherry-pottery",
+     "name": "Ceramics and pottery workshop",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 800,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Auroville",
+     "note": "Hands-on wheel pottery session"
+    },
+    {
+     "id": "pondicherry-sunday-market",
+     "name": "Goubert Market and Nehru Street",
+     "type": "shopping",
+     "themes": [
+      "shopping",
+      "culture",
+      "food"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Pondicherry",
+     "note": "Fresh produce and boutiques"
+    },
+    {
+     "id": "pondicherry-french-cooking",
+     "name": "Tamil-French cooking class",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1600,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "White Town",
+     "note": "Coconut-based curries and French bakes"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "pondicherry-le-cafe",
+     "name": "Le Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Croissants and coffee by the sea",
+     "area": "Promenade"
+    },
+    {
+     "id": "pondicherry-villa-shanti",
+     "name": "Villa Shanti",
+     "cuisine": "French-Indian",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 1800,
+     "signature": "Prawn bisque and duck confit",
+     "area": "White Town"
+    },
+    {
+     "id": "pondicherry-surguru",
+     "name": "Surguru Restaurant",
+     "cuisine": "South Indian",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 350,
+     "signature": "Meals on banana leaf",
+     "area": "Pondicherry"
+    },
+    {
+     "id": "pondicherry-baker-street",
+     "name": "Baker Street",
+     "cuisine": "Bakery",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 400,
+     "signature": "Quiche and cakes",
+     "area": "White Town"
+    },
+    {
+     "id": "pondicherry-coromandel-cafe",
+     "name": "Coromandel Cafe",
+     "cuisine": "Continental",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 800,
+     "signature": "Garden dining",
+     "area": "White Town"
+    },
+    {
+     "id": "pondicherry-mango-hill",
+     "name": "Mango Hill",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Garden dining and seafood",
+     "area": "Pondicherry"
+    },
+    {
+     "id": "pondicherry-hidden-gem",
+     "name": "Hidden Gem",
+     "cuisine": "French",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 900,
+     "signature": "Steak and fresh pasta",
+     "area": "White Town"
+    },
+    {
+     "id": "pondicherry-rasa-cafe",
+     "name": "Rasa Vegetarian",
+     "cuisine": "Vegetarian",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 300,
+     "signature": "Thali and dosa",
+     "area": "Pondicherry"
+    }
+   ],
+   "themes": [
+    "culture",
+    "relaxation",
+    "food",
+    "beach",
+    "spiritual",
+    "nature",
+    "heritage",
+    "wellness",
+    "adventure",
+    "shopping"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3850,
+      "hours": 46.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 5150,
+      "hours": 5.6
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2450,
+      "hours": 27.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4200,
+      "hours": 4.5
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1000,
+      "hours": 8.3
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 850,
+      "hours": 9.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3200,
+      "hours": 3.3
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3150,
+      "hours": 37.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.0
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 800,
+      "hours": 5.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 700,
+      "hours": 5.2
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1650,
+      "hours": 16.7
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1350,
+      "hours": 20.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3650,
+      "hours": 3.8
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2250,
+      "hours": 24.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4050,
+      "hours": 4.3
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3100,
+      "hours": 36.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4650,
+      "hours": 5.0
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3550,
+      "hours": 42.6
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4950,
+      "hours": 5.4
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3450,
+      "hours": 41.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4900,
+      "hours": 5.3
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5450,
+      "hours": 5.9
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1350,
+      "hours": 12.6
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1100,
+      "hours": 14.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3450,
+      "hours": 3.6
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 5300,
+      "hours": 5.8
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2350,
+      "hours": 26.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.4
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2800,
+      "hours": 32.3
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4450,
+      "hours": 4.7
+     }
+    ]
+   }
+  },
+  {
+   "id": "varanasi",
+   "name": "Varanasi",
+   "state": "Uttar Pradesh",
+   "region": "Gangetic plains",
+   "aliases": [
+    "banaras",
+    "benares",
+    "kashi",
+    "sarnath"
+   ],
+   "lat": 25.3176,
+   "lon": 82.9739,
+   "tagline": "Ghats, ganga aarti and one of the world's oldest living street food scenes.",
+   "best_months": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "avoid_months": [
+    5,
+    6
+   ],
+   "avoid_reason": "extreme heat above 42°C",
+   "access": {
+    "rail": true,
+    "air": true,
+    "bus": true,
+    "last_mile_pp": 100,
+    "air_surcharge": 0
+   },
+   "stay": {
+    "budget": 1200,
+    "mid": 3200,
+    "premium": 9000
+   },
+   "breakfast_pp": {
+    "budget": 120,
+    "mid": 300,
+    "premium": 650
+   },
+   "generic_meal_pp": {
+    "budget": 250,
+    "mid": 500,
+    "premium": 1200
+   },
+   "local_transport_per_day": 700,
+   "attractions": [
+    {
+     "id": "varanasi-dawn-boat",
+     "name": "Sunrise boat ride on the Ganga",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture",
+      "relaxation"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 400,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Assi to Dashashwamedh",
+     "note": "Row past the ghats at dawn"
+    },
+    {
+     "id": "varanasi-ganga-aarti-varanasi",
+     "name": "Dashashwamedh Ghat evening aarti",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Dashashwamedh",
+     "note": "Large evening lamp ceremony"
+    },
+    {
+     "id": "varanasi-kashi-vishwanath",
+     "name": "Kashi Vishwanath Temple",
+     "type": "spiritual",
+     "themes": [
+      "spiritual",
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "One of the twelve Jyotirlinga shrines"
+    },
+    {
+     "id": "varanasi-sarnath",
+     "name": "Sarnath",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "spiritual",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Sarnath",
+     "note": "Where the Buddha gave his first sermon"
+    },
+    {
+     "id": "varanasi-food-walk-varanasi",
+     "name": "Kachori Gali and Banarasi street-food walk",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Old City",
+     "note": "Kachori, lassi, tamatar chaat, malaiyyo"
+    },
+    {
+     "id": "varanasi-silk-weaving",
+     "name": "Banarasi silk weaving workshop",
+     "type": "culture",
+     "themes": [
+      "culture",
+      "shopping"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 300,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "Lallapura",
+     "note": "Watch handloom weavers"
+    },
+    {
+     "id": "varanasi-bhu",
+     "name": "BHU campus and Bharat Kala Bhavan",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 100,
+     "indoor": true,
+     "best_time": "afternoon",
+     "area": "BHU",
+     "note": "Museum and Vishwanath Temple in a sprawling campus"
+    },
+    {
+     "id": "varanasi-ramnagar",
+     "name": "Ramnagar Fort",
+     "type": "heritage",
+     "themes": [
+      "heritage"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 100,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Ramnagar",
+     "note": "18th-century fort across the river"
+    },
+    {
+     "id": "varanasi-assi-yoga",
+     "name": "Assi Ghat sunrise yoga",
+     "type": "wellness",
+     "themes": [
+      "wellness",
+      "spiritual",
+      "relaxation"
+     ],
+     "duration_hours": 1.5,
+     "cost_per_person": 300,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Assi",
+     "note": "Riverside yoga at dawn"
+    },
+    {
+     "id": "varanasi-ghat-walk",
+     "name": "Ghat-to-ghat evening walk",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "culture"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "evening",
+     "area": "Ghats",
+     "note": "Walk from Assi to Manikarnika"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "varanasi-kachori-gali",
+     "name": "Kachori Gali",
+     "cuisine": "Street food",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 150,
+     "signature": "Kachori-sabzi and jalebi",
+     "area": "Old City"
+    },
+    {
+     "id": "varanasi-blue-lassi",
+     "name": "Blue Lassi",
+     "cuisine": "Lassi shop",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 200,
+     "signature": "Fruit lassi and thandai",
+     "area": "Old City"
+    },
+    {
+     "id": "varanasi-deena-chat",
+     "name": "Deena Chat Bhandar",
+     "cuisine": "Street food",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Tamatar chaat",
+     "area": "Old City"
+    },
+    {
+     "id": "varanasi-kashi-chat",
+     "name": "Kashi Chat Bhandar",
+     "cuisine": "Chaat",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 250,
+     "signature": "Aloo tikki and papdi chaat",
+     "area": "Godowlia"
+    },
+    {
+     "id": "varanasi-brown-bread",
+     "name": "Brown Bread Bakery",
+     "cuisine": "Cafe",
+     "meals": [
+      "breakfast",
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 450,
+     "signature": "Organic breakfast and fresh bakes",
+     "area": "Old City"
+    },
+    {
+     "id": "varanasi-haifa",
+     "name": "Haifa Restaurant",
+     "cuisine": "Israeli and continental",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Falafel and hummus",
+     "area": "Assi Ghat"
+    },
+    {
+     "id": "varanasi-ganga-fuji",
+     "name": "Ganga Fuji",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Riverside dinner",
+     "area": "Assi Ghat"
+    },
+    {
+     "id": "varanasi-taj-ganges",
+     "name": "Nadesar Palace Dining",
+     "cuisine": "Fine dining",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 2000,
+     "signature": "Royal Awadhi and Banarasi cuisine",
+     "area": "Nadesar"
+    }
+   ],
+   "themes": [
+    "culture",
+    "spiritual",
+    "heritage",
+    "relaxation",
+    "food",
+    "shopping",
+    "nature",
+    "wellness"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1500,
+      "hours": 18.0
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1250,
+      "hours": 22.0
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3300,
+      "hours": 3.3
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2500,
+      "hours": 31.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4000,
+      "hours": 4.1
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2900,
+      "hours": 37.1
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4300,
+      "hours": 4.5
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 16.8
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1200,
+      "hours": 20.4
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3250,
+      "hours": 3.2
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2750,
+      "hours": 34.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4150,
+      "hours": 4.3
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2050,
+      "hours": 25.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3700,
+      "hours": 3.8
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2450,
+      "hours": 30.5
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3950,
+      "hours": 4.1
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "train",
+      "one_way_per_person": 2200,
+      "hours": 27.7
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3800,
+      "hours": 3.9
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1600,
+      "hours": 19.5
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1350,
+      "hours": 23.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3400,
+      "hours": 3.4
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "train",
+      "one_way_per_person": 750,
+      "hours": 8.2
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 700,
+      "hours": 9.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 2800,
+      "hours": 2.7
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1800,
+      "hours": 22.2
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.6
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "train",
+      "one_way_per_person": 3550,
+      "hours": 45.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 4700,
+      "hours": 5.0
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1850,
+      "hours": 22.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3550,
+      "hours": 3.6
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 16.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1150,
+      "hours": 19.9
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3250,
+      "hours": 3.2
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "train",
+      "one_way_per_person": 1400,
+      "hours": 16.4
+     },
+     {
+      "mode": "bus",
+      "one_way_per_person": 1150,
+      "hours": 19.8
+     },
+     {
+      "mode": "flight",
+      "one_way_per_person": 3250,
+      "hours": 3.2
+     }
+    ]
+   }
+  },
+  {
+   "id": "andaman",
+   "name": "Andaman Islands",
+   "state": "Andaman and Nicobar Islands",
+   "region": "Andaman Sea",
+   "aliases": [
+    "port blair",
+    "havelock",
+    "swaraj dweep",
+    "neil island",
+    "andamans"
+   ],
+   "lat": 11.6234,
+   "lon": 92.7265,
+   "tagline": "Turquoise water, coral reefs and quiet white-sand beaches.",
+   "best_months": [
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+   ],
+   "avoid_months": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "avoid_reason": "monsoon: ferries and water sports are frequently cancelled",
+   "access": {
+    "rail": false,
+    "air": true,
+    "bus": false,
+    "last_mile_pp": 200,
+    "air_surcharge": 3500
+   },
+   "stay": {
+    "budget": 2200,
+    "mid": 5500,
+    "premium": 14000
+   },
+   "breakfast_pp": {
+    "budget": 200,
+    "mid": 450,
+    "premium": 900
+   },
+   "generic_meal_pp": {
+    "budget": 400,
+    "mid": 800,
+    "premium": 1800
+   },
+   "local_transport_per_day": 1800,
+   "attractions": [
+    {
+     "id": "andaman-radhanagar",
+     "name": "Radhanagar Beach, Havelock",
+     "type": "beach",
+     "themes": [
+      "beach",
+      "nature",
+      "relaxation"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Havelock",
+     "note": "Frequently ranked among Asia's best beaches"
+    },
+    {
+     "id": "andaman-scuba-havelock",
+     "name": "Scuba diving at Havelock",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 4200,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Havelock",
+     "note": "Beginner dive with an instructor"
+    },
+    {
+     "id": "andaman-elephant-beach",
+     "name": "Elephant Beach snorkelling",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "beach",
+      "nature"
+     ],
+     "duration_hours": 3,
+     "cost_per_person": 1800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Havelock",
+     "note": "Snorkelling at a coral beach"
+    },
+    {
+     "id": "andaman-cellular-jail",
+     "name": "Cellular Jail and light-and-sound show",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 100,
+     "indoor": true,
+     "best_time": "evening",
+     "area": "Port Blair",
+     "note": "Colonial-era prison and evening show"
+    },
+    {
+     "id": "andaman-ross-island",
+     "name": "Ross Island and North Bay",
+     "type": "heritage",
+     "themes": [
+      "heritage",
+      "nature",
+      "beach"
+     ],
+     "duration_hours": 4,
+     "cost_per_person": 800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Port Blair",
+     "note": "British ruins and coral snorkelling"
+    },
+    {
+     "id": "andaman-neil-island",
+     "name": "Neil Island day trip",
+     "type": "beach",
+     "themes": [
+      "beach",
+      "relaxation",
+      "nature"
+     ],
+     "duration_hours": 6,
+     "cost_per_person": 1500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Neil Island",
+     "note": "Bharatpur and Laxmanpur beaches"
+    },
+    {
+     "id": "andaman-baratang",
+     "name": "Limestone caves at Baratang",
+     "type": "nature",
+     "themes": [
+      "nature",
+      "adventure",
+      "wildlife"
+     ],
+     "duration_hours": 8,
+     "cost_per_person": 1800,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Baratang",
+     "note": "Mangrove creeks and limestone caves"
+    },
+    {
+     "id": "andaman-kalapather",
+     "name": "Kalapathar beach sunrise",
+     "type": "relaxation",
+     "themes": [
+      "relaxation",
+      "nature",
+      "beach"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 0,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Havelock",
+     "note": "Black rock beach at sunrise"
+    },
+    {
+     "id": "andaman-seafood-cooking",
+     "name": "Fresh-catch seafood tasting",
+     "type": "food",
+     "themes": [
+      "food",
+      "culture"
+     ],
+     "duration_hours": 2.5,
+     "cost_per_person": 1200,
+     "indoor": false,
+     "best_time": "afternoon",
+     "area": "Port Blair",
+     "note": "Local fishermen's catch grilled and curried"
+    },
+    {
+     "id": "andaman-sea-walk",
+     "name": "North Bay sea walk",
+     "type": "adventure",
+     "themes": [
+      "adventure",
+      "nature"
+     ],
+     "duration_hours": 2,
+     "cost_per_person": 3500,
+     "indoor": false,
+     "best_time": "morning",
+     "area": "Port Blair",
+     "note": "Walk on the seabed in a helmet"
+    }
+   ],
+   "restaurants": [
+    {
+     "id": "andaman-annapurna-pb",
+     "name": "Annapurna Cafeteria",
+     "cuisine": "South Indian",
+     "meals": [
+      "breakfast",
+      "lunch",
+      "dinner"
+     ],
+     "tier": "budget",
+     "cost_per_person": 300,
+     "signature": "Meals and dosa",
+     "area": "Port Blair"
+    },
+    {
+     "id": "andaman-lighthouse-pb",
+     "name": "New Lighthouse Restaurant",
+     "cuisine": "Seafood",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 700,
+     "signature": "Grilled fish and tandoori crab",
+     "area": "Port Blair"
+    },
+    {
+     "id": "andaman-full-moon-cafe",
+     "name": "Full Moon Cafe",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "lunch",
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 800,
+     "signature": "Coconut-crusted fish",
+     "area": "Havelock"
+    },
+    {
+     "id": "andaman-anju-coco",
+     "name": "Anju Coco Resto",
+     "cuisine": "Seafood",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 750,
+     "signature": "Lobster and prawn platters",
+     "area": "Havelock"
+    },
+    {
+     "id": "andaman-infinity-cafe",
+     "name": "Infinity Cafe",
+     "cuisine": "Cafe",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "mid",
+     "cost_per_person": 500,
+     "signature": "Pancakes and smoothies",
+     "area": "Havelock"
+    },
+    {
+     "id": "andaman-nemo-cafe",
+     "name": "Nemo Cafe",
+     "cuisine": "Multi-cuisine",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "mid",
+     "cost_per_person": 650,
+     "signature": "Seafood curries",
+     "area": "Havelock"
+    },
+    {
+     "id": "andaman-wild-orchid",
+     "name": "Wild Orchid Dining",
+     "cuisine": "Continental",
+     "meals": [
+      "dinner"
+     ],
+     "tier": "premium",
+     "cost_per_person": 2000,
+     "signature": "Resort seafood dinner",
+     "area": "Havelock"
+    },
+    {
+     "id": "andaman-dolphin-shack",
+     "name": "Dolphin Beach Shack",
+     "cuisine": "Beach shack",
+     "meals": [
+      "lunch"
+     ],
+     "tier": "budget",
+     "cost_per_person": 400,
+     "signature": "Fresh catch with rice",
+     "area": "Neil Island"
+    }
+   ],
+   "themes": [
+    "nature",
+    "beach",
+    "adventure",
+    "relaxation",
+    "heritage",
+    "culture",
+    "wildlife",
+    "food"
+   ],
+   "transport_from": {
+    "Delhi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 9100,
+      "hours": 6.0
+     }
+    ],
+    "Mumbai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8850,
+      "hours": 5.7
+     }
+    ],
+    "Bengaluru": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8100,
+      "hours": 4.8
+     }
+    ],
+    "Kolkata": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7650,
+      "hours": 4.3
+     }
+    ],
+    "Chennai": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 7750,
+      "hours": 4.4
+     }
+    ],
+    "Hyderabad": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8100,
+      "hours": 4.9
+     }
+    ],
+    "Pune": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8700,
+      "hours": 5.6
+     }
+    ],
+    "Ahmedabad": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 9100,
+      "hours": 6.0
+     }
+    ],
+    "Jaipur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 9050,
+      "hours": 6.0
+     }
+    ],
+    "Lucknow": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8600,
+      "hours": 5.5
+     }
+    ],
+    "Chandigarh": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 9300,
+      "hours": 6.3
+     }
+    ],
+    "Kochi": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8250,
+      "hours": 5.1
+     }
+    ],
+    "Guwahati": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8050,
+      "hours": 4.8
+     }
+    ],
+    "Nagpur": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8250,
+      "hours": 5.1
+     }
+    ],
+    "Bhopal": [
+     {
+      "mode": "flight",
+      "one_way_per_person": 8600,
+      "hours": 5.4
+     }
+    ]
+   }
+  }
+ ]
+}
