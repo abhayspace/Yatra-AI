@@ -7,9 +7,9 @@ services:
       dockerfile: backend/Dockerfile
     env_file: .env
     environment:
-      CORS_ORIGINS: http://localhost:3000
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
     ports:
-      - "8000:8000"
+      - "${BACKEND_PORT:-8000}:8000"
     restart: unless-stopped
 
   frontend:
@@ -17,9 +17,9 @@ services:
       context: ./frontend
     environment:
       # the address the *browser* uses to reach the backend
-      API_URL: http://localhost:8000
+      API_URL: ${API_URL:-http://localhost:8000}
     ports:
-      - "3000:3000"
+      - "${FRONTEND_PORT:-3000}:3000"
     depends_on:
       backend:
         condition: service_healthy
